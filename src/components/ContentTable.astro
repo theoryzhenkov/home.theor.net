@@ -1,0 +1,542 @@
+---
+import { getCollection } from 'astro:content';
+
+interface Column {
+  field: string;
+  label: string;
+  sortable?: boolean;
+  filterable?: boolean;
+  type?: 'text' | 'date' | 'link' | 'url' | 'status';
+}
+
+interface Props {
+  path: string;
+  columns: Column[];
+  defaultSort?: { field: string; direction: 'asc' | 'desc' };
+  linkToPage?: boolean;
+}
+
+const { path, columns, defaultSort, linkToPage = true } = Astro.props;
+
+// Query and filter content by path prefix
+const allPages = await getCollection('pages');
+const filteredPages = allPages.filter((page) => page.id.startsWith(path));
+
+// Build row data with all fields
+const rows = filteredPages.map((page) => {
+  const data: Record<string, unknown> = { ...page.data };
+  // Add computed fields
+  data._id = page.id;
+  data._href = `/${page.id}`;
+  return data;
+});
+
+// Get unique values for filterable columns
+const filterOptions: Record<string, string[]> = {};
+for (const col of columns) {
+  if (col.filterable) {
+    const values = new Set<string>();
+    for (const row of rows) {
+      const val = row[col.field];
+      if (val !== undefined && val !== null && val !== '') {
+        values.add(String(val));
+      }
+    }
+    filterOptions[col.field] = Array.from(values).sort();
+  }
+}
+
+// Format value for display
+function formatValue(value: unknown, type?: string): string {
+  if (value === undefined || value === null) return '—';
+  if (type === 'date' && value instanceof Date) {
+    return value.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+  }
+  if (Array.isArray(value)) {
+    return value.join(', ');
+  }
+  return String(value);
+}
+
+// Get sortable value for data attribute
+function getSortValue(value: unknown, type?: string): string {
+  if (value === undefined || value === null) return '';
+  if (type === 'date' && value instanceof Date) {
+    return value.getTime().toString();
+  }
+  return String(value).toLowerCase();
+}
+
+const tableId = `content-table-${Math.random().toString(36).slice(2, 9)}`;
+---
+
+<div class="content-table-wrapper" data-table-id={tableId}>
+  {Object.keys(filterOptions).length > 0 && (
+    <div class="content-table-filters">
+      {columns.filter(col => col.filterable).map((col) => (
+        <div class="filter-group">
+          <label for={`${tableId}-filter-${col.field}`}>{col.label}</label>
+          <select 
+            id={`${tableId}-filter-${col.field}`}
+            data-filter-field={col.field}
+          >
+            <option value="">All</option>
+            {filterOptions[col.field]?.map((val) => (
+              <option value={val}>{val}</option>
+            ))}
+          </select>
+        </div>
+      ))}
+    </div>
+  )}
+
+  <table class="content-table">
+    <thead>
+      <tr>
+        {columns.map((col) => (
+          <th 
+            data-field={col.field}
+            data-sortable={col.sortable ? 'true' : undefined}
+            data-sort-type={col.type === 'date' ? 'numeric' : 'text'}
+            class:list={[{ sortable: col.sortable }]}
+            aria-sort={defaultSort?.field === col.field 
+              ? (defaultSort.direction === 'asc' ? 'ascending' : 'descending') 
+              : undefined}
+          >
+            <span class="th-content">
+              {col.label}
+              {col.sortable && <span class="sort-indicator" aria-hidden="true"></span>}
+            </span>
+          </th>
+        ))}
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((row) => (
+        <tr>
+          {columns.map((col) => {
+            const value = row[col.field];
+            const displayValue = formatValue(value, col.type);
+            const sortValue = getSortValue(value, col.type);
+            const isPageLink = col.type === 'link' && linkToPage;
+            const isUrl = col.type === 'url' && value;
+            const isStatus = col.type === 'status';
+            
+            return (
+              <td 
+                data-field={col.field}
+                data-sort-value={sortValue}
+                data-filter-value={col.filterable ? String(value ?? '') : undefined}
+              >
+                {isPageLink ? (
+                  <a href={String(row._href)}>{displayValue}</a>
+                ) : isUrl ? (
+                  <a href={String(value)} class="external-link" target="_blank" rel="noopener noreferrer">
+                    {new URL(String(value)).hostname.replace('www.', '')}
+                    <svg class="external-icon" viewBox="0 0 16 16" aria-hidden="true">
+                      <path d="M3.75 2h3.5a.75.75 0 0 1 0 1.5H4.5v9h9V9.75a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 13.25 15H3.75A1.75 1.75 0 0 1 2 13.25V3.75C2 2.784 2.784 2 3.75 2Zm6.854.22a.75.75 0 0 1 .896-.22l3 1.5a.75.75 0 0 1 .126 1.238l-3 2.5a.75.75 0 0 1-.96-1.152l1.564-1.303-5.47 5.47a.75.75 0 0 1-1.06-1.06l5.47-5.47-1.303 1.564a.75.75 0 0 1-1.152-.96l1.5-3a.75.75 0 0 1 .389-.107Z" fill="currentColor"/>
+                    </svg>
+                  </a>
+                ) : isStatus ? (
+                  <span class="status-badge" data-status={String(value ?? '').toLowerCase()}>
+                    {displayValue}
+                  </span>
+                ) : (
+                  displayValue
+                )}
+              </td>
+            );
+          })}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+
+  {rows.length === 0 && (
+    <p class="content-table-empty">No items found.</p>
+  )}
+</div>
+
+<script>
+  interface TableState {
+    sortField: string | null;
+    sortDirection: 'asc' | 'desc';
+    filters: Record<string, string>;
+  }
+
+  function initContentTable(wrapper: HTMLElement) {
+    const table = wrapper.querySelector('table');
+    if (!table) return;
+
+    const tbody = table.querySelector('tbody');
+    if (!tbody) return;
+
+    const state: TableState = {
+      sortField: null,
+      sortDirection: 'asc',
+      filters: {},
+    };
+
+    // Initialize from default sort (check aria-sort)
+    const defaultSortTh = table.querySelector('th[aria-sort]');
+    if (defaultSortTh) {
+      state.sortField = defaultSortTh.getAttribute('data-field');
+      state.sortDirection = defaultSortTh.getAttribute('aria-sort') === 'ascending' ? 'asc' : 'desc';
+      applySort();
+    }
+
+    // Handle sort clicks
+    table.querySelectorAll('th[data-sortable="true"]').forEach((th) => {
+      th.addEventListener('click', () => {
+        const field = th.getAttribute('data-field');
+        if (!field) return;
+
+        // Toggle direction if same field, otherwise default to asc
+        if (state.sortField === field) {
+          state.sortDirection = state.sortDirection === 'asc' ? 'desc' : 'asc';
+        } else {
+          state.sortField = field;
+          state.sortDirection = 'asc';
+        }
+
+        // Update aria-sort attributes
+        table.querySelectorAll('th[data-sortable]').forEach((t) => {
+          t.removeAttribute('aria-sort');
+        });
+        th.setAttribute('aria-sort', state.sortDirection === 'asc' ? 'ascending' : 'descending');
+
+        applySort();
+      });
+    });
+
+    // Handle filter changes
+    wrapper.querySelectorAll('select[data-filter-field]').forEach((select) => {
+      select.addEventListener('change', (e) => {
+        const field = (e.target as HTMLSelectElement).getAttribute('data-filter-field');
+        const value = (e.target as HTMLSelectElement).value;
+        if (!field) return;
+
+        if (value) {
+          state.filters[field] = value;
+        } else {
+          delete state.filters[field];
+        }
+
+        applyFilters();
+      });
+    });
+
+    function applySort() {
+      if (!state.sortField) return;
+
+      const rows = Array.from(tbody!.querySelectorAll('tr'));
+      const sortType = table!.querySelector(`th[data-field="${state.sortField}"]`)
+        ?.getAttribute('data-sort-type') || 'text';
+
+      rows.sort((a, b) => {
+        const aCell = a.querySelector(`td[data-field="${state.sortField}"]`);
+        const bCell = b.querySelector(`td[data-field="${state.sortField}"]`);
+        
+        const aVal = aCell?.getAttribute('data-sort-value') || '';
+        const bVal = bCell?.getAttribute('data-sort-value') || '';
+
+        let comparison: number;
+        if (sortType === 'numeric') {
+          comparison = (parseFloat(aVal) || 0) - (parseFloat(bVal) || 0);
+        } else {
+          comparison = aVal.localeCompare(bVal);
+        }
+
+        return state.sortDirection === 'asc' ? comparison : -comparison;
+      });
+
+      // Re-append rows in sorted order
+      rows.forEach((row) => tbody!.appendChild(row));
+    }
+
+    function applyFilters() {
+      const rows = tbody!.querySelectorAll('tr');
+      
+      rows.forEach((row) => {
+        let visible = true;
+        
+        for (const [field, filterValue] of Object.entries(state.filters)) {
+          const cell = row.querySelector(`td[data-field="${field}"]`);
+          const cellValue = cell?.getAttribute('data-filter-value') || '';
+          
+          if (cellValue !== filterValue) {
+            visible = false;
+            break;
+          }
+        }
+
+        (row as HTMLElement).style.display = visible ? '' : 'none';
+      });
+
+      // Update empty state
+      const visibleRows = tbody!.querySelectorAll('tr:not([style*="display: none"])');
+      const emptyMsg = wrapper.querySelector('.content-table-empty');
+      if (emptyMsg) {
+        (emptyMsg as HTMLElement).style.display = visibleRows.length === 0 ? '' : 'none';
+      }
+    }
+  }
+
+  // Initialize all content tables
+  function initAllTables() {
+    document.querySelectorAll('.content-table-wrapper').forEach((wrapper) => {
+      initContentTable(wrapper as HTMLElement);
+    });
+  }
+
+  // Support Astro view transitions
+  document.addEventListener('astro:page-load', initAllTables);
+  if (document.readyState === 'complete') {
+    initAllTables();
+  } else {
+    document.addEventListener('DOMContentLoaded', initAllTables);
+  }
+</script>
+
+<style>
+  .content-table-wrapper {
+    margin: var(--sp-6) 0;
+  }
+
+  .content-table-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-4);
+    margin-bottom: var(--sp-4);
+    padding: var(--sp-3) var(--sp-4);
+    background-color: var(--color-bg-subtle);
+    border-radius: var(--radius-md);
+  }
+
+  .filter-group {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-2);
+  }
+
+  .filter-group label {
+    font-size: var(--text-sm);
+    font-family: var(--font-sans);
+    color: var(--color-text-muted);
+  }
+
+  .filter-group select {
+    padding: var(--sp-1) var(--sp-2);
+    font-size: var(--text-sm);
+    font-family: var(--font-sans);
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+  }
+
+  .filter-group select:hover {
+    border-color: var(--color-accent);
+  }
+
+  .filter-group select:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-accent) 20%, transparent);
+  }
+
+  .content-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+  }
+
+  .content-table th,
+  .content-table td {
+    padding: var(--sp-3) var(--sp-4);
+    text-align: left;
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  .content-table th {
+    font-weight: 600;
+    color: var(--color-text-muted);
+    background-color: var(--color-bg-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: var(--text-xs);
+  }
+
+  .content-table th.sortable {
+    cursor: pointer;
+    user-select: none;
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+
+  .content-table th.sortable:hover {
+    color: var(--color-accent);
+  }
+
+  .th-content {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-1);
+  }
+
+  .sort-indicator {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    opacity: 0.3;
+    transition: opacity var(--duration-fast) var(--ease-out);
+  }
+
+  .content-table th.sortable:hover .sort-indicator {
+    opacity: 0.6;
+  }
+
+  /* Default state - show both arrows faintly */
+  .sort-indicator::before,
+  .sort-indicator::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+  }
+
+  /* Ascending */
+  th[aria-sort="ascending"] .sort-indicator {
+    border-bottom: 5px solid currentColor;
+    border-top: none;
+    opacity: 1;
+  }
+
+  /* Descending */
+  th[aria-sort="descending"] .sort-indicator {
+    border-top: 5px solid currentColor;
+    border-bottom: none;
+    opacity: 1;
+  }
+
+  /* Unsorted - small diamond/neutral indicator */
+  th:not([aria-sort]) .sort-indicator {
+    border-bottom: 4px solid currentColor;
+  }
+
+  .content-table tbody tr {
+    transition: background-color var(--duration-fast) var(--ease-out);
+  }
+
+  .content-table tbody tr:hover {
+    background-color: var(--color-bg-subtle);
+  }
+
+  .content-table td {
+    color: var(--color-text);
+  }
+
+  .content-table td a {
+    color: var(--color-link);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .content-table td a:hover {
+    color: var(--color-link-hover);
+    text-decoration: underline;
+  }
+
+  /* External links */
+  .external-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-1);
+  }
+
+  .external-icon {
+    width: 0.875em;
+    height: 0.875em;
+    opacity: 0.6;
+    transition: opacity var(--duration-fast) var(--ease-out);
+  }
+
+  .external-link:hover .external-icon {
+    opacity: 1;
+  }
+
+  /* Status badges */
+  .status-badge {
+    display: inline-block;
+    padding: 0.125rem var(--sp-2);
+    font-size: var(--text-xs);
+    font-weight: 500;
+    text-transform: capitalize;
+    border-radius: var(--radius-full);
+    background-color: var(--color-bg-muted);
+    color: var(--color-text-muted);
+  }
+
+  .status-badge[data-status="active"],
+  .status-badge[data-status="in-progress"],
+  .status-badge[data-status="wip"] {
+    background-color: color-mix(in srgb, var(--color-warning) 15%, transparent);
+    color: var(--color-warning);
+  }
+
+  .status-badge[data-status="completed"],
+  .status-badge[data-status="done"],
+  .status-badge[data-status="finished"] {
+    background-color: color-mix(in srgb, var(--color-success) 15%, transparent);
+    color: var(--color-success);
+  }
+
+  .status-badge[data-status="paused"],
+  .status-badge[data-status="on-hold"],
+  .status-badge[data-status="archived"] {
+    background-color: var(--color-bg-muted);
+    color: var(--color-text-subtle);
+  }
+
+  .status-badge[data-status="planned"],
+  .status-badge[data-status="idea"] {
+    background-color: color-mix(in srgb, var(--color-accent) 15%, transparent);
+    color: var(--color-accent);
+  }
+
+  .content-table-empty {
+    padding: var(--sp-8);
+    text-align: center;
+    color: var(--color-text-subtle);
+    font-style: italic;
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .content-table-filters {
+      flex-direction: column;
+      gap: var(--sp-2);
+    }
+
+    .filter-group {
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    .filter-group select {
+      flex: 1;
+      max-width: 200px;
+    }
+
+    .content-table th,
+    .content-table td {
+      padding: var(--sp-2) var(--sp-3);
+    }
+  }
+</style>

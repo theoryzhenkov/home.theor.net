@@ -1,0 +1,40 @@
+---
+import { getCollection, getEntry, render } from 'astro:content';
+import Page from '@layouts/Page.astro';
+import { buildRelationsGraph, getBreadcrumbs } from '@/lib/relations';
+
+export async function getStaticPaths() {
+  const pages = await getCollection('pages');
+  return pages
+    .filter((page) => page.id !== 'index')
+    .map((page) => ({
+      params: { slug: page.id },
+    }));
+}
+
+const { slug } = Astro.params;
+const entry = await getEntry('pages', slug!);
+
+if (!entry) {
+  return Astro.redirect('/404');
+}
+
+const { Content, headings } = await render(entry);
+const { data } = entry;
+
+// Build relations graph and get breadcrumbs
+const { graph, pages } = await buildRelationsGraph();
+const breadcrumbs = getBreadcrumbs(slug!, graph, pages);
+---
+
+<Page
+  title={data.title}
+  description={data.description}
+  created={data.created}
+  modified={data.modified}
+  headings={headings}
+  breadcrumbs={breadcrumbs}
+  currentSlug={slug!}
+>
+  <Content />
+</Page>

@@ -1,0 +1,311 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   COMPONENT LAYER
+   Reusable component styles
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@layer components {
+  /* ─── Link Popup ─── */
+  .link-popup {
+    position: absolute;
+    z-index: 1000;
+    display: none;
+    max-width: 320px;
+    padding: var(--sp-4);
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    font-family: var(--font-sans);
+    pointer-events: auto;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity var(--duration-fast) var(--ease-out),
+                transform var(--duration-fast) var(--ease-out);
+  }
+
+  .link-popup.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .link-popup-title {
+    margin: 0 0 var(--sp-2);
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--color-text);
+    line-height: var(--leading-tight);
+  }
+
+  .link-popup-description {
+    margin: 0 0 var(--sp-3);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: var(--leading-normal);
+  }
+
+  .link-popup-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-2);
+    font-size: var(--text-xs);
+  }
+
+  .link-popup-status {
+    display: inline-block;
+    padding: 0.125rem var(--sp-2);
+    text-transform: capitalize;
+    background-color: var(--color-bg-muted);
+    border-radius: var(--radius-full);
+  }
+
+  .link-popup-status[data-status="finished"] {
+    background-color: color-mix(in srgb, var(--color-accent) 15%, transparent);
+    color: var(--color-accent);
+  }
+
+  .link-popup-status[data-status="in-progress"] {
+    background-color: color-mix(in srgb, var(--color-warning) 15%, transparent);
+    color: var(--color-warning);
+  }
+
+  .link-popup-tags {
+    color: var(--color-text-subtle);
+    font-family: var(--font-mono);
+  }
+
+  /* ─── Margin Notes System ─── */
+  
+  /* Reference number in text (superscript link) */
+  .sidenote-ref {
+    counter-increment: sidenote-counter;
+    line-height: 0;
+  }
+
+  .margin-number {
+    color: var(--color-accent);
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .margin-number::after {
+    content: counter(sidenote-counter);
+    font-size: var(--text-xs);
+  }
+
+  .margin-number:hover {
+    color: var(--color-accent-hover);
+  }
+
+  /* Margin note content (floats in margin on large screens) */
+  .margin-content {
+    float: right;
+    clear: right;
+    margin-right: calc(-1 * var(--width-margin));
+    width: calc(var(--width-margin) - var(--sp-6));
+    margin-top: 0.25rem;
+    margin-bottom: var(--sp-4);
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+    color: var(--color-text-muted);
+    text-align: left;
+    position: relative;
+  }
+
+  /* Numbered margin note prefix */
+  .margin-content::before {
+    content: counter(sidenote-counter) ". ";
+    font-weight: 500;
+    color: var(--color-accent);
+  }
+
+  /* Back-link to reference (hidden on large screens) */
+  .footnote-backref {
+    display: none;
+  }
+
+  /* Highlight animation for click feedback */
+  .margin-content.margin-highlight {
+    animation: margin-highlight-pulse 1s ease-out;
+  }
+
+  @keyframes margin-highlight-pulse {
+    0% {
+      background-color: var(--color-highlight);
+      box-shadow: 0 0 0 4px var(--color-highlight);
+    }
+    100% {
+      background-color: transparent;
+      box-shadow: 0 0 0 4px transparent;
+    }
+  }
+
+  /* ─── Small screens: move to footnotes section ─── */
+  @media (max-width: 1280px) {
+    /* Reference number gets underline to indicate it's clickable */
+    .margin-number::after {
+      text-decoration: underline;
+      text-decoration-style: dotted;
+    }
+
+    /* When in footnotes list, reset float and show inline */
+    .footnotes-list .margin-content {
+      float: none;
+      margin-right: 0;
+      width: auto;
+      margin-top: 0;
+      margin-bottom: 0;
+      display: inline;
+    }
+
+    /* Hide the counter prefix (list provides numbering) */
+    .footnotes-list .margin-content::before {
+      display: none;
+    }
+
+    /* Show the back-link */
+    .footnotes-list .footnote-backref {
+      display: inline;
+      margin-right: var(--sp-2);
+      color: var(--color-accent);
+      text-decoration: none;
+      font-size: 0.85em;
+    }
+
+    .footnotes-list .footnote-backref:hover {
+      color: var(--color-accent-hover);
+    }
+  }
+
+  /* ─── Callouts ─── */
+  [data-callout] {
+    margin: var(--sp-6) 0;
+    padding: 0;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    background-color: var(--color-bg-subtle);
+    overflow: hidden;
+  }
+
+  [data-callout-title] {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-2);
+    padding: var(--sp-2) var(--sp-4);
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: var(--text-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background-color: transparent;
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  [data-callout-body] {
+    padding: var(--sp-4);
+  }
+
+  [data-callout-body] > *:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Callout type variants */
+  [data-callout-type="note"],
+  [data-callout-type="info"] {
+    border-color: var(--color-accent);
+  }
+
+  [data-callout-type="note"] [data-callout-title],
+  [data-callout-type="info"] [data-callout-title] {
+    background-color: color-mix(in srgb, var(--color-accent) 10%, var(--color-bg));
+    color: var(--color-accent);
+  }
+
+  [data-callout-type="tip"],
+  [data-callout-type="hint"],
+  [data-callout-type="important"] {
+    border-color: var(--color-success);
+  }
+
+  [data-callout-type="tip"] [data-callout-title],
+  [data-callout-type="hint"] [data-callout-title],
+  [data-callout-type="important"] [data-callout-title] {
+    background-color: color-mix(in srgb, var(--color-success) 10%, var(--color-bg));
+    color: var(--color-success);
+  }
+
+  [data-callout-type="warning"],
+  [data-callout-type="caution"],
+  [data-callout-type="attention"] {
+    border-color: var(--color-warning);
+  }
+
+  [data-callout-type="warning"] [data-callout-title],
+  [data-callout-type="caution"] [data-callout-title],
+  [data-callout-type="attention"] [data-callout-title] {
+    background-color: color-mix(in srgb, var(--color-warning) 10%, var(--color-bg));
+    color: var(--color-warning);
+  }
+
+  [data-callout-type="danger"],
+  [data-callout-type="error"],
+  [data-callout-type="bug"] {
+    border-color: var(--color-error);
+  }
+
+  [data-callout-type="danger"] [data-callout-title],
+  [data-callout-type="error"] [data-callout-title],
+  [data-callout-type="bug"] [data-callout-title] {
+    background-color: color-mix(in srgb, var(--color-error) 10%, var(--color-bg));
+    color: var(--color-error);
+  }
+
+  [data-callout-type="tldr"],
+  [data-callout-type="summary"],
+  [data-callout-type="abstract"] {
+    border-color: var(--c-forest-400);
+  }
+
+  [data-callout-type="tldr"] [data-callout-title],
+  [data-callout-type="summary"] [data-callout-title],
+  [data-callout-type="abstract"] [data-callout-title] {
+    background-color: color-mix(in srgb, var(--c-forest-400) 10%, var(--color-bg));
+    color: var(--c-forest-400);
+  }
+
+  [data-callout-type="question"],
+  [data-callout-type="help"],
+  [data-callout-type="faq"] {
+    border-color: var(--c-sand-500);
+  }
+
+  [data-callout-type="question"] [data-callout-title],
+  [data-callout-type="help"] [data-callout-title],
+  [data-callout-type="faq"] [data-callout-title] {
+    background-color: color-mix(in srgb, var(--c-sand-500) 10%, var(--color-bg));
+    color: var(--c-sand-500);
+  }
+
+  [data-callout-type="example"] {
+    border-color: var(--c-stone-500);
+  }
+
+  [data-callout-type="example"] [data-callout-title] {
+    background-color: color-mix(in srgb, var(--c-stone-500) 10%, var(--color-bg));
+    color: var(--c-stone-500);
+  }
+
+  [data-callout-type="quote"],
+  [data-callout-type="cite"] {
+    border-color: var(--color-border);
+    border-left-width: 3px;
+  }
+
+  [data-callout-type="quote"] [data-callout-title],
+  [data-callout-type="cite"] [data-callout-title] {
+    background-color: var(--color-bg-subtle);
+    color: var(--color-text-muted);
+    font-style: italic;
+    text-transform: none;
+    letter-spacing: normal;
+  }
+}

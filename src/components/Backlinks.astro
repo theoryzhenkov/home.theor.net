@@ -1,0 +1,126 @@
+---
+/**
+ * Backlinks component - shows pages that link to the current page
+ * Loads data from /backlinks.json at runtime
+ */
+---
+
+<section class="backlinks" id="backlinks" data-page-path={Astro.url.pathname}>
+  <h3 class="backlinks-title">Backlinks</h3>
+  <div class="backlinks-content">
+    <p class="backlinks-loading">Loading backlinks...</p>
+    <ul class="backlinks-list" style="display: none;"></ul>
+    <p class="backlinks-empty" style="display: none;">No pages link to this page yet.</p>
+  </div>
+</section>
+
+<script>
+  interface Backlink {
+    path: string;
+    title: string;
+  }
+
+  type BacklinksIndex = Record<string, Backlink[]>;
+
+  let backlinksIndex: BacklinksIndex | null = null;
+
+  async function loadBacklinksIndex(): Promise<BacklinksIndex> {
+    if (backlinksIndex) return backlinksIndex;
+    
+    const response = await fetch('/backlinks.json');
+    backlinksIndex = await response.json();
+    return backlinksIndex!;
+  }
+
+  async function initBacklinks() {
+    const section = document.getElementById('backlinks');
+    if (!section) return;
+    
+    const pagePath = section.dataset.pagePath?.replace(/\/$/, '') || '/';
+    const normalizedPath = pagePath === '' ? '/' : pagePath;
+    
+    const loading = section.querySelector('.backlinks-loading') as HTMLElement;
+    const list = section.querySelector('.backlinks-list') as HTMLElement;
+    const empty = section.querySelector('.backlinks-empty') as HTMLElement;
+    
+    const index = await loadBacklinksIndex();
+    const backlinks = index[normalizedPath] || [];
+    
+    loading.style.display = 'none';
+    
+    if (backlinks.length === 0) {
+      empty.style.display = 'block';
+    } else {
+      list.innerHTML = backlinks
+        .map(bl => `<li><a href="${bl.path}">${bl.title}</a></li>`)
+        .join('');
+      list.style.display = 'block';
+    }
+  }
+
+  // Initialize on page load
+  document.addEventListener('astro:page-load', initBacklinks);
+  if (document.readyState === 'complete') {
+    initBacklinks();
+  } else {
+    document.addEventListener('DOMContentLoaded', initBacklinks);
+  }
+</script>
+
+<style>
+  .backlinks {
+    /* Border handled by .article-footer */
+  }
+
+  .backlinks-title {
+    margin-bottom: var(--sp-4);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-subtle);
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .backlinks-loading,
+  .backlinks-empty {
+    font-size: var(--text-sm);
+    color: var(--color-text-subtle);
+    font-style: italic;
+  }
+
+  .backlinks-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-3);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .backlinks-list li {
+    margin: 0;
+  }
+
+  .backlinks-list a {
+    display: inline-block;
+    padding: var(--sp-2) var(--sp-3);
+    font-size: var(--text-sm);
+    font-family: var(--font-sans);
+    color: var(--color-text-muted);
+    background-color: var(--color-bg-subtle);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-out),
+                border-color var(--duration-fast) var(--ease-out),
+                background-color var(--duration-fast) var(--ease-out);
+  }
+
+  .backlinks-list a:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+    background-color: color-mix(in srgb, var(--color-accent) 5%, transparent);
+  }
+</style>

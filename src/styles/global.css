@@ -1,0 +1,12 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   GLOBAL STYLES
+   Main entry point - imports all style modules
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@import "tailwindcss";
+
+/* Design system layers */
+@import "./tokens.css";
+@import "./base.css";
+@import "./utilities.css";
+@import "./components.css";

@@ -1,0 +1,20 @@
+---
+title: Projects
+description: A collection of personal projects, experiments, and creative endeavors.
+created: 2026-01-18
+up: index
+---
+
+import ContentTable from '@components/ContentTable.astro';
+
+<ContentTable
+  path="projects/"
+  columns={[
+    { field: "title", label: "Project", sortable: true, type: "link" },
+    { field: "status", label: "Status", filterable: true, type: "status" },
+    { field: "description", label: "Description" },
+    { field: "url", label: "Link", type: "url" },
+    { field: "created", label: "Started", sortable: true, type: "date" },
+  ]}
+  defaultSort={{ field: "created", direction: "desc" }}
+/>

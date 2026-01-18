@@ -1,0 +1,58 @@
+---
+title: Noise Injection
+description: Memory-efficient noise injection for LLM weights
+created: 2026-01-18
+status: completed
+tags: [python, machine-learning, llm, interpretability]
+url: https://github.com/theoryzhenkov/noise-injection
+up: projects
+---
+
+# Noise Injection
+
+Memory-efficient noise injection for LLM weights. Useful for sandbagging detection, robustness testing, and interpretability research.
+
+## Why Noise Injection?
+
+Injecting controlled noise into model weights is a powerful technique for understanding model behavior — from detecting hidden capabilities in sandbagging models to testing robustness. This library makes it memory-efficient and ergonomic.
+
+## Features
+
+- **Zero memory overhead** — uses seeded RNG to regenerate identical noise for add/subtract operations
+- **Context manager API** — automatic cleanup with `with_noise()`
+- **Flexible selectors** — target specific parameters with regex patterns
+- **Sigma sweep utility** — easily test across noise levels
+- **MLX support** — optimized for Apple Silicon
+
+## Quick Start
+
+```python
+from noise_injection import with_noise, generators as G
+
+# Context manager (auto-cleanup)
+with with_noise(model, G.gaussian(sigma=0.01)):
+    accuracy = evaluate(model)
+# Noise automatically removed
+```
+
+## How It Works
+
+Uses seeded RNG to generate identical noise for add/subtract operations. No parameter copying needed — the same noise can be regenerated and subtracted to restore original weights.
+
+```
+For each sigma:
+  1. Generate noise with seeded RNG
+  2. Add noise to parameters in-place
+  3. Evaluate model
+  4. Regenerate same noise (same seed)
+  5. Subtract to restore original weights
+```
+
+## Installation
+
+```bash
+pip install noise-injection
+
+# With MLX support (Apple Silicon)
+pip install "noise-injection[mlx]"
+```

@@ -1,0 +1,47 @@
+---
+title: Trail
+description: An Obsidian plugin enabling strongly typed relations between notes
+created: 2026-01-18
+status: active
+tags: [obsidian, knowledge-management, plugin]
+url: https://github.com/theoryzhenkov/trail
+up: projects
+---
+
+# Trail
+
+Trail is an Obsidian plugin for adding named, typed relations between notes and traversing them through a dedicated pane.
+
+## Why Trail?
+
+Obsidian's linking is powerful but flat — every link is equal. Trail adds semantic meaning: you can mark a link as `up::[[Parent]]` or `[[Child]]::down`, building a navigable hierarchy without folder structures.
+
+## Features
+
+- **Inline typed relations** using a concise `::` syntax
+- **Frontmatter relations** via `relations` map properties
+- **Implied relations** with forward/reverse/both/sibling direction rules
+- **Hierarchy view** to browse all ancestors of the active note
+
+## Syntax
+
+Single relation per link, prefix or suffix:
+
+```
+up::[[Parent]]
+[[Child]]::down
+```
+
+Or in frontmatter:
+
+```yaml
+relations:
+  up: "[[Parent]]"
+  down:
+    - "Child A"
+    - "[[Child B]]"
+```
+
+## Installation
+
+Install via [BRAT](https://github.com/TfTHacker/obsidian42-brat) using `https://github.com/theoryzhenkov/trail`, or copy the release files manually to your vault's `.obsidian/plugins/trail/` folder.
