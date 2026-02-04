@@ -7,7 +7,7 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
-const siteName = 'the-o.space';
+const siteName = 'TheoR.net';
 const fullTitle = title === 'Welcome' ? siteName : `${title} · ${siteName}`;
 ---
 
@@ -20,7 +20,7 @@ const fullTitle = title === 'Welcome' ? siteName : `${title} · ${siteName}`;
   <title>{fullTitle}</title>
   {description && <meta name="description" content={description} />}
   
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" href="/cue-256x256.png" />
   
   <meta property="og:title" content={fullTitle} />
   {description && <meta property="og:description" content={description} />}
