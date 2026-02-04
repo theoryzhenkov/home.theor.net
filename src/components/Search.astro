@@ -190,8 +190,8 @@
     padding-top: 10vh;
     opacity: 0;
     visibility: hidden;
-    transition: opacity var(--duration-fast) var(--ease-out),
-                visibility var(--duration-fast) var(--ease-out);
+    transition: opacity var(--transition-duration-fast) var(--ease-out),
+                visibility var(--transition-duration-fast) var(--ease-out);
   }
 
   .search-modal[aria-hidden="false"] {
@@ -211,7 +211,7 @@
     width: 100%;
     max-width: 600px;
     max-height: 70vh;
-    margin: 0 var(--sp-4);
+    margin: 0 theme(spacing.4);
     background-color: var(--color-bg);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
@@ -224,8 +224,8 @@
   .search-input-wrapper {
     display: flex;
     align-items: center;
-    gap: var(--sp-3);
-    padding: var(--sp-4) var(--sp-5);
+    gap: theme(spacing.3);
+    padding: theme(spacing.4) theme(spacing.5);
     border-bottom: 1px solid var(--color-border-subtle);
   }
 
@@ -237,7 +237,7 @@
   .search-input {
     flex: 1;
     font-family: var(--font-sans);
-    font-size: var(--text-lg);
+    font-size: theme(fontSize.lg);
     color: var(--color-text);
     background: transparent;
     border: none;
@@ -250,9 +250,9 @@
 
   .search-kbd {
     flex-shrink: 0;
-    padding: var(--sp-1) var(--sp-2);
+    padding: theme(spacing.1) theme(spacing.2);
     font-family: var(--font-mono);
-    font-size: var(--text-xs);
+    font-size: theme(fontSize.xs);
     color: var(--color-text-subtle);
     background-color: var(--color-bg-muted);
     border: 1px solid var(--color-border);
@@ -262,23 +262,23 @@
   .search-results {
     flex: 1;
     overflow-y: auto;
-    padding: var(--sp-2);
+    padding: theme(spacing.2);
   }
 
   .search-empty {
-    padding: var(--sp-8);
+    padding: theme(spacing.8);
     text-align: center;
     font-family: var(--font-sans);
-    font-size: var(--text-sm);
+    font-size: theme(fontSize.sm);
     color: var(--color-text-subtle);
   }
 
   .search-result {
     display: block;
-    padding: var(--sp-3) var(--sp-4);
+    padding: theme(spacing.3) theme(spacing.4);
     border-radius: var(--radius-lg);
     text-decoration: none;
-    transition: background-color var(--duration-fast) var(--ease-out);
+    transition: background-color var(--transition-duration-fast) var(--ease-out);
   }
 
   .search-result:hover {
@@ -289,11 +289,11 @@
     font-family: var(--font-sans);
     font-weight: 600;
     color: var(--color-text);
-    margin-bottom: var(--sp-1);
+    margin-bottom: theme(spacing.1);
   }
 
   .search-result-excerpt {
-    font-size: var(--text-sm);
+    font-size: theme(fontSize.sm);
     color: var(--color-text-muted);
     line-height: var(--leading-normal);
   }

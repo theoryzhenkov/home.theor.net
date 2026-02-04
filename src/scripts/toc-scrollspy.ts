@@ -35,7 +35,7 @@ function initScrollSpy() {
     const viewportHeight = viewportBottom - viewportTop;
     
     // Get actual content end for last section bounds
-    const articleBody = document.querySelector('.article-body');
+    const articleBody = document.querySelector('.prose');
     const contentBottom = articleBody 
       ? articleBody.getBoundingClientRect().bottom 
       : document.documentElement.scrollHeight;

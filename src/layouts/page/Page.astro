@@ -40,39 +40,39 @@ const descriptionPlain = description?.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
     <Header />
     
     <div class="page-grid">
-      <aside class="page-sidebar page-sidebar--left">
+      <aside class="sidebar sidebar-left">
         <TOC headings={headings} />
       </aside>
       
-      <main class="page-main">
-        <article class="article">
-          <header class="article-header">
+      <main class="min-w-0 py-8">
+        <article>
+          <header class="mb-8">
             <Breadcrumb breadcrumbs={breadcrumbs} currentSlug={currentSlug} />
-            <h1 class="article-title">{title}</h1>
-            {descriptionHtml && <p class="article-description" set:html={descriptionHtml} />}
+            <h1 class="mb-3">{title}</h1>
+            {descriptionHtml && <p class="text-lg text-text-muted italic mb-6" set:html={descriptionHtml} />}
             <Metadata 
               created={created}
               modified={modified}
             />
           </header>
           
-          <div class="article-body">
+          <div class="prose">
             <slot />
           </div>
           
           <!-- Footnotes section (populated on small screens via JS) -->
-          <section class="footnotes-section" data-footnotes="empty" aria-label="Footnotes">
+          <section class="footnotes" data-footnotes="empty" aria-label="Footnotes">
             <h2 class="footnotes-title">Footnotes</h2>
             <ol class="footnotes-list"></ol>
           </section>
           
-          <footer class="article-footer">
+          <footer class="mt-16 pt-8 border-t border-border-subtle">
             <Backlinks />
           </footer>
         </article>
       </main>
       
-      <aside class="page-sidebar page-sidebar--right">
+      <aside class="sidebar sidebar-right">
         <!-- Reserved for margin content floats -->
       </aside>
     </div>
@@ -105,7 +105,7 @@ const descriptionPlain = description?.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
 
       // Heading anchor links
       function initHeadingLinks() {
-        const headings = document.querySelectorAll('.article-body h1[id], .article-body h2[id], .article-body h3[id], .article-body h4[id], .article-body h5[id], .article-body h6[id]');
+        const headings = document.querySelectorAll('.prose h1[id], .prose h2[id], .prose h3[id], .prose h4[id], .prose h5[id], .prose h6[id]');
         
         const linkIconSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>`;
         
@@ -200,7 +200,7 @@ const descriptionPlain = description?.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
       let isSmallScreen = false;
       
       function initMarginNotes() {
-        const footnotesSection = document.querySelector('.footnotes-section');
+        const footnotesSection = document.querySelector('.footnotes');
         const footnotesList = document.querySelector('.footnotes-list') as HTMLOListElement | null;
         if (!footnotesSection || !footnotesList) return;
         
@@ -346,162 +346,3 @@ const descriptionPlain = description?.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
     </script>
   </body>
 </html>
-
-<style is:global>
-  /* ─── Page Grid Layout ─── */
-  .page-grid {
-    display: grid;
-    grid-template-columns: 1fr minmax(0, var(--width-content)) 1fr;
-    max-width: var(--width-page-max);
-    margin: 0 auto;
-    padding: 0 var(--sp-8);
-  }
-
-  /* ─── Sidebars ─── */
-  .page-sidebar {
-    padding-top: var(--sp-8);
-  }
-
-  .page-sidebar--left {
-    padding-right: var(--sp-8);
-  }
-
-  /* TOC sticky positioning - direct child selector for specificity */
-  .page-sidebar--left > * {
-    position: sticky;
-    top: calc(var(--height-header) + var(--sp-8));
-    width: var(--width-sidebar);
-    max-height: calc(100vh - var(--height-header) - var(--sp-16));
-    overflow-y: auto;
-    margin-left: auto; /* Right-align within the column */
-  }
-
-  .page-sidebar--right {
-    padding-left: var(--sp-4);
-    padding-right: var(--sp-8);
-  }
-
-  /* ─── Main Content ─── */
-  .page-main {
-    min-width: 0;
-    padding: var(--sp-8) 0;
-  }
-
-  /* ─── Article ─── */
-  .article {
-    /* Width controlled by grid column */
-  }
-
-  .article-header {
-    margin-bottom: var(--sp-8);
-  }
-
-  .article-title {
-    margin-bottom: var(--sp-3);
-  }
-
-  .article-description {
-    font-size: var(--text-lg);
-    color: var(--color-text-muted);
-    font-style: italic;
-    margin-bottom: var(--sp-6);
-  }
-
-  .article-body {
-    /* Prose styles from global.css base layer */
-  }
-
-  .article-footer {
-    margin-top: var(--sp-16);
-    padding-top: var(--sp-8);
-    border-top: 1px solid var(--color-border-subtle);
-  }
-
-  /* ─── Footnotes Section ─── */
-  /* Hidden by default, shown on small screens when populated */
-  .footnotes-section {
-    display: none;
-    margin-top: var(--sp-12);
-    padding-top: var(--sp-6);
-    border-top: 1px solid var(--color-border-subtle);
-  }
-
-  @media (max-width: 1280px) {
-    .footnotes-section[data-footnotes="ready"] {
-      display: block;
-    }
-  }
-
-  .footnotes-title {
-    font-size: var(--text-sm);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--color-text-subtle);
-    margin-bottom: var(--sp-4);
-    border-bottom: none;
-    padding-bottom: 0;
-  }
-
-  .footnotes-list {
-    list-style: decimal;
-    padding-left: var(--sp-6);
-    margin: 0;
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
-    line-height: var(--leading-relaxed);
-  }
-
-  .footnotes-list li {
-    margin-bottom: var(--sp-3);
-    padding: var(--sp-2) 0;
-  }
-
-  .footnotes-list li::marker {
-    color: var(--color-accent);
-    font-weight: 500;
-  }
-
-  /* ─── Popup Container ─── */
-  .popup-container {
-    position: fixed;
-    z-index: 150;
-    pointer-events: none;
-  }
-
-  /* ─── Responsive Breakpoints ─── */
-  @media (max-width: 1280px) {
-    .page-grid {
-      grid-template-columns: var(--width-sidebar) minmax(0, var(--width-content)) 1fr;
-    }
-
-    .page-sidebar--left {
-      padding-right: var(--sp-6);
-    }
-
-    .page-sidebar--left > * {
-      margin-left: 0; /* Left-align on medium screens */
-    }
-
-    .page-sidebar--right {
-      display: none;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    .page-grid {
-      grid-template-columns: 1fr;
-      padding: 0 var(--sp-6);
-    }
-
-    .page-sidebar--left {
-      display: none;
-    }
-  }
-
-  @media (max-width: 640px) {
-    .page-grid {
-      padding: 0 var(--sp-4);
-    }
-  }
-</style>

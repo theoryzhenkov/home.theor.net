@@ -13,7 +13,7 @@
     background-color: var(--color-bg);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    scroll-padding-top: calc(var(--height-header) + var(--sp-8));
+    scroll-padding-top: calc(var(--height-header) + theme(spacing.8));
     scroll-behavior: smooth;
   }
 
@@ -30,106 +30,35 @@
     color: var(--color-text);
   }
 
-  /* Headings with anchor links */
-  .article-body h1[id],
-  .article-body h2[id],
-  .article-body h3[id],
-  .article-body h4[id],
-  .article-body h5[id],
-  .article-body h6[id] {
-    display: flex;
-    align-items: baseline;
-    gap: var(--sp-2);
-  }
-
-  .heading-link-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    cursor: pointer;
-    color: var(--color-text-subtle);
-    transition: opacity var(--duration-fast) var(--ease-out),
-                color var(--duration-fast) var(--ease-out);
-  }
-
-  .heading-link-icon svg {
-    width: 0.7em;
-    height: 0.7em;
-  }
-
-  .article-body h1[id]:hover .heading-link-icon,
-  .article-body h2[id]:hover .heading-link-icon,
-  .article-body h3[id]:hover .heading-link-icon,
-  .article-body h4[id]:hover .heading-link-icon,
-  .article-body h5[id]:hover .heading-link-icon,
-  .article-body h6[id]:hover .heading-link-icon {
-    opacity: 1;
-  }
-
-  .heading-link-icon:hover {
-    color: var(--color-accent);
-  }
-
-  .heading-link-icon.copying {
-    animation: spin 0.5s ease-out;
-  }
-
-  @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-
-  /* Target highlight animation for anchor navigation (JS-triggered) */
-  .article-body h1[id].target-highlight,
-  .article-body h2[id].target-highlight,
-  .article-body h3[id].target-highlight,
-  .article-body h4[id].target-highlight,
-  .article-body h5[id].target-highlight,
-  .article-body h6[id].target-highlight {
-    animation: target-highlight 1.5s ease-out;
-  }
-
-  @keyframes target-highlight {
-    0% {
-      background-color: var(--color-highlight);
-      box-shadow: 0 0 0 4px var(--color-highlight);
-    }
-    100% {
-      background-color: transparent;
-      box-shadow: 0 0 0 4px transparent;
-    }
-  }
-
   h1 {
-    font-size: var(--text-4xl);
-    margin-bottom: var(--sp-6);
+    font-size: theme(fontSize.4xl);
+    margin-bottom: theme(spacing.6);
     letter-spacing: -0.02em;
   }
 
   h2 {
-    font-size: var(--text-2xl);
-    margin-top: var(--sp-10);
-    margin-bottom: var(--sp-4);
-    padding-bottom: var(--sp-2);
+    font-size: theme(fontSize.2xl);
+    margin-top: theme(spacing.10);
+    margin-bottom: theme(spacing.4);
+    padding-bottom: theme(spacing.2);
     border-bottom: 1px solid var(--color-border-subtle);
   }
 
   h3 {
-    font-size: var(--text-xl);
-    margin-top: var(--sp-8);
-    margin-bottom: var(--sp-3);
+    font-size: theme(fontSize.xl);
+    margin-top: theme(spacing.8);
+    margin-bottom: theme(spacing.3);
   }
 
   h4 {
-    font-size: var(--text-lg);
-    margin-top: var(--sp-6);
-    margin-bottom: var(--sp-2);
+    font-size: theme(fontSize.lg);
+    margin-top: theme(spacing.6);
+    margin-bottom: theme(spacing.2);
   }
 
   /* ─── Paragraphs ─── */
   p {
-    margin-bottom: var(--sp-5);
+    margin-bottom: theme(spacing.5);
   }
 
   /* ─── Links ─── */
@@ -138,8 +67,8 @@
     text-decoration: underline;
     text-decoration-color: var(--color-border);
     text-underline-offset: 2px;
-    transition: color var(--duration-fast) var(--ease-out),
-                text-decoration-color var(--duration-fast) var(--ease-out);
+    transition: color var(--transition-duration-fast) var(--ease-out),
+                text-decoration-color var(--transition-duration-fast) var(--ease-out);
   }
 
   a:hover {
@@ -151,53 +80,14 @@
     color: var(--color-link-visited);
   }
 
-  /* ─── Link Type Icons ─── */
-  /* Exclude margin note links (.margin-number, .footnote-backref) from link icons */
-  .article-body a:not(.margin-number):not(.footnote-backref)::before {
-    content: "";
-    display: inline-block;
-    width: 0.7em;
-    height: 0.7em;
-    margin-right: 0.15em;
-    vertical-align: -0.05em;
-    background-color: currentColor;
-    mask-size: contain;
-    mask-repeat: no-repeat;
-    mask-position: center;
-    -webkit-mask-size: contain;
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-position: center;
-    transition: background-color var(--duration-fast) var(--ease-out);
-  }
-
-  /* External links: arrow pointing up-right */
-  .article-body a[href^="http://"]::before,
-  .article-body a[href^="https://"]::before,
-  .article-body a[href^="//"]::before {
-    mask-image: url("/icons/link-external.svg");
-    -webkit-mask-image: url("/icons/link-external.svg");
-  }
-
-  /* Internal page links: document icon */
-  .article-body a[href^="/"]:not([href^="//"])::before {
-    mask-image: url("/icons/link-internal.svg");
-    -webkit-mask-image: url("/icons/link-internal.svg");
-  }
-
-  /* Same-page anchor links: hash symbol */
-  .article-body a[href^="#"]::before {
-    mask-image: url("/icons/link-anchor.svg");
-    -webkit-mask-image: url("/icons/link-anchor.svg");
-  }
-
   /* ─── Lists ─── */
   ul, ol {
-    margin-bottom: var(--sp-5);
-    padding-left: var(--sp-6);
+    margin-bottom: theme(spacing.5);
+    padding-left: theme(spacing.6);
   }
 
   li {
-    margin-bottom: var(--sp-2);
+    margin-bottom: theme(spacing.2);
   }
 
   ul { list-style-type: disc; }
@@ -205,8 +95,8 @@
 
   /* ─── Blockquotes ─── */
   blockquote {
-    margin: var(--sp-6) 0;
-    padding: var(--sp-4) var(--sp-6);
+    margin: theme(spacing.6) 0;
+    padding: theme(spacing.4) theme(spacing.6);
     border-left: 3px solid var(--color-accent);
     background-color: var(--color-bg-subtle);
     font-style: italic;
@@ -226,8 +116,8 @@
   }
 
   pre {
-    margin: var(--sp-6) 0;
-    padding: var(--sp-4) var(--sp-5);
+    margin: theme(spacing.6) 0;
+    padding: theme(spacing.4) theme(spacing.5);
     background-color: var(--color-bg-muted);
     border-radius: var(--radius-lg);
     overflow-x: auto;
@@ -240,7 +130,7 @@
 
   /* ─── Horizontal Rule ─── */
   hr {
-    margin: var(--sp-10) 0;
+    margin: theme(spacing.10) 0;
     border: none;
     border-top: 1px solid var(--color-border);
   }
@@ -248,12 +138,12 @@
   /* ─── Tables ─── */
   table {
     width: 100%;
-    margin: var(--sp-6) 0;
+    margin: theme(spacing.6) 0;
     border-collapse: collapse;
   }
 
   th, td {
-    padding: var(--sp-3) var(--sp-4);
+    padding: theme(spacing.3) theme(spacing.4);
     text-align: left;
     border-bottom: 1px solid var(--color-border-subtle);
   }
@@ -272,12 +162,12 @@
   }
 
   figure {
-    margin: var(--sp-6) 0;
+    margin: theme(spacing.6) 0;
   }
 
   figcaption {
-    margin-top: var(--sp-2);
-    font-size: var(--text-sm);
+    margin-top: theme(spacing.2);
+    font-size: theme(fontSize.sm);
     color: var(--color-text-muted);
     text-align: center;
   }

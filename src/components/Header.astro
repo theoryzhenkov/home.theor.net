@@ -14,8 +14,7 @@ const currentPath = Astro.url.pathname;
 <header class="header">
   <nav class="header-nav">
     <a href="/" class="site-logo">
-      <span class="logo-symbol">◌</span>
-      <span class="logo-text">the-o.space</span>
+      <span class="logo-text">TheoR.net</span>
     </a>
     
     <div class="nav-links">
@@ -52,21 +51,21 @@ const currentPath = Astro.url.pathname;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: var(--width-page-max);
+    max-width: var(--width-page);
     margin: 0 auto;
-    padding: var(--sp-4) var(--sp-8);
+    padding: theme(spacing.4) theme(spacing.8);
   }
 
   .site-logo {
     display: flex;
     align-items: center;
-    gap: var(--sp-2);
+    gap: theme(spacing.2);
     font-family: var(--font-sans);
-    font-size: var(--text-lg);
+    font-size: theme(fontSize.lg);
     font-weight: 600;
     color: var(--color-text);
     text-decoration: none;
-    transition: color var(--duration-fast) var(--ease-out);
+    transition: color var(--transition-duration-fast) var(--ease-out);
   }
 
   .site-logo:hover {
@@ -74,23 +73,23 @@ const currentPath = Astro.url.pathname;
   }
 
   .logo-symbol {
-    font-size: var(--text-2xl);
+    font-size: theme(fontSize.2xl);
     color: var(--color-accent);
   }
 
   .nav-links {
     display: flex;
     align-items: center;
-    gap: var(--sp-6);
+    gap: theme(spacing.6);
   }
 
   .nav-link {
     font-family: var(--font-sans);
-    font-size: var(--text-sm);
+    font-size: theme(fontSize.sm);
     font-weight: 500;
     color: var(--color-text-muted);
     text-decoration: none;
-    transition: color var(--duration-fast) var(--ease-out);
+    transition: color var(--transition-duration-fast) var(--ease-out);
   }
 
   .nav-link:hover,
@@ -101,17 +100,17 @@ const currentPath = Astro.url.pathname;
   .search-trigger {
     display: flex;
     align-items: center;
-    gap: var(--sp-2);
-    padding: var(--sp-2) var(--sp-3);
+    gap: theme(spacing.2);
+    padding: theme(spacing.2) theme(spacing.3);
     font-family: var(--font-sans);
-    font-size: var(--text-sm);
+    font-size: theme(fontSize.sm);
     color: var(--color-text-muted);
     background-color: var(--color-bg-subtle);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
     cursor: pointer;
-    transition: color var(--duration-fast) var(--ease-out),
-                border-color var(--duration-fast) var(--ease-out);
+    transition: color var(--transition-duration-fast) var(--ease-out),
+                border-color var(--transition-duration-fast) var(--ease-out);
   }
 
   .search-trigger:hover {
@@ -120,13 +119,13 @@ const currentPath = Astro.url.pathname;
   }
 
   .search-shortcut {
-    font-size: var(--text-xs);
+    font-size: theme(fontSize.xs);
     color: var(--color-text-subtle);
   }
 
-  @media (max-width: 640px) {
+  @media (width <= 640px) {
     .header-nav {
-      padding: var(--sp-3) var(--sp-4);
+      padding: theme(spacing.3) theme(spacing.4);
     }
 
     .logo-text {

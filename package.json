@@ -1,5 +1,5 @@
 {
-  "name": "the-o.space",
+  "name": "Theor.net",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -12,7 +12,7 @@
     "@astrojs/mdx": "^4.3.13",
     "@r4ai/remark-callout": "^0.6.2",
     "@tailwindcss/vite": "^4.1.18",
-    "astro": "^5.16.11",
+    "astro": "5.17.1",
     "marked": "^17.0.1",
     "tailwindcss": "^4.1.18"
   },

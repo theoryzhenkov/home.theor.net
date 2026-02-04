@@ -1,0 +1,115 @@
+@layer components {
+  /* ─── Prose Container ─── */
+  .prose {
+    /* Headings with anchor links */
+    & h1[id],
+    & h2[id],
+    & h3[id],
+    & h4[id],
+    & h5[id],
+    & h6[id] {
+      display: flex;
+      align-items: baseline;
+      gap: theme(spacing.2);
+    }
+
+    & h1[id]:hover .heading-link-icon,
+    & h2[id]:hover .heading-link-icon,
+    & h3[id]:hover .heading-link-icon,
+    & h4[id]:hover .heading-link-icon,
+    & h5[id]:hover .heading-link-icon,
+    & h6[id]:hover .heading-link-icon {
+      opacity: 1;
+    }
+
+    /* Target highlight animation for anchor navigation (JS-triggered) */
+    & h1[id].target-highlight,
+    & h2[id].target-highlight,
+    & h3[id].target-highlight,
+    & h4[id].target-highlight,
+    & h5[id].target-highlight,
+    & h6[id].target-highlight {
+      animation: target-highlight 1.5s ease-out;
+    }
+
+    /* ─── Link Type Icons ─── */
+    /* Exclude margin note links (.margin-number, .footnote-backref) from link icons */
+    & a:not(.margin-number):not(.footnote-backref)::before {
+      content: "";
+      display: inline-block;
+      width: 0.7em;
+      height: 0.7em;
+      margin-right: 0.15em;
+      vertical-align: -0.05em;
+      background-color: currentColor;
+      mask-size: contain;
+      mask-repeat: no-repeat;
+      mask-position: center;
+      -webkit-mask-size: contain;
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-position: center;
+      transition: background-color var(--transition-duration-fast) var(--ease-out);
+    }
+
+    /* External links: arrow pointing up-right */
+    & a[href^="http://"]::before,
+    & a[href^="https://"]::before,
+    & a[href^="//"]::before {
+      mask-image: url("/icons/link-external.svg");
+      -webkit-mask-image: url("/icons/link-external.svg");
+    }
+
+    /* Internal page links: document icon */
+    & a[href^="/"]:not([href^="//"])::before {
+      mask-image: url("/icons/link-internal.svg");
+      -webkit-mask-image: url("/icons/link-internal.svg");
+    }
+
+    /* Same-page anchor links: hash symbol */
+    & a[href^="#"]::before {
+      mask-image: url("/icons/link-anchor.svg");
+      -webkit-mask-image: url("/icons/link-anchor.svg");
+    }
+  }
+
+  /* ─── Heading Link Icon ─── */
+  .heading-link-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    cursor: pointer;
+    color: var(--color-text-subtle);
+    transition: opacity var(--transition-duration-fast) var(--ease-out),
+                color var(--transition-duration-fast) var(--ease-out);
+
+    & svg {
+      width: 0.7em;
+      height: 0.7em;
+    }
+
+    &:hover {
+      color: var(--color-accent);
+    }
+
+    &.copying {
+      animation: spin 0.5s ease-out;
+    }
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes target-highlight {
+    0% {
+      background-color: var(--color-highlight);
+      box-shadow: 0 0 0 4px var(--color-highlight);
+    }
+    100% {
+      background-color: transparent;
+      box-shadow: 0 0 0 4px transparent;
+    }
+  }
+}

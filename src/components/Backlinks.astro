@@ -69,12 +69,12 @@
 
 <style>
   .backlinks {
-    /* Border handled by .article-footer */
+    /* Border handled by parent footer */
   }
 
   .backlinks-title {
-    margin-bottom: var(--sp-4);
-    font-size: var(--text-sm);
+    margin-bottom: theme(spacing.4);
+    font-size: theme(fontSize.sm);
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -85,7 +85,7 @@
 
   .backlinks-loading,
   .backlinks-empty {
-    font-size: var(--text-sm);
+    font-size: theme(fontSize.sm);
     color: var(--color-text-subtle);
     font-style: italic;
   }
@@ -93,7 +93,7 @@
   .backlinks-list {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--sp-3);
+    gap: theme(spacing.3);
     list-style: none;
     padding: 0;
     margin: 0;
@@ -105,17 +105,17 @@
 
   .backlinks-list a {
     display: inline-block;
-    padding: var(--sp-2) var(--sp-3);
-    font-size: var(--text-sm);
+    padding: theme(spacing.2) theme(spacing.3);
+    font-size: theme(fontSize.sm);
     font-family: var(--font-sans);
     color: var(--color-text-muted);
     background-color: var(--color-bg-subtle);
     border: 1px solid var(--color-border-subtle);
     border-radius: var(--radius-md);
     text-decoration: none;
-    transition: color var(--duration-fast) var(--ease-out),
-                border-color var(--duration-fast) var(--ease-out),
-                background-color var(--duration-fast) var(--ease-out);
+    transition: color var(--transition-duration-fast) var(--ease-out),
+                border-color var(--transition-duration-fast) var(--ease-out),
+                background-color var(--transition-duration-fast) var(--ease-out);
   }
 
   .backlinks-list a:hover {

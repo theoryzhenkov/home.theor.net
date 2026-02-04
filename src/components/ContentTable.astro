@@ -300,15 +300,15 @@ const tableId = `content-table-${Math.random().toString(36).slice(2, 9)}`;
 
 <style>
   .content-table-wrapper {
-    margin: var(--sp-6) 0;
+    margin: theme(spacing.6) 0;
   }
 
   .content-table-filters {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--sp-4);
-    margin-bottom: var(--sp-4);
-    padding: var(--sp-3) var(--sp-4);
+    gap: theme(spacing.4);
+    margin-bottom: theme(spacing.4);
+    padding: theme(spacing.3) theme(spacing.4);
     background-color: var(--color-bg-subtle);
     border-radius: var(--radius-md);
   }
@@ -316,18 +316,18 @@ const tableId = `content-table-${Math.random().toString(36).slice(2, 9)}`;
   .filter-group {
     display: flex;
     align-items: center;
-    gap: var(--sp-2);
+    gap: theme(spacing.2);
   }
 
   .filter-group label {
-    font-size: var(--text-sm);
+    font-size: theme(fontSize.sm);
     font-family: var(--font-sans);
     color: var(--color-text-muted);
   }
 
   .filter-group select {
-    padding: var(--sp-1) var(--sp-2);
-    font-size: var(--text-sm);
+    padding: theme(spacing.1) theme(spacing.2);
+    font-size: theme(fontSize.sm);
     font-family: var(--font-sans);
     color: var(--color-text);
     background-color: var(--color-bg);
@@ -350,12 +350,12 @@ const tableId = `content-table-${Math.random().toString(36).slice(2, 9)}`;
     width: 100%;
     border-collapse: collapse;
     font-family: var(--font-sans);
-    font-size: var(--text-sm);
+    font-size: theme(fontSize.sm);
   }
 
   .content-table th,
   .content-table td {
-    padding: var(--sp-3) var(--sp-4);
+    padding: theme(spacing.3) theme(spacing.4);
     text-align: left;
     border-bottom: 1px solid var(--color-border-subtle);
   }
@@ -366,13 +366,13 @@ const tableId = `content-table-${Math.random().toString(36).slice(2, 9)}`;
     background-color: var(--color-bg-subtle);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    font-size: var(--text-xs);
+    font-size: theme(fontSize.xs);
   }
 
   .content-table th.sortable {
     cursor: pointer;
     user-select: none;
-    transition: color var(--duration-fast) var(--ease-out);
+    transition: color var(--transition-duration-fast) var(--ease-out);
   }
 
   .content-table th.sortable:hover {
@@ -382,7 +382,7 @@ const tableId = `content-table-${Math.random().toString(36).slice(2, 9)}`;
   .th-content {
     display: inline-flex;
     align-items: center;
-    gap: var(--sp-1);
+    gap: theme(spacing.1);
   }
 
   .sort-indicator {
@@ -392,7 +392,7 @@ const tableId = `content-table-${Math.random().toString(36).slice(2, 9)}`;
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
     opacity: 0.3;
-    transition: opacity var(--duration-fast) var(--ease-out);
+    transition: opacity var(--transition-duration-fast) var(--ease-out);
   }
 
   .content-table th.sortable:hover .sort-indicator {
@@ -431,7 +431,7 @@ const tableId = `content-table-${Math.random().toString(36).slice(2, 9)}`;
   }
 
   .content-table tbody tr {
-    transition: background-color var(--duration-fast) var(--ease-out);
+    transition: background-color var(--transition-duration-fast) var(--ease-out);
   }
 
   .content-table tbody tr:hover {
@@ -457,14 +457,14 @@ const tableId = `content-table-${Math.random().toString(36).slice(2, 9)}`;
   .external-link {
     display: inline-flex;
     align-items: center;
-    gap: var(--sp-1);
+    gap: theme(spacing.1);
   }
 
   .external-icon {
     width: 0.875em;
     height: 0.875em;
     opacity: 0.6;
-    transition: opacity var(--duration-fast) var(--ease-out);
+    transition: opacity var(--transition-duration-fast) var(--ease-out);
   }
 
   .external-link:hover .external-icon {
@@ -474,8 +474,8 @@ const tableId = `content-table-${Math.random().toString(36).slice(2, 9)}`;
   /* Status badges */
   .status-badge {
     display: inline-block;
-    padding: 0.125rem var(--sp-2);
-    font-size: var(--text-xs);
+    padding: 0.125rem theme(spacing.2);
+    font-size: theme(fontSize.xs);
     font-weight: 500;
     text-transform: capitalize;
     border-radius: var(--radius-full);
@@ -511,17 +511,17 @@ const tableId = `content-table-${Math.random().toString(36).slice(2, 9)}`;
   }
 
   .content-table-empty {
-    padding: var(--sp-8);
+    padding: theme(spacing.8);
     text-align: center;
     color: var(--color-text-subtle);
     font-style: italic;
   }
 
   /* Responsive */
-  @media (max-width: 640px) {
+  @media (width <= 640px) {
     .content-table-filters {
       flex-direction: column;
-      gap: var(--sp-2);
+      gap: theme(spacing.2);
     }
 
     .filter-group {
@@ -536,7 +536,7 @@ const tableId = `content-table-${Math.random().toString(36).slice(2, 9)}`;
 
     .content-table th,
     .content-table td {
-      padding: var(--sp-2) var(--sp-3);
+      padding: theme(spacing.2) theme(spacing.3);
     }
   }
 </style>

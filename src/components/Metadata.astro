@@ -31,11 +31,11 @@ const formatDate = (date: Date) => {
 
 <style>
   .metadata {
-    margin-bottom: var(--sp-8);
-    padding-bottom: var(--sp-6);
+    margin-bottom: theme(spacing.8);
+    padding-bottom: theme(spacing.6);
     border-bottom: 1px solid var(--color-border-subtle);
     font-family: var(--font-sans);
-    font-size: var(--text-sm);
+    font-size: theme(fontSize.sm);
     color: var(--color-text-muted);
   }
 
@@ -43,7 +43,7 @@ const formatDate = (date: Date) => {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: var(--sp-2);
+    gap: theme(spacing.2);
   }
 
   .metadata-label {

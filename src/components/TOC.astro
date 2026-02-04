@@ -33,14 +33,14 @@ const tocHeadings = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
 <style>
   .toc {
     overflow-y: auto;
-    padding-right: var(--sp-4);
+    padding-right: theme(spacing.4);
     font-family: var(--font-sans);
-    font-size: var(--text-sm);
+    font-size: theme(fontSize.sm);
   }
 
   .toc-title {
-    margin-bottom: var(--sp-4);
-    font-size: var(--text-xs);
+    margin-bottom: theme(spacing.4);
+    font-size: theme(fontSize.xs);
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -52,25 +52,25 @@ const tocHeadings = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
   .toc-list {
     list-style: none;
     padding: 0;
-    padding-left: var(--sp-3);
+    padding-left: theme(spacing.3);
     margin: 0;
   }
 
   .toc-item {
-    margin-bottom: var(--sp-2);
+    margin-bottom: theme(spacing.2);
   }
 
   .toc-item[data-depth="3"] {
-    padding-left: var(--sp-4);
+    padding-left: theme(spacing.4);
   }
 
   .toc-link {
     display: block;
-    padding: var(--sp-1) 0;
+    padding: theme(spacing.1) 0;
     color: var(--color-text-muted);
     text-decoration: none;
     line-height: var(--leading-snug);
-    transition: color var(--duration-fast) var(--ease-out);
+    transition: color var(--transition-duration-fast) var(--ease-out);
   }
 
   .toc-link:hover {
@@ -86,7 +86,7 @@ const tocHeadings = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
   .toc-link.active::before {
     content: '';
     position: absolute;
-    left: calc(-1 * var(--sp-3));
+    left: calc(-1 * theme(spacing.3));
     top: 50%;
     transform: translateY(-50%);
     width: 2px;
@@ -96,7 +96,7 @@ const tocHeadings = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
   }
 
   .toc-item[data-depth="3"] .toc-link.active::before {
-    left: calc(-1 * var(--sp-3) + var(--sp-4));
+    left: calc(-1 * theme(spacing.3) + theme(spacing.4));
   }
 
   /* Scrollbar styling */
