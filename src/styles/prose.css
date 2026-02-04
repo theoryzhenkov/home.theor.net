@@ -1,7 +1,5 @@
 @layer components {
-  /* ─── Prose Container ─── */
   .prose {
-    /* Headings with anchor links */
     & h1[id],
     & h2[id],
     & h3[id],
@@ -10,7 +8,7 @@
     & h6[id] {
       display: flex;
       align-items: baseline;
-      gap: theme(spacing.2);
+      gap: theme(spacing.1);
     }
 
     & h1[id]:hover .heading-link-icon,
@@ -21,67 +19,14 @@
     & h6[id]:hover .heading-link-icon {
       opacity: 1;
     }
-
-    /* Target highlight animation for anchor navigation (JS-triggered) */
-    & h1[id].target-highlight,
-    & h2[id].target-highlight,
-    & h3[id].target-highlight,
-    & h4[id].target-highlight,
-    & h5[id].target-highlight,
-    & h6[id].target-highlight {
-      animation: target-highlight 1.5s ease-out;
-    }
-
-    /* ─── Link Type Icons ─── */
-    /* Exclude margin note links (.margin-number, .footnote-backref) from link icons */
-    & a:not(.margin-number):not(.footnote-backref)::before {
-      content: "";
-      display: inline-block;
-      width: 0.7em;
-      height: 0.7em;
-      margin-right: 0.15em;
-      vertical-align: -0.05em;
-      background-color: currentColor;
-      mask-size: contain;
-      mask-repeat: no-repeat;
-      mask-position: center;
-      -webkit-mask-size: contain;
-      -webkit-mask-repeat: no-repeat;
-      -webkit-mask-position: center;
-      transition: background-color var(--transition-duration-fast) var(--ease-out);
-    }
-
-    /* External links: arrow pointing up-right */
-    & a[href^="http://"]::before,
-    & a[href^="https://"]::before,
-    & a[href^="//"]::before {
-      mask-image: url("/icons/link-external.svg");
-      -webkit-mask-image: url("/icons/link-external.svg");
-    }
-
-    /* Internal page links: document icon */
-    & a[href^="/"]:not([href^="//"])::before {
-      mask-image: url("/icons/link-internal.svg");
-      -webkit-mask-image: url("/icons/link-internal.svg");
-    }
-
-    /* Same-page anchor links: hash symbol */
-    & a[href^="#"]::before {
-      mask-image: url("/icons/link-anchor.svg");
-      -webkit-mask-image: url("/icons/link-anchor.svg");
-    }
   }
 
-  /* ─── Heading Link Icon ─── */
   .heading-link-icon {
     display: inline-flex;
-    align-items: center;
-    justify-content: center;
     opacity: 0;
     cursor: pointer;
     color: var(--color-text-subtle);
-    transition: opacity var(--transition-duration-fast) var(--ease-out),
-                color var(--transition-duration-fast) var(--ease-out);
+    font-size: 0.8em;
 
     & svg {
       width: 0.7em;
@@ -89,27 +34,32 @@
     }
 
     &:hover {
-      color: var(--color-accent);
-    }
-
-    &.copying {
-      animation: spin 0.5s ease-out;
+      color: var(--color-link);
     }
   }
 
-  @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+  /* ─── Link Type Icons ─── */
+
+  .prose a[href^="http"]:not([href*="the-o.space"], .footnote-number, .footnote-backref, .no-icon)::after,
+  .prose a[href^="//"]:not(.footnote-number, .footnote-backref, .no-icon)::after {
+    content: "";
+    display: inline-block;
+    width: 0.65em;
+    height: 0.65em;
+    margin-left: 0.15em;
+    vertical-align: baseline;
+    position: relative;
+    top: 0.05em;
+    background-color: currentColor;
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 3h7v7'/%3E%3Cpath d='M13 3L3 13'/%3E%3C/svg%3E");
   }
 
-  @keyframes target-highlight {
-    0% {
-      background-color: var(--color-highlight);
-      box-shadow: 0 0 0 4px var(--color-highlight);
-    }
-    100% {
-      background-color: transparent;
-      box-shadow: 0 0 0 4px transparent;
-    }
+  /* Hide icons in code blocks and image links */
+  .prose :is(pre, code) a::after,
+  .prose a:has(> img)::after {
+    display: none;
   }
 }

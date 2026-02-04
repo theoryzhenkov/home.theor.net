@@ -300,228 +300,161 @@ const tableId = `content-table-${Math.random().toString(36).slice(2, 9)}`;
 
 <style>
   .content-table-wrapper {
-    margin: theme(spacing.6) 0;
+    margin: theme(spacing.3) 0;
   }
 
   .content-table-filters {
     display: flex;
     flex-wrap: wrap;
-    gap: theme(spacing.4);
-    margin-bottom: theme(spacing.4);
-    padding: theme(spacing.3) theme(spacing.4);
+    gap: theme(spacing.3);
+    margin-bottom: theme(spacing.2);
+    padding: theme(spacing.2);
     background-color: var(--color-bg-subtle);
-    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
   }
 
   .filter-group {
     display: flex;
     align-items: center;
-    gap: theme(spacing.2);
+    gap: theme(spacing.1);
   }
 
   .filter-group label {
-    font-size: theme(fontSize.sm);
-    font-family: var(--font-sans);
+    font-size: 0.8rem;
     color: var(--color-text-muted);
   }
 
   .filter-group select {
-    padding: theme(spacing.1) theme(spacing.2);
-    font-size: theme(fontSize.sm);
-    font-family: var(--font-sans);
+    padding: 2px 6px;
+    font-size: 0.8rem;
     color: var(--color-text);
     background-color: var(--color-bg);
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
     cursor: pointer;
   }
 
   .filter-group select:hover {
-    border-color: var(--color-accent);
+    border-color: var(--color-text-muted);
   }
 
   .filter-group select:focus {
     outline: none;
-    border-color: var(--color-accent);
-    box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-accent) 20%, transparent);
+    border-color: var(--color-link);
   }
 
   .content-table {
     width: 100%;
     border-collapse: collapse;
-    font-family: var(--font-sans);
-    font-size: theme(fontSize.sm);
+    font-size: 0.875rem;
   }
 
   .content-table th,
   .content-table td {
-    padding: theme(spacing.3) theme(spacing.4);
+    padding: theme(spacing.1) theme(spacing.2);
     text-align: left;
-    border-bottom: 1px solid var(--color-border-subtle);
+    border: 1px solid var(--color-border);
   }
 
   .content-table th {
-    font-weight: 600;
-    color: var(--color-text-muted);
+    font-weight: 700;
+    color: var(--color-text);
     background-color: var(--color-bg-subtle);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-size: theme(fontSize.xs);
+    font-size: 0.8rem;
   }
 
   .content-table th.sortable {
     cursor: pointer;
     user-select: none;
-    transition: color var(--transition-duration-fast) var(--ease-out);
   }
 
   .content-table th.sortable:hover {
-    color: var(--color-accent);
+    background-color: var(--color-bg-muted);
   }
 
   .th-content {
     display: inline-flex;
     align-items: center;
-    gap: theme(spacing.1);
+    gap: 2px;
   }
 
   .sort-indicator {
     display: inline-block;
     width: 0;
     height: 0;
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
     opacity: 0.3;
-    transition: opacity var(--transition-duration-fast) var(--ease-out);
   }
 
-  .content-table th.sortable:hover .sort-indicator {
-    opacity: 0.6;
-  }
-
-  /* Default state - show both arrows faintly */
-  .sort-indicator::before,
-  .sort-indicator::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    width: 0;
-    height: 0;
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
-  }
-
-  /* Ascending */
   th[aria-sort="ascending"] .sort-indicator {
-    border-bottom: 5px solid currentColor;
+    border-bottom: 4px solid currentColor;
     border-top: none;
     opacity: 1;
   }
 
-  /* Descending */
   th[aria-sort="descending"] .sort-indicator {
-    border-top: 5px solid currentColor;
+    border-top: 4px solid currentColor;
     border-bottom: none;
     opacity: 1;
   }
 
-  /* Unsorted - small diamond/neutral indicator */
   th:not([aria-sort]) .sort-indicator {
-    border-bottom: 4px solid currentColor;
-  }
-
-  .content-table tbody tr {
-    transition: background-color var(--transition-duration-fast) var(--ease-out);
+    border-bottom: 3px solid currentColor;
   }
 
   .content-table tbody tr:hover {
     background-color: var(--color-bg-subtle);
   }
 
-  .content-table td {
-    color: var(--color-text);
-  }
-
   .content-table td a {
     color: var(--color-link);
-    text-decoration: none;
-    font-weight: 500;
+    text-decoration: underline;
   }
 
   .content-table td a:hover {
     color: var(--color-link-hover);
-    text-decoration: underline;
   }
 
-  /* External links */
   .external-link {
     display: inline-flex;
     align-items: center;
-    gap: theme(spacing.1);
+    gap: 2px;
   }
 
   .external-icon {
-    width: 0.875em;
-    height: 0.875em;
-    opacity: 0.6;
-    transition: opacity var(--transition-duration-fast) var(--ease-out);
+    width: 0.8em;
+    height: 0.8em;
+    opacity: 0.5;
   }
 
-  .external-link:hover .external-icon {
-    opacity: 1;
-  }
-
-  /* Status badges */
   .status-badge {
-    display: inline-block;
-    padding: 0.125rem theme(spacing.2);
-    font-size: theme(fontSize.xs);
-    font-weight: 500;
+    font-size: 0.75rem;
     text-transform: capitalize;
-    border-radius: var(--radius-full);
-    background-color: var(--color-bg-muted);
     color: var(--color-text-muted);
   }
 
   .status-badge[data-status="active"],
   .status-badge[data-status="in-progress"],
   .status-badge[data-status="wip"] {
-    background-color: color-mix(in srgb, var(--color-warning) 15%, transparent);
     color: var(--color-warning);
   }
 
   .status-badge[data-status="completed"],
   .status-badge[data-status="done"],
   .status-badge[data-status="finished"] {
-    background-color: color-mix(in srgb, var(--color-success) 15%, transparent);
     color: var(--color-success);
   }
 
-  .status-badge[data-status="paused"],
-  .status-badge[data-status="on-hold"],
-  .status-badge[data-status="archived"] {
-    background-color: var(--color-bg-muted);
-    color: var(--color-text-subtle);
-  }
-
-  .status-badge[data-status="planned"],
-  .status-badge[data-status="idea"] {
-    background-color: color-mix(in srgb, var(--color-accent) 15%, transparent);
-    color: var(--color-accent);
-  }
-
   .content-table-empty {
-    padding: theme(spacing.8);
+    padding: theme(spacing.4);
     text-align: center;
     color: var(--color-text-subtle);
-    font-style: italic;
   }
 
-  /* Responsive */
   @media (width <= 640px) {
     .content-table-filters {
       flex-direction: column;
-      gap: theme(spacing.2);
+      gap: theme(spacing.1);
     }
 
     .filter-group {
@@ -532,11 +465,6 @@ const tableId = `content-table-${Math.random().toString(36).slice(2, 9)}`;
     .filter-group select {
       flex: 1;
       max-width: 200px;
-    }
-
-    .content-table th,
-    .content-table td {
-      padding: theme(spacing.2) theme(spacing.3);
     }
   }
 </style>

@@ -4,30 +4,23 @@ import Head from '@components/Head.astro';
 import Header from '@components/Header.astro';
 import Metadata from '@components/Metadata.astro';
 import TOC from '@components/TOC.astro';
+import Footnotes from '@components/Footnotes.astro';
 import Backlinks from '@components/Backlinks.astro';
 import Search from '@components/Search.astro';
 import Breadcrumb from '@components/Breadcrumb.astro';
 import type { PageInfo } from '@/lib/relations';
-
-interface Heading {
-  depth: number;
-  slug: string;
-  text: string;
-}
 
 interface Props {
   title: string;
   description?: string;
   created: Date;
   modified?: Date;
-  headings: Heading[];
+  headings: { depth: number; slug: string; text: string }[];
   breadcrumbs?: PageInfo[];
   currentSlug?: string;
 }
 
 const { title, description, created, modified, headings, breadcrumbs = [], currentSlug = '' } = Astro.props;
-
-// Parse markdown for display, strip for meta tags
 const descriptionHtml = description ? marked.parseInline(description) : undefined;
 const descriptionPlain = description?.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
 ---
@@ -44,305 +37,63 @@ const descriptionPlain = description?.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
         <TOC headings={headings} />
       </aside>
       
-      <main class="min-w-0 py-8">
+      <main class="min-w-0 py-4">
         <article>
-          <header class="mb-8">
+          <header class="mb-4">
             <Breadcrumb breadcrumbs={breadcrumbs} currentSlug={currentSlug} />
-            <h1 class="mb-3">{title}</h1>
-            {descriptionHtml && <p class="text-lg text-text-muted italic mb-6" set:html={descriptionHtml} />}
-            <Metadata 
-              created={created}
-              modified={modified}
-            />
+            <h1>{title}</h1>
+            {descriptionHtml && <p class="text-text-muted italic mb-2" set:html={descriptionHtml} />}
+            <Metadata created={created} modified={modified} />
           </header>
           
           <div class="prose">
             <slot />
           </div>
           
-          <!-- Footnotes section (populated on small screens via JS) -->
-          <section class="footnotes" data-footnotes="empty" aria-label="Footnotes">
-            <h2 class="footnotes-title">Footnotes</h2>
-            <ol class="footnotes-list"></ol>
-          </section>
-          
-          <footer class="mt-16 pt-8 border-t border-border-subtle">
+          <footer class="page-footer">
+            <Footnotes />
             <Backlinks />
           </footer>
         </article>
       </main>
-      
-      <aside class="sidebar sidebar-right">
-        <!-- Reserved for margin content floats -->
-      </aside>
     </div>
     
-    <!-- Search Modal -->
     <Search />
-    
-    <!-- Popup Container -->
     <div id="popup-container" class="popup-container"></div>
     
-    <!-- Scripts -->
     <script>
       import '@/scripts/popups';
 
-      // Trigger highlight animation on a heading
-      function highlightHeading(id: string) {
-        const heading = document.getElementById(id);
-        if (!heading?.matches('h1, h2, h3, h4, h5, h6')) return;
-        
-        heading.classList.remove('target-highlight');
-        void heading.offsetWidth; // Force reflow
-        heading.classList.add('target-highlight');
-      }
-
-      // Highlight on hash change
-      function onHashChange() {
-        const hash = window.location.hash.slice(1);
-        if (hash) highlightHeading(hash);
-      }
-
-      // Heading anchor links
       function initHeadingLinks() {
         const headings = document.querySelectorAll('.prose h1[id], .prose h2[id], .prose h3[id], .prose h4[id], .prose h5[id], .prose h6[id]');
-        
-        const linkIconSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>`;
+        const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>`;
         
         headings.forEach((el) => {
-          const heading = el as HTMLElement;
-          // Skip if already initialized
-          if (heading.querySelector('.heading-link-icon')) return;
+          const h = el as HTMLElement;
+          if (h.querySelector('.heading-link-icon')) return;
           
-          // Create link icon
           const icon = document.createElement('span');
           icon.className = 'heading-link-icon';
-          icon.innerHTML = linkIconSvg;
-          icon.title = `Copy link to "${heading.textContent}"`;
-          heading.appendChild(icon);
+          icon.innerHTML = svg;
+          h.appendChild(icon);
           
-          // Clicking heading navigates to anchor
-          heading.style.cursor = 'pointer';
-          heading.addEventListener('click', (e) => {
+          h.style.cursor = 'pointer';
+          h.addEventListener('click', (e) => {
             if (e.target === icon || icon.contains(e.target as Node)) return;
-            if (window.location.hash === `#${heading.id}`) {
-              // Already at this hash, just highlight
-              highlightHeading(heading.id);
-              heading.scrollIntoView({ behavior: 'smooth' });
-            } else {
-              window.location.hash = heading.id;
-            }
+            window.location.hash = h.id;
           });
           
-          // Clicking icon copies link
           icon.addEventListener('click', async (e) => {
             e.stopPropagation();
-            const url = `${window.location.origin}${window.location.pathname}#${heading.id}`;
-            
             try {
-              await navigator.clipboard.writeText(url);
-              icon.classList.add('copying');
-              setTimeout(() => icon.classList.remove('copying'), 500);
-            } catch {
-              window.location.hash = heading.id;
-            }
+              await navigator.clipboard.writeText(`${location.origin}${location.pathname}#${h.id}`);
+            } catch { window.location.hash = h.id; }
           });
         });
       }
-
-      // Handle clicks on anchor links when already at that hash
-      function initAnchorHighlight() {
-        document.addEventListener('click', (e) => {
-          const link = (e.target as HTMLElement).closest('a[href^="#"]');
-          if (!link) return;
-          
-          const targetId = link.getAttribute('href')?.slice(1);
-          if (!targetId) return;
-          
-          if (window.location.hash === `#${targetId}`) {
-            e.preventDefault();
-            highlightHeading(targetId);
-            document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
-          }
-        });
-      }
-
-      // Initialize
-      window.addEventListener('hashchange', onHashChange);
-      initAnchorHighlight();
       
-      // Highlight if page loads with hash
-      if (window.location.hash) {
-        onHashChange();
-      }
-
       document.addEventListener('astro:page-load', initHeadingLinks);
-      if (document.readyState === 'complete') {
-        initHeadingLinks();
-      } else {
-        document.addEventListener('DOMContentLoaded', initHeadingLinks);
-      }
-
-      // ─── Margin Notes System ───
-      // On large screens: margin notes float in the right margin
-      // On small screens: margin notes move to footnotes section at bottom
-      
-      const MARGIN_BREAKPOINT = 1280;
-      
-      interface MarginNoteData {
-        element: HTMLElement;
-        placeholder: Comment;
-        wrapper: HTMLElement;
-        id: string;
-      }
-      
-      let marginNotes: MarginNoteData[] = [];
-      let isSmallScreen = false;
-      
-      function initMarginNotes() {
-        const footnotesSection = document.querySelector('.footnotes');
-        const footnotesList = document.querySelector('.footnotes-list') as HTMLOListElement | null;
-        if (!footnotesSection || !footnotesList) return;
-        
-        // Collect all margin notes
-        const marginContentElements = document.querySelectorAll('.margin-content');
-        if (marginContentElements.length === 0) {
-          footnotesSection.setAttribute('data-footnotes', 'empty');
-          return;
-        }
-        
-        // Build margin notes data
-        marginNotes = [];
-        marginContentElements.forEach((el) => {
-          const element = el as HTMLElement;
-          const wrapper = element.closest('.sidenote-wrapper') as HTMLElement;
-          const id = element.id; // e.g., "fn-my-note"
-          
-          // Create a placeholder comment to mark original position
-          const placeholder = document.createComment(`margin-note-placeholder:${id}`);
-          
-          marginNotes.push({ element, placeholder, wrapper, id });
-        });
-        
-        footnotesSection.setAttribute('data-footnotes', 'ready');
-        
-        // Initial layout based on screen size
-        handleResize();
-      }
-      
-      function moveToBottom() {
-        const footnotesList = document.querySelector('.footnotes-list') as HTMLOListElement | null;
-        if (!footnotesList) return;
-        
-        // Clear existing list items
-        footnotesList.innerHTML = '';
-        
-        marginNotes.forEach((note, index) => {
-          // Insert placeholder where content was
-          if (!note.element.parentNode?.contains(note.placeholder)) {
-            note.element.parentNode?.insertBefore(note.placeholder, note.element);
-          }
-          
-          // Create list item wrapper
-          const li = document.createElement('li');
-          li.className = 'footnote-item';
-          li.id = `footnote-list-${index + 1}`;
-          
-          // Move the actual element into the list
-          li.appendChild(note.element);
-          footnotesList.appendChild(li);
-        });
-      }
-      
-      function moveToMargin() {
-        marginNotes.forEach((note) => {
-          // Find the placeholder and replace it with the element
-          const placeholder = note.placeholder;
-          if (placeholder.parentNode) {
-            placeholder.parentNode.replaceChild(note.element, placeholder);
-          } else if (note.wrapper) {
-            // Fallback: append to wrapper
-            note.wrapper.appendChild(note.element);
-          }
-        });
-        
-        // Clear the footnotes list
-        const footnotesList = document.querySelector('.footnotes-list');
-        if (footnotesList) {
-          footnotesList.innerHTML = '';
-        }
-      }
-      
-      function handleResize() {
-        const wasSmallScreen = isSmallScreen;
-        isSmallScreen = window.innerWidth <= MARGIN_BREAKPOINT;
-        
-        // Only act if screen size category changed
-        if (wasSmallScreen !== isSmallScreen || marginNotes.length === 0) {
-          if (isSmallScreen) {
-            moveToBottom();
-          } else {
-            moveToMargin();
-          }
-        }
-      }
-      
-      // Debounce resize handler
-      let resizeTimeout: ReturnType<typeof setTimeout> | null = null;
-      function onResize() {
-        if (resizeTimeout) clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(handleResize, 100);
-      }
-      
-      // ─── Click Handler for Margin Note Links ───
-      // On large screens: scroll to margin note + highlight
-      // On small screens: let native anchor navigation happen
-      
-      function highlightElement(el: HTMLElement) {
-        el.classList.remove('margin-highlight');
-        void el.offsetWidth; // Force reflow
-        el.classList.add('margin-highlight');
-      }
-      
-      function handleMarginNoteClick(e: MouseEvent) {
-        const link = (e.target as HTMLElement).closest('a.margin-number');
-        if (!link) return;
-        
-        const href = link.getAttribute('href');
-        if (!href?.startsWith('#fn-')) return;
-        
-        const targetId = href.slice(1);
-        const targetElement = document.getElementById(targetId);
-        if (!targetElement) return;
-        
-        // On small screens, let native anchor navigation work
-        if (window.innerWidth <= MARGIN_BREAKPOINT) {
-          // Content is in footnotes section - native scroll will work
-          return;
-        }
-        
-        // On large screens, scroll to margin note and highlight
-        e.preventDefault();
-        
-        targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        
-        // Highlight after scroll completes
-        setTimeout(() => highlightElement(targetElement), 300);
-      }
-      
-      // Initialize
-      window.addEventListener('resize', onResize);
-      document.addEventListener('click', handleMarginNoteClick);
-      document.addEventListener('astro:page-load', () => {
-        marginNotes = [];
-        isSmallScreen = window.innerWidth <= MARGIN_BREAKPOINT;
-        initMarginNotes();
-      });
-      if (document.readyState === 'complete') {
-        initMarginNotes();
-      } else {
-        document.addEventListener('DOMContentLoaded', initMarginNotes);
-      }
+      document.readyState === 'complete' ? initHeadingLinks() : document.addEventListener('DOMContentLoaded', initHeadingLinks);
     </script>
   </body>
 </html>

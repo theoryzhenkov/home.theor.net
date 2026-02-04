@@ -1,0 +1,49 @@
+---
+/**
+ * Footnotes - collects and displays footnote content
+ */
+---
+
+<section class="page-section" id="footnotes" data-empty="true">
+  <h2 class="page-section-title">Footnotes</h2>
+  <ol class="page-section-list" data-style="decimal"></ol>
+</section>
+
+<script>
+  function initFootnotes() {
+    const section = document.getElementById('footnotes');
+    const list = section?.querySelector('.page-section-list') as HTMLOListElement | null;
+    if (!section || !list) return;
+    
+    const contents = document.querySelectorAll('.footnote-content[data-footnote-id]');
+    if (contents.length === 0) {
+      section.dataset.empty = 'true';
+      return;
+    }
+    
+    list.innerHTML = '';
+    
+    contents.forEach((content) => {
+      const id = content.getAttribute('data-footnote-id');
+      const li = document.createElement('li');
+      li.id = `fn-${id}`;
+      
+      const backref = document.createElement('a');
+      backref.href = `#fnref-${id}`;
+      backref.className = 'footnote-backref';
+      backref.textContent = '↩';
+      li.appendChild(backref);
+      
+      while (content.firstChild) {
+        li.appendChild(content.firstChild);
+      }
+      content.remove();
+      list.appendChild(li);
+    });
+    
+    section.dataset.empty = 'false';
+  }
+  
+  document.addEventListener('astro:page-load', initFootnotes);
+  document.readyState === 'complete' ? initFootnotes() : document.addEventListener('DOMContentLoaded', initFootnotes);
+</script>

@@ -6,12 +6,9 @@ interface Props {
 const { id } = Astro.props;
 ---
 
-<span class="sidenote-wrapper">
-  <sup id={`fnref-${id}`} class="sidenote-ref">
-    <a href={`#fn-${id}`} class="margin-number"></a>
-  </sup>
-  <span id={`fn-${id}`} class="margin-content">
-    <a href={`#fnref-${id}`} class="footnote-backref" aria-label="Back to reference">↩</a>
-    <slot />
-  </span>
+<sup id={`fnref-${id}`} class="footnote-ref">
+  <a href={`#fn-${id}`} class="footnote-number"></a>
+</sup>
+<span class="footnote-content" data-footnote-id={id} hidden>
+  <slot />
 </span>

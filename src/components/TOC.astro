@@ -33,88 +33,48 @@ const tocHeadings = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
 <style>
   .toc {
     overflow-y: auto;
-    padding-right: theme(spacing.4);
-    font-family: var(--font-sans);
-    font-size: theme(fontSize.sm);
+    font-size: 0.8rem;
   }
 
   .toc-title {
-    margin-bottom: theme(spacing.4);
-    font-size: theme(fontSize.xs);
-    font-weight: 600;
+    margin-bottom: theme(spacing.2);
+    font-size: 0.75rem;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--color-text-subtle);
-    border-bottom: none;
-    padding-bottom: 0;
+    color: var(--color-text-muted);
   }
 
   .toc-list {
     list-style: none;
     padding: 0;
-    padding-left: theme(spacing.3);
     margin: 0;
+    border-left: 1px solid var(--color-border);
   }
 
   .toc-item {
-    margin-bottom: theme(spacing.2);
+    margin-bottom: 0;
   }
 
   .toc-item[data-depth="3"] {
-    padding-left: theme(spacing.4);
+    padding-left: theme(spacing.3);
   }
 
   .toc-link {
     display: block;
-    padding: theme(spacing.1) 0;
+    padding: theme(spacing.1) theme(spacing.2);
     color: var(--color-text-muted);
     text-decoration: none;
     line-height: var(--leading-snug);
-    transition: color var(--transition-duration-fast) var(--ease-out);
   }
 
   .toc-link:hover {
-    color: var(--color-accent);
+    color: var(--color-link);
   }
 
   .toc-link.active {
-    color: var(--color-accent);
-    font-weight: 500;
-    position: relative;
-  }
-
-  .toc-link.active::before {
-    content: '';
-    position: absolute;
-    left: calc(-1 * theme(spacing.3));
-    top: 50%;
-    transform: translateY(-50%);
-    width: 2px;
-    height: 1em;
-    background-color: var(--color-accent);
-    border-radius: var(--radius-full);
-  }
-
-  .toc-item[data-depth="3"] .toc-link.active::before {
-    left: calc(-1 * theme(spacing.3) + theme(spacing.4));
-  }
-
-  /* Scrollbar styling */
-  .toc::-webkit-scrollbar {
-    width: 4px;
-  }
-
-  .toc::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  .toc::-webkit-scrollbar-thumb {
-    background: var(--color-border);
-    border-radius: 2px;
-  }
-
-  .toc::-webkit-scrollbar-thumb:hover {
-    background: var(--color-text-subtle);
+    color: var(--color-text);
+    font-weight: 700;
+    background-color: var(--color-bg-subtle);
   }
 </style>
 

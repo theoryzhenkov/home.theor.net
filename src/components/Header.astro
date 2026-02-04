@@ -44,7 +44,7 @@ const currentPath = Astro.url.pathname;
     top: 0;
     z-index: 100;
     background-color: var(--color-bg);
-    border-bottom: 1px solid var(--color-border-subtle);
+      border-bottom: 1px solid var(--color-border);
   }
 
   .header-nav {
@@ -53,79 +53,65 @@ const currentPath = Astro.url.pathname;
     justify-content: space-between;
     max-width: var(--width-page);
     margin: 0 auto;
-    padding: theme(spacing.4) theme(spacing.8);
+    padding: theme(spacing.2) theme(spacing.4);
   }
 
   .site-logo {
-    display: flex;
-    align-items: center;
-    gap: theme(spacing.2);
-    font-family: var(--font-sans);
-    font-size: theme(fontSize.lg);
-    font-weight: 600;
+    font-weight: 700;
     color: var(--color-text);
     text-decoration: none;
-    transition: color var(--transition-duration-fast) var(--ease-out);
   }
 
   .site-logo:hover {
-    color: var(--color-accent);
-  }
-
-  .logo-symbol {
-    font-size: theme(fontSize.2xl);
-    color: var(--color-accent);
+    color: var(--color-link);
   }
 
   .nav-links {
     display: flex;
     align-items: center;
-    gap: theme(spacing.6);
+    gap: theme(spacing.4);
   }
 
   .nav-link {
-    font-family: var(--font-sans);
-    font-size: theme(fontSize.sm);
-    font-weight: 500;
+    font-size: 0.875rem;
     color: var(--color-text-muted);
     text-decoration: none;
-    transition: color var(--transition-duration-fast) var(--ease-out);
   }
 
-  .nav-link:hover,
+  .nav-link:hover {
+    color: var(--color-link);
+  }
+
   .nav-link.active {
-    color: var(--color-accent);
+    color: var(--color-text);
+    font-weight: 700;
   }
 
   .search-trigger {
     display: flex;
     align-items: center;
-    gap: theme(spacing.2);
-    padding: theme(spacing.2) theme(spacing.3);
-    font-family: var(--font-sans);
-    font-size: theme(fontSize.sm);
+    gap: theme(spacing.1);
+    padding: theme(spacing.1) theme(spacing.2);
+    font-size: 0.875rem;
     color: var(--color-text-muted);
-    background-color: var(--color-bg-subtle);
+    background: none;
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
     cursor: pointer;
-    transition: color var(--transition-duration-fast) var(--ease-out),
-                border-color var(--transition-duration-fast) var(--ease-out);
   }
 
   .search-trigger:hover {
     color: var(--color-text);
-    border-color: var(--color-accent);
+    border-color: var(--color-text-muted);
   }
 
   .search-shortcut {
-    font-size: theme(fontSize.xs);
+    font-size: 0.75rem;
     color: var(--color-text-subtle);
   }
 
   @media (width <= 640px) {
     .header-nav {
-      padding: theme(spacing.3) theme(spacing.4);
+      padding: theme(spacing.2) theme(spacing.2);
     }
 
     .logo-text {
