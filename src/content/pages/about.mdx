@@ -3,3 +3,33 @@ title: About This Website
 description: Meta page describing the site's purpose, design philosophy, and technical implementation.
 created: 2026-01-17
 ---
+
+## Design
+
+I decided to go with a minimalistic design, inspirations being Paul Graham's [www.paulgraham.com](https://www.paulgraham.com/) and Dan Luu's [danluu.com](https://danluu.com/), for example. Though for purposes of practicality, TheoR.net (further referred to as "website") is a bit more loaded with features and verbose. 
+
+## Relational structure
+
+Website uses two orthogonal layers: **topological**, based on the [RCC-8](https://en.wikipedia.org/wiki/Region_connection_calculus), and **semantical**. 
+
+### RCC-8
+
+| Relation | Implies | Semantics                          |
+| -------- | ------- | ---------------------------------- |
+| DC       | DC      | Disconnected                       |
+| EC       | EC      | Externally connected               |
+| EQ       | EQ      | Equal                              |
+| PO       | PO      | Partially overlapped               |
+| TPP      | TPPi    | Tangential proper part             |
+| TPPi     | TPP     | Tangential proper part inverse     |
+| NTPP     | NTPPi   | Non-tangential proper part         |
+| NTPPi    | NTPP    | Non-tangential proper part inverse |
+
+### Semantical
+
+| Relation | Implies | Semantics          |
+| -------- | ------- | ------------------ |
+| N        | P       | Next               |
+| P        | N       | Previous           |
+| R        | Ri      | References         |
+| Ri       | R       | References inverse |

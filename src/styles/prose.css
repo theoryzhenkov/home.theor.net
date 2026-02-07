@@ -1,5 +1,7 @@
 @layer components {
   .prose {
+    position: relative;
+
     & h1[id],
     & h2[id],
     & h3[id],
@@ -40,8 +42,8 @@
 
   /* ─── Link Type Icons ─── */
 
-  .prose a[href^="http"]:not([href*="the-o.space"], .footnote-number, .footnote-backref, .no-icon)::after,
-  .prose a[href^="//"]:not(.footnote-number, .footnote-backref, .no-icon)::after {
+  .prose a[href^="http"]:not([href*="the-o.space"], .footnote-number, .footnote-ref, .no-icon)::after,
+  .prose a[href^="//"]:not(.footnote-number, .footnote-ref, .no-icon)::after {
     content: "";
     display: inline-block;
     width: 0.65em;

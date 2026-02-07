@@ -4,11 +4,11 @@
  */
 ---
 
-<section class="page-section" id="backlinks" data-page-path={Astro.url.pathname}>
-  <h2 class="page-section-title">Backlinks</h2>
-  <div class="page-section-content">
+<section class="aside-panel" id="backlinks" data-page-path={Astro.url.pathname}>
+  <h2 class="aside-panel-title">Backlinks</h2>
+  <div class="aside-panel-content">
     <p class="backlinks-status">Loading...</p>
-    <ul class="page-section-list" data-style="inline" style="display: none;"></ul>
+    <ul class="aside-panel-list" data-style="inline" style="display: none;"></ul>
   </div>
 </section>
 
@@ -24,7 +24,7 @@
     
     const path = (section.dataset.pagePath?.replace(/\/$/, '') || '/') || '/';
     const status = section.querySelector('.backlinks-status') as HTMLElement;
-    const list = section.querySelector('.page-section-list') as HTMLElement;
+    const list = section.querySelector('.aside-panel-list') as HTMLElement;
     
     if (!cache) {
       cache = await fetch('/backlinks.json').then(r => r.json());

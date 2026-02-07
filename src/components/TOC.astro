@@ -16,9 +16,9 @@ const tocHeadings = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
 ---
 
 {tocHeadings.length > 0 && (
-  <nav class="toc" aria-label="Table of contents">
-    <h2 class="toc-title">Contents</h2>
-    <ol class="toc-list">
+  <nav class="aside-panel" aria-label="Table of contents">
+    <h2 class="aside-panel-title">Contents</h2>
+    <ol class="aside-panel-list">
       {tocHeadings.map((heading) => (
         <li class="toc-item" data-depth={heading.depth}>
           <a href={`#${heading.slug}`} class="toc-link">
@@ -31,23 +31,12 @@ const tocHeadings = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
 )}
 
 <style>
-  .toc {
+  .aside-panel {
     overflow-y: auto;
     font-size: 0.8rem;
   }
 
-  .toc-title {
-    margin-bottom: theme(spacing.2);
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: var(--color-text-muted);
-  }
-
-  .toc-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  .aside-panel-list {
     border-left: 1px solid var(--color-border);
   }
 

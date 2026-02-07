@@ -1,0 +1,4937 @@
+{
+  "version": "2.7",
+  "children": [
+    {
+      "type": "frame",
+      "id": "R97ZU",
+      "x": 0,
+      "y": 0,
+      "name": "Version A — The Marginalia",
+      "width": 1440,
+      "fill": "#FAF9F6",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "b515U",
+          "name": "Header",
+          "width": "fill_container",
+          "fill": "#FAF9F6",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "bottom": 1
+            },
+            "fill": "#D6D3D1"
+          },
+          "padding": [
+            14,
+            48
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "swT2f",
+              "name": "logoArea",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "zNAPp",
+                  "name": "logoMark",
+                  "width": 24,
+                  "height": 24,
+                  "fill": "#1C1917",
+                  "cornerRadius": 2
+                },
+                {
+                  "type": "text",
+                  "id": "GNUfM",
+                  "name": "logoText",
+                  "fill": "#1C1917",
+                  "content": "TheOR.net",
+                  "fontFamily": "EB Garamond",
+                  "fontSize": 18,
+                  "fontWeight": "600",
+                  "letterSpacing": 0.5
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "nVgUO",
+              "name": "nav",
+              "gap": 32,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "CFPTs",
+                  "name": "navHome",
+                  "fill": "#78716C",
+                  "content": "Home",
+                  "fontFamily": "DM Sans",
+                  "fontSize": 13,
+                  "fontWeight": "500",
+                  "letterSpacing": 0.3
+                },
+                {
+                  "type": "text",
+                  "id": "Bs0Cn",
+                  "name": "navAbout",
+                  "fill": "#78716C",
+                  "content": "About",
+                  "fontFamily": "DM Sans",
+                  "fontSize": 13,
+                  "fontWeight": "500",
+                  "letterSpacing": 0.3
+                },
+                {
+                  "type": "text",
+                  "id": "JE0wB",
+                  "name": "navProjects",
+                  "fill": "#78716C",
+                  "content": "Projects",
+                  "fontFamily": "DM Sans",
+                  "fontSize": 13,
+                  "fontWeight": "500",
+                  "letterSpacing": 0.3
+                },
+                {
+                  "type": "text",
+                  "id": "MeA62",
+                  "name": "navBlog",
+                  "fill": "#78716C",
+                  "content": "Blog",
+                  "fontFamily": "DM Sans",
+                  "fontSize": 13,
+                  "fontWeight": "500",
+                  "letterSpacing": 0.3
+                },
+                {
+                  "type": "text",
+                  "id": "WCCAg",
+                  "name": "navContact",
+                  "fill": "#78716C",
+                  "content": "Contact",
+                  "fontFamily": "DM Sans",
+                  "fontSize": 13,
+                  "fontWeight": "500",
+                  "letterSpacing": 0.3
+                },
+                {
+                  "type": "icon_font",
+                  "id": "hsC3H",
+                  "name": "searchIcon",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "search",
+                  "iconFontFamily": "lucide",
+                  "fill": "#78716C"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "MpBUV",
+          "name": "Body",
+          "width": "fill_container",
+          "padding": [
+            48,
+            48,
+            80,
+            48
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "nQ88X",
+              "name": "TOC Column",
+              "width": 200,
+              "layout": "vertical",
+              "gap": 20,
+              "padding": [
+                8,
+                24,
+                0,
+                0
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "bRR5A",
+                  "name": "tocLabel",
+                  "fill": "#A8A29E",
+                  "content": "CONTENTS",
+                  "fontFamily": "DM Sans",
+                  "fontSize": 10,
+                  "fontWeight": "600",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "rectangle",
+                  "id": "p1Ac9",
+                  "name": "tocSep",
+                  "fill": "#D6D3D1",
+                  "width": 32,
+                  "height": 1
+                },
+                {
+                  "type": "text",
+                  "id": "38CTt",
+                  "name": "tocItem1",
+                  "fill": "#1C1917",
+                  "content": "Introduction",
+                  "fontFamily": "EB Garamond",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "bQmX0",
+                  "name": "tocItem2",
+                  "fill": "#78716C",
+                  "content": "The Structure of Attention",
+                  "fontFamily": "EB Garamond",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "8gcvZ",
+                  "name": "tocItem3",
+                  "fill": "#78716C",
+                  "content": "Mechanisms of Focus",
+                  "fontFamily": "EB Garamond",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "YK43i",
+                  "name": "tocSub1",
+                  "fill": "#A8A29E",
+                  "content": "   Selective Processing",
+                  "fontFamily": "EB Garamond",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "KYqUv",
+                  "name": "tocSub2",
+                  "fill": "#A8A29E",
+                  "content": "   Sustained Engagement",
+                  "fontFamily": "EB Garamond",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "mqZ6N",
+                  "name": "tocItem4",
+                  "fill": "#78716C",
+                  "content": "Implications for Design",
+                  "fontFamily": "EB Garamond",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "wCePS",
+                  "name": "tocItem5",
+                  "fill": "#78716C",
+                  "content": "References",
+                  "fontFamily": "EB Garamond",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "82M3Y",
+              "name": "Content Column",
+              "width": 680,
+              "layout": "vertical",
+              "padding": [
+                0,
+                40
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "HOxTq",
+                  "name": "breadcrumb",
+                  "fill": "#A8A29E",
+                  "content": "Home  /  Blog  /  Attention",
+                  "fontFamily": "DM Sans",
+                  "fontSize": 11,
+                  "fontWeight": "normal",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "type": "frame",
+                  "id": "90rrU",
+                  "name": "titleArea",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": [
+                    24,
+                    0,
+                    0,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "1hP9I",
+                      "name": "title",
+                      "fill": "#0C0A09",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "The Structure of Attention",
+                      "lineHeight": 1.1,
+                      "fontFamily": "EB Garamond",
+                      "fontSize": 42,
+                      "letterSpacing": -0.5
+                    },
+                    {
+                      "type": "text",
+                      "id": "3YlUS",
+                      "name": "subtitle",
+                      "fill": "#78716C",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "On focus, distraction, and the architecture of conscious experience",
+                      "lineHeight": 1.4,
+                      "fontFamily": "EB Garamond",
+                      "fontSize": 19,
+                      "fontWeight": "normal",
+                      "fontStyle": "italic"
+                    },
+                    {
+                      "type": "text",
+                      "id": "LseHH",
+                      "name": "meta",
+                      "fill": "#A8A29E",
+                      "content": "Theo Ryzhenkov  ·  January 2026  ·  12 min read",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 12,
+                      "fontWeight": "normal",
+                      "letterSpacing": 0.3
+                    }
+                  ]
+                },
+                {
+                  "type": "rectangle",
+                  "id": "Ot1l7",
+                  "name": "sep1",
+                  "fill": "#E7E5E4",
+                  "width": "fill_container",
+                  "height": 1
+                },
+                {
+                  "type": "frame",
+                  "id": "kZnnp",
+                  "name": "Prose",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 20,
+                  "padding": [
+                    32,
+                    0,
+                    0,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "GOXbC",
+                      "name": "intro",
+                      "fill": "#1C1917",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Attention is the most fundamental cognitive resource we possess. It determines not only what we perceive, but what we fail to perceive — and in this negative space, entire worlds are lost. William James called it 'the taking possession by the mind, in clear and vivid form, of one out of what seem several simultaneously possible objects or trains of thought.'¹",
+                      "lineHeight": 1.65,
+                      "fontFamily": "EB Garamond",
+                      "fontSize": 17,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "z36As",
+                      "name": "p2",
+                      "fill": "#1C1917",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Yet for all its centrality, attention remains poorly understood — both as a phenomenon of consciousness and as a design constraint. In this essay, I want to explore what we know about the structure of attention, and what this means for how we build systems that interact with human minds.",
+                      "lineHeight": 1.65,
+                      "fontFamily": "EB Garamond",
+                      "fontSize": 17,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "c9tu8",
+                      "name": "h2",
+                      "fill": "#0C0A09",
+                      "content": "The Architecture of Focus",
+                      "lineHeight": 1.2,
+                      "fontFamily": "EB Garamond",
+                      "fontSize": 28
+                    },
+                    {
+                      "type": "text",
+                      "id": "xb9OX",
+                      "name": "p3",
+                      "fill": "#1C1917",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "The prevailing model in cognitive science treats attention as a resource allocation problem. Kahneman's capacity model suggests we have a limited pool of attentional resources, which can be flexibly distributed across tasks.² This has proven remarkably useful as a framework, even as its simplifications have become apparent.",
+                      "lineHeight": 1.65,
+                      "fontFamily": "EB Garamond",
+                      "fontSize": 17,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Rdjwm",
+                      "name": "Blockquote",
+                      "width": "fill_container",
+                      "padding": [
+                        4,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "id": "eweMv",
+                          "name": "bqBar",
+                          "fill": "#D6D3D1",
+                          "width": 3,
+                          "height": "fill_container"
+                        },
+                        {
+                          "type": "text",
+                          "id": "GtiGZ",
+                          "name": "bqContent",
+                          "fill": "#57534E",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "The faculty of voluntarily bringing back a wandering attention, over and over again, is the very root of judgment, character, and will. An education which should improve this faculty would be the education par excellence.\n— William James, Principles of Psychology (1890)",
+                          "lineHeight": 1.6,
+                          "fontFamily": "EB Garamond",
+                          "fontSize": 16,
+                          "fontWeight": "normal",
+                          "fontStyle": "italic"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "2QJAp",
+                      "name": "Link Examples",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 8,
+                      "padding": [
+                        8,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "KnIEP",
+                          "name": "linkLabel",
+                          "fill": "#A8A29E",
+                          "content": "LINK STYLES",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 10,
+                          "fontWeight": "600",
+                          "letterSpacing": 2
+                        },
+                        {
+                          "type": "frame",
+                          "id": "VtRMv",
+                          "name": "linkRow",
+                          "gap": 24,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "ogPhT",
+                              "name": "link1",
+                              "fill": "#1E3A5F",
+                              "content": "internal link",
+                              "fontFamily": "EB Garamond",
+                              "fontSize": 17,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "text",
+                              "id": "Vdja3",
+                              "name": "link2",
+                              "fill": "#1E3A5F",
+                              "content": "external link ↗",
+                              "fontFamily": "EB Garamond",
+                              "fontSize": 17,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "text",
+                              "id": "WKyAP",
+                              "name": "link3",
+                              "fill": "#6B4C8A",
+                              "content": "visited link",
+                              "fontFamily": "EB Garamond",
+                              "fontSize": 17,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "text",
+                              "id": "pCfP8",
+                              "name": "link4",
+                              "fill": "#2563EB",
+                              "content": "hover state",
+                              "fontFamily": "EB Garamond",
+                              "fontSize": 17,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "qcTBd",
+                      "name": "h3",
+                      "fill": "#0C0A09",
+                      "content": "Selective Processing",
+                      "lineHeight": 1.2,
+                      "fontFamily": "EB Garamond",
+                      "fontSize": 22,
+                      "fontStyle": "italic"
+                    },
+                    {
+                      "type": "text",
+                      "id": "PcO3h",
+                      "name": "p4",
+                      "fill": "#1C1917",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "The selective nature of attention has been studied extensively since Broadbent's filter model.³ What makes this particularly relevant to interface design is the observation that selection operates at multiple levels simultaneously — perceptual, cognitive, and motor.",
+                      "lineHeight": 1.65,
+                      "fontFamily": "EB Garamond",
+                      "fontSize": 17,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "CRbpT",
+                      "name": "Code Block",
+                      "width": "fill_container",
+                      "fill": "#1C1917",
+                      "cornerRadius": 3,
+                      "layout": "vertical",
+                      "gap": 4,
+                      "padding": [
+                        16,
+                        20
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "tPTYj",
+                          "name": "codeLang",
+                          "fill": "#78716C",
+                          "content": "python",
+                          "fontFamily": "JetBrains Mono",
+                          "fontSize": 10,
+                          "fontWeight": "normal",
+                          "letterSpacing": 0.5
+                        },
+                        {
+                          "type": "text",
+                          "id": "ORyG1",
+                          "name": "codeLine1",
+                          "fill": "#E7E5E4",
+                          "content": "def attend(stimulus, threshold=0.5):",
+                          "lineHeight": 1.6,
+                          "fontFamily": "JetBrains Mono",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "qASQz",
+                          "name": "codeLine2",
+                          "fill": "#A8A29E",
+                          "content": "    salience = compute_salience(stimulus)",
+                          "lineHeight": 1.6,
+                          "fontFamily": "JetBrains Mono",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "HeCmQ",
+                          "name": "codeLine3",
+                          "fill": "#E7E5E4",
+                          "content": "    if salience > threshold:",
+                          "lineHeight": 1.6,
+                          "fontFamily": "JetBrains Mono",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "v9a96",
+                          "name": "codeLine4",
+                          "fill": "#D6D3D1",
+                          "content": "        return allocate_resources(stimulus)",
+                          "lineHeight": 1.6,
+                          "fontFamily": "JetBrains Mono",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "AVCAl",
+                      "name": "p5",
+                      "fill": "#1C1917",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "This multi-level selection creates what Lavie calls perceptual load theory⁴ — the idea that attentional selection depends on the perceptual demands of the task at hand. When perceptual load is high, irrelevant distractors are effectively filtered out.",
+                      "lineHeight": 1.65,
+                      "fontFamily": "EB Garamond",
+                      "fontSize": 17,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "0fGC4",
+              "name": "Sidenotes Column",
+              "width": "fill_container",
+              "height": "fit_content(1600)",
+              "layout": "none",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "HJFjt",
+                  "x": 0,
+                  "y": 220,
+                  "name": "Sidenote 1",
+                  "width": 240,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": {
+                      "left": 2
+                    },
+                    "fill": "#D6D3D1"
+                  },
+                  "layout": "vertical",
+                  "gap": 6,
+                  "padding": [
+                    0,
+                    0,
+                    0,
+                    12
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "wF4SS",
+                      "name": "sn1num",
+                      "fill": "#92400E",
+                      "content": "1",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 10,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "i8hnj",
+                      "name": "sn1text",
+                      "fill": "#78716C",
+                      "textGrowth": "fixed-width",
+                      "width": 220,
+                      "content": "James, W. (1890). The Principles of Psychology. Henry Holt and Company. Vol. 1, pp. 403–404.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "EB Garamond",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Y4hOq",
+                  "x": 0,
+                  "y": 420,
+                  "name": "Sidenote 2",
+                  "width": 240,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": {
+                      "left": 2
+                    },
+                    "fill": "#D6D3D1"
+                  },
+                  "layout": "vertical",
+                  "gap": 6,
+                  "padding": [
+                    0,
+                    0,
+                    0,
+                    12
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "rybQt",
+                      "name": "sn2num",
+                      "fill": "#92400E",
+                      "content": "2",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 10,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "S8XXL",
+                      "name": "sn2text",
+                      "fill": "#78716C",
+                      "textGrowth": "fixed-width",
+                      "width": 220,
+                      "content": "Kahneman, D. (1973). Attention and Effort. This model has been refined by Wickens' multiple resource theory.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "EB Garamond",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "IB1bA",
+                  "x": 0,
+                  "y": 700,
+                  "name": "Sidenote 3",
+                  "width": 240,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": {
+                      "left": 2
+                    },
+                    "fill": "#D6D3D1"
+                  },
+                  "layout": "vertical",
+                  "gap": 6,
+                  "padding": [
+                    0,
+                    0,
+                    0,
+                    12
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "CnpEU",
+                      "name": "sn3num",
+                      "fill": "#92400E",
+                      "content": "3",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 10,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "ZaLVf",
+                      "name": "sn3text",
+                      "fill": "#78716C",
+                      "textGrowth": "fixed-width",
+                      "width": 220,
+                      "content": "Broadbent's (1958) filter model was the first formal theory of selective attention, proposing an early-selection bottleneck.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "EB Garamond",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "0AQ6E",
+                  "x": 0,
+                  "y": 1020,
+                  "name": "Sidenote 4",
+                  "width": 240,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": {
+                      "left": 2
+                    },
+                    "fill": "#D6D3D1"
+                  },
+                  "layout": "vertical",
+                  "gap": 6,
+                  "padding": [
+                    0,
+                    0,
+                    0,
+                    12
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Xxonp",
+                      "name": "sn4num",
+                      "fill": "#92400E",
+                      "content": "4",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 10,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "XqfVz",
+                      "name": "sn4text",
+                      "fill": "#78716C",
+                      "textGrowth": "fixed-width",
+                      "width": 220,
+                      "content": "Lavie, N. (1995). Perceptual load as a necessary condition for selective attention.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "EB Garamond",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "6Droq",
+          "name": "Footer",
+          "width": "fill_container",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "top": 1
+            },
+            "fill": "#E7E5E4"
+          },
+          "layout": "vertical",
+          "gap": 16,
+          "padding": [
+            32,
+            48
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "tWSl8",
+              "name": "backlinksLabel",
+              "fill": "#A8A29E",
+              "content": "BACKLINKS",
+              "fontFamily": "DM Sans",
+              "fontSize": 10,
+              "fontWeight": "600",
+              "letterSpacing": 2
+            },
+            {
+              "type": "frame",
+              "id": "HPAFc",
+              "name": "backlinksRow",
+              "gap": 16,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "mZ7BX",
+                  "name": "bl1",
+                  "fill": "#1E3A5F",
+                  "content": "← Rationality and Attention",
+                  "fontFamily": "EB Garamond",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "Yr5Hw",
+                  "name": "bl2",
+                  "fill": "#1E3A5F",
+                  "content": "← Interface Design Principles",
+                  "fontFamily": "EB Garamond",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "9cehM",
+              "name": "footerBottom",
+              "width": "fill_container",
+              "padding": [
+                16,
+                0,
+                0,
+                0
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "XGSjy",
+                  "name": "footerLeft",
+                  "fill": "#A8A29E",
+                  "content": "© 2026 Theo Ryzhenkov",
+                  "fontFamily": "DM Sans",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "DPZoV",
+                  "name": "footerRight",
+                  "fill": "#A8A29E",
+                  "content": "TheOR.net  ·  RSS  ·  Source",
+                  "fontFamily": "DM Sans",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "BqCmY",
+          "name": "Version Label",
+          "width": "fill_container",
+          "fill": "#1C1917",
+          "layout": "vertical",
+          "gap": 4,
+          "padding": [
+            24,
+            48
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "Lsakm",
+              "name": "vATitle",
+              "fill": "#FAF9F6",
+              "content": "VERSION A — THE MARGINALIA",
+              "fontFamily": "DM Sans",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": 2
+            },
+            {
+              "type": "text",
+              "id": "XQ0p4",
+              "name": "vADesc",
+              "fill": "#A8A29E",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Three-column layout: sticky TOC left · content center · sidenotes right. EB Garamond + DM Sans + JetBrains Mono.",
+              "fontFamily": "DM Sans",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "Z2HUj",
+      "x": 1600,
+      "y": 0,
+      "name": "Version B — The Monograph",
+      "width": 1440,
+      "fill": "#FFFFFF",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "CvD4T",
+          "name": "Header",
+          "width": "fill_container",
+          "padding": [
+            16,
+            64
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "qggyO",
+              "name": "logoB",
+              "fill": "#09090B",
+              "content": "THEOR",
+              "fontFamily": "Syne",
+              "fontSize": 16,
+              "fontWeight": "800",
+              "letterSpacing": 4
+            },
+            {
+              "type": "frame",
+              "id": "yQucM",
+              "name": "navB",
+              "gap": 28,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "0MwMu",
+                  "name": "navBHome",
+                  "fill": "#71717A",
+                  "content": "Home",
+                  "fontFamily": "Newsreader",
+                  "fontSize": 15,
+                  "fontWeight": "normal",
+                  "fontStyle": "italic"
+                },
+                {
+                  "type": "text",
+                  "id": "3W90u",
+                  "name": "navBAbout",
+                  "fill": "#71717A",
+                  "content": "About",
+                  "fontFamily": "Newsreader",
+                  "fontSize": 15,
+                  "fontWeight": "normal",
+                  "fontStyle": "italic"
+                },
+                {
+                  "type": "text",
+                  "id": "5Hqgj",
+                  "name": "navBProjects",
+                  "fill": "#71717A",
+                  "content": "Projects",
+                  "fontFamily": "Newsreader",
+                  "fontSize": 15,
+                  "fontWeight": "normal",
+                  "fontStyle": "italic"
+                },
+                {
+                  "type": "text",
+                  "id": "4K9NR",
+                  "name": "navBBlog",
+                  "fill": "#09090B",
+                  "content": "Blog",
+                  "fontFamily": "Newsreader",
+                  "fontSize": 15,
+                  "fontWeight": "500",
+                  "fontStyle": "italic"
+                },
+                {
+                  "type": "text",
+                  "id": "zlFct",
+                  "name": "navBContact",
+                  "fill": "#71717A",
+                  "content": "Contact",
+                  "fontFamily": "Newsreader",
+                  "fontSize": 15,
+                  "fontWeight": "normal",
+                  "fontStyle": "italic"
+                },
+                {
+                  "type": "frame",
+                  "id": "mtO23",
+                  "name": "searchB",
+                  "cornerRadius": 4,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "#E4E4E7"
+                  },
+                  "gap": 6,
+                  "padding": [
+                    6,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "dp6rg",
+                      "name": "searchBIcon",
+                      "width": 14,
+                      "height": 14,
+                      "iconFontName": "search",
+                      "iconFontFamily": "lucide",
+                      "fill": "#A1A1AA"
+                    },
+                    {
+                      "type": "text",
+                      "id": "lEpL4",
+                      "name": "searchBText",
+                      "fill": "#A1A1AA",
+                      "content": "⌘K",
+                      "fontFamily": "DM Mono",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Y6FOM",
+          "name": "Hero Title",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 20,
+          "padding": [
+            64,
+            280,
+            48,
+            280
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "OFVx1",
+              "name": "titleB",
+              "fill": "#09090B",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "The Structure of Attention",
+              "lineHeight": 1.1,
+              "textAlign": "center",
+              "fontFamily": "Syne",
+              "fontSize": 48,
+              "fontWeight": "700",
+              "letterSpacing": -1
+            },
+            {
+              "type": "text",
+              "id": "E2RwS",
+              "name": "subtitleB",
+              "fill": "#71717A",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "On focus, distraction, and the architecture of conscious experience",
+              "lineHeight": 1.5,
+              "textAlign": "center",
+              "fontFamily": "Newsreader",
+              "fontSize": 20,
+              "fontWeight": "normal",
+              "fontStyle": "italic"
+            },
+            {
+              "type": "frame",
+              "id": "vb7YJ",
+              "name": "metaB",
+              "gap": 16,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "cy5bR",
+                  "name": "metaBAuthor",
+                  "fill": "#18181B",
+                  "content": "Theo Ryzhenkov",
+                  "fontFamily": "Newsreader",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "02XAU",
+                  "name": "metaBDot",
+                  "fill": "#A1A1AA",
+                  "content": "·",
+                  "fontFamily": "Newsreader",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "MmwRe",
+                  "name": "metaBDate",
+                  "fill": "#71717A",
+                  "content": "January 2026",
+                  "fontFamily": "Newsreader",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "yhL03",
+                  "name": "metaBDot2",
+                  "fill": "#A1A1AA",
+                  "content": "·",
+                  "fontFamily": "Newsreader",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "4IKpX",
+                  "name": "metaBTime",
+                  "fill": "#71717A",
+                  "content": "12 min",
+                  "fontFamily": "Newsreader",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "rectangle",
+          "id": "QR4eo",
+          "name": "sepB",
+          "fill": "#18181B",
+          "width": 48,
+          "height": 2
+        },
+        {
+          "type": "frame",
+          "id": "j9orD",
+          "name": "TOC Inline",
+          "width": "fill_container",
+          "fill": "#FAFAFA",
+          "layout": "vertical",
+          "gap": 12,
+          "padding": [
+            24,
+            280
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "IVFnY",
+              "name": "tocBLabel",
+              "fill": "#A1A1AA",
+              "content": "In this essay",
+              "fontFamily": "Newsreader",
+              "fontSize": 13,
+              "fontWeight": "normal",
+              "fontStyle": "italic"
+            },
+            {
+              "type": "frame",
+              "id": "krWoP",
+              "name": "tocBItems",
+              "gap": 24,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "d7zvi",
+                  "name": "tocBI1",
+                  "fill": "#18181B",
+                  "content": "Introduction",
+                  "fontFamily": "Syne",
+                  "fontSize": 12,
+                  "fontWeight": "600",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "type": "text",
+                  "id": "Oramv",
+                  "name": "tocBI2",
+                  "fill": "#71717A",
+                  "content": "The Architecture of Focus",
+                  "fontFamily": "Syne",
+                  "fontSize": 12,
+                  "fontWeight": "500",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "type": "text",
+                  "id": "PfG0b",
+                  "name": "tocBI3",
+                  "fill": "#71717A",
+                  "content": "Mechanisms of Focus",
+                  "fontFamily": "Syne",
+                  "fontSize": 12,
+                  "fontWeight": "500",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "type": "text",
+                  "id": "Oy7I7",
+                  "name": "tocBI4",
+                  "fill": "#71717A",
+                  "content": "Implications",
+                  "fontFamily": "Syne",
+                  "fontSize": 12,
+                  "fontWeight": "500",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "type": "text",
+                  "id": "kCqUl",
+                  "name": "tocBI5",
+                  "fill": "#71717A",
+                  "content": "References",
+                  "fontFamily": "Syne",
+                  "fontSize": 12,
+                  "fontWeight": "500",
+                  "letterSpacing": 0.5
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "98KgB",
+          "name": "Article Body",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 22,
+          "padding": [
+            40,
+            360,
+            48,
+            360
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "nPb3c",
+              "name": "introB",
+              "fill": "#18181B",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Attention is the most fundamental cognitive resource we possess. It determines not only what we perceive, but what we fail to perceive — and in this negative space, entire worlds are lost. William James called it 'the taking possession by the mind, in clear and vivid form, of one out of what seem several simultaneously possible objects or trains of thought.'¹",
+              "lineHeight": 1.7,
+              "fontFamily": "Newsreader",
+              "fontSize": 18,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "1ZAPA",
+              "name": "p2B",
+              "fill": "#18181B",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Yet for all its centrality, attention remains poorly understood — both as a phenomenon of consciousness and as a design constraint. In this essay, I want to explore what we know about the structure of attention, and what this means for how we build systems that interact with human minds.",
+              "lineHeight": 1.7,
+              "fontFamily": "Newsreader",
+              "fontSize": 18,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "69t4L",
+              "name": "h2B",
+              "fill": "#09090B",
+              "content": "The Architecture of Focus",
+              "lineHeight": 1.15,
+              "fontFamily": "Syne",
+              "fontSize": 30,
+              "fontWeight": "700",
+              "letterSpacing": -0.5
+            },
+            {
+              "type": "text",
+              "id": "x8bp9",
+              "name": "p3B",
+              "fill": "#18181B",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "The prevailing model in cognitive science treats attention as a resource allocation problem. Kahneman's capacity model suggests we have a limited pool of attentional resources, which can be flexibly distributed across tasks.² This has proven remarkably useful as a framework.",
+              "lineHeight": 1.7,
+              "fontFamily": "Newsreader",
+              "fontSize": 18,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "KLl6E",
+              "name": "Blockquote",
+              "width": "fill_container",
+              "fill": "#FAFAFA",
+              "stroke": {
+                "align": "inside",
+                "thickness": {
+                  "left": 3
+                },
+                "fill": "#09090B"
+              },
+              "layout": "vertical",
+              "padding": [
+                24,
+                32
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "eMRjD",
+                  "name": "bqBText",
+                  "fill": "#3F3F46",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "The faculty of voluntarily bringing back a wandering attention, over and over again, is the very root of judgment, character, and will.",
+                  "lineHeight": 1.6,
+                  "fontFamily": "Newsreader",
+                  "fontSize": 17,
+                  "fontWeight": "normal",
+                  "fontStyle": "italic"
+                },
+                {
+                  "type": "text",
+                  "id": "ZiXSI",
+                  "name": "bqBAttr",
+                  "fill": "#71717A",
+                  "content": "— William James",
+                  "fontFamily": "Syne",
+                  "fontSize": 12,
+                  "fontWeight": "600",
+                  "letterSpacing": 0.5
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "ZReDy",
+              "name": "h3B",
+              "fill": "#09090B",
+              "content": "Selective Processing",
+              "lineHeight": 1.2,
+              "fontFamily": "Syne",
+              "fontSize": 22,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "zfDnY",
+              "name": "p4B",
+              "fill": "#18181B",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "The selective nature of attention has been studied extensively since Broadbent's filter model.³ What makes this particularly relevant to interface design is the observation that selection operates at multiple levels simultaneously.",
+              "lineHeight": 1.7,
+              "fontFamily": "Newsreader",
+              "fontSize": 18,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "t6QWp",
+              "name": "Code Block",
+              "width": "fill_container",
+              "fill": "#18181B",
+              "cornerRadius": 6,
+              "layout": "vertical",
+              "gap": 4,
+              "padding": [
+                18,
+                22
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "462Wk",
+                  "name": "codeBLang",
+                  "fill": "#71717A",
+                  "content": "python",
+                  "fontFamily": "DM Mono",
+                  "fontSize": 10,
+                  "fontWeight": "normal",
+                  "letterSpacing": 0.5
+                },
+                {
+                  "type": "text",
+                  "id": "P1XqX",
+                  "name": "codeBL1",
+                  "fill": "#E4E4E7",
+                  "content": "def attend(stimulus, threshold=0.5):",
+                  "lineHeight": 1.7,
+                  "fontFamily": "DM Mono",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "Jrn3x",
+                  "name": "codeBL2",
+                  "fill": "#A1A1AA",
+                  "content": "    salience = compute_salience(stimulus)",
+                  "lineHeight": 1.7,
+                  "fontFamily": "DM Mono",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "6oBgu",
+                  "name": "codeBL3",
+                  "fill": "#E4E4E7",
+                  "content": "    if salience > threshold:",
+                  "lineHeight": 1.7,
+                  "fontFamily": "DM Mono",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "VjjIY",
+                  "name": "codeBL4",
+                  "fill": "#A1A1AA",
+                  "content": "        return allocate_resources(stimulus)",
+                  "lineHeight": 1.7,
+                  "fontFamily": "DM Mono",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "z0KcU",
+              "name": "Link Styles",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 10,
+              "padding": [
+                12,
+                0
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Ul61l",
+                  "name": "linkBLabel",
+                  "fill": "#A1A1AA",
+                  "content": "LINK STYLES",
+                  "fontFamily": "Syne",
+                  "fontSize": 10,
+                  "fontWeight": "700",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "frame",
+                  "id": "wKpTn",
+                  "name": "linkBRow",
+                  "gap": 24,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "KBHn6",
+                      "name": "linkB1",
+                      "fill": "#1D4ED8",
+                      "content": "internal link",
+                      "fontFamily": "Newsreader",
+                      "fontSize": 18,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "QtWSl",
+                      "name": "linkB2",
+                      "fill": "#1D4ED8",
+                      "content": "external link ↗",
+                      "fontFamily": "Newsreader",
+                      "fontSize": 18,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Jvkuq",
+                      "name": "linkB3",
+                      "fill": "#7C3AED",
+                      "content": "visited",
+                      "fontFamily": "Newsreader",
+                      "fontSize": 18,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "fzwdo",
+                      "name": "linkB4",
+                      "fill": "#2563EB",
+                      "content": "hovered",
+                      "fontFamily": "Newsreader",
+                      "fontSize": 18,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "i6oPl",
+          "name": "Footnotes Section",
+          "width": "fill_container",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "top": 1
+            },
+            "fill": "#E4E4E7"
+          },
+          "layout": "vertical",
+          "gap": 16,
+          "padding": [
+            32,
+            360,
+            0,
+            360
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "hTwil",
+              "name": "fnLabel",
+              "fill": "#71717A",
+              "content": "Notes",
+              "fontFamily": "Syne",
+              "fontSize": 14,
+              "fontWeight": "700",
+              "letterSpacing": 0.5
+            },
+            {
+              "type": "text",
+              "id": "yR12L",
+              "name": "fn1",
+              "fill": "#71717A",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "1. James, W. (1890). The Principles of Psychology. Henry Holt and Company. Vol. 1, pp. 403–404.",
+              "lineHeight": 1.6,
+              "fontFamily": "Newsreader",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "g94De",
+              "name": "fn2",
+              "fill": "#71717A",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "2. Kahneman, D. (1973). Attention and Effort. This model has been refined by Wickens' multiple resource theory.",
+              "lineHeight": 1.6,
+              "fontFamily": "Newsreader",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "fcwdj",
+              "name": "fn3",
+              "fill": "#71717A",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "3. Broadbent, D.E. (1958). Perception and Communication. Pergamon Press.",
+              "lineHeight": 1.6,
+              "fontFamily": "Newsreader",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Sdfmz",
+          "name": "Backlinks",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 12,
+          "padding": [
+            24,
+            360
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "Jii09",
+              "name": "blLabel",
+              "fill": "#A1A1AA",
+              "content": "LINKED FROM",
+              "fontFamily": "Syne",
+              "fontSize": 10,
+              "fontWeight": "700",
+              "letterSpacing": 2
+            },
+            {
+              "type": "frame",
+              "id": "JoykV",
+              "name": "blRow",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "PBQDq",
+                  "name": "blB1",
+                  "fill": "#1D4ED8",
+                  "content": "← Rationality and Attention",
+                  "fontFamily": "Newsreader",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "q4Xxw",
+                  "name": "blB2",
+                  "fill": "#1D4ED8",
+                  "content": "← Interface Design Principles",
+                  "fontFamily": "Newsreader",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "FO3hX",
+          "name": "Footer",
+          "width": "fill_container",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "top": 1
+            },
+            "fill": "#E4E4E7"
+          },
+          "padding": [
+            24,
+            64
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "y5Rnd",
+              "name": "footerBL",
+              "fill": "#A1A1AA",
+              "content": "© 2026 Theo Ryzhenkov",
+              "fontFamily": "Syne",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 0.5
+            },
+            {
+              "type": "text",
+              "id": "R3oKv",
+              "name": "footerBR",
+              "fill": "#A1A1AA",
+              "content": "THEOR.NET  ·  RSS  ·  SOURCE",
+              "fontFamily": "Syne",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 1
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "9UiJr",
+          "name": "Version Label",
+          "width": "fill_container",
+          "fill": "#09090B",
+          "layout": "vertical",
+          "gap": 4,
+          "padding": [
+            24,
+            64
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "QWiNx",
+              "name": "vBTitle",
+              "fill": "#FAFAFA",
+              "content": "VERSION B — THE MONOGRAPH",
+              "fontFamily": "Syne",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": 2
+            },
+            {
+              "type": "text",
+              "id": "KXLhO",
+              "name": "vBDesc",
+              "fill": "#71717A",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Single-column, centered layout: inline TOC at top · footnotes at bottom · bold Syne headings + Newsreader body + DM Mono code.",
+              "fontFamily": "Syne",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "laGIv",
+      "x": 3200,
+      "y": 0,
+      "name": "Version C — The Workshop",
+      "width": 1440,
+      "fill": "#F5F1EB",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "V60f2",
+          "name": "Header",
+          "width": "fill_container",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "bottom": 3
+            },
+            "fill": "#292524"
+          },
+          "padding": [
+            16,
+            56
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "riDrG",
+              "name": "logoC",
+              "gap": 10,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "BccBs",
+                  "name": "logoCSym",
+                  "fill": "#92400E",
+                  "content": "◈",
+                  "fontFamily": "Cormorant Garamond",
+                  "fontSize": 24,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "UDW4R",
+                  "name": "logoCText",
+                  "fill": "#292524",
+                  "content": "theo r.",
+                  "fontFamily": "Cormorant Garamond",
+                  "fontSize": 20,
+                  "fontWeight": "300",
+                  "letterSpacing": 1,
+                  "fontStyle": "italic"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "f4ErD",
+              "name": "navC",
+              "gap": 24,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "GkvYk",
+                  "name": "navC1",
+                  "fill": "#78716C",
+                  "content": "home",
+                  "fontFamily": "Outfit",
+                  "fontSize": 12,
+                  "letterSpacing": 1
+                },
+                {
+                  "type": "text",
+                  "id": "2XSPl",
+                  "name": "navC2",
+                  "fill": "#78716C",
+                  "content": "about",
+                  "fontFamily": "Outfit",
+                  "fontSize": 12,
+                  "letterSpacing": 1
+                },
+                {
+                  "type": "text",
+                  "id": "ZGlxw",
+                  "name": "navC3",
+                  "fill": "#78716C",
+                  "content": "projects",
+                  "fontFamily": "Outfit",
+                  "fontSize": 12,
+                  "letterSpacing": 1
+                },
+                {
+                  "type": "text",
+                  "id": "yrTVs",
+                  "name": "navC4",
+                  "fill": "#292524",
+                  "content": "blog",
+                  "fontFamily": "Outfit",
+                  "fontSize": 12,
+                  "fontWeight": "600",
+                  "letterSpacing": 1
+                },
+                {
+                  "type": "text",
+                  "id": "HwkO6",
+                  "name": "navC5",
+                  "fill": "#78716C",
+                  "content": "contact",
+                  "fontFamily": "Outfit",
+                  "fontSize": 12,
+                  "letterSpacing": 1
+                },
+                {
+                  "type": "icon_font",
+                  "id": "808Fq",
+                  "name": "searchC",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "search",
+                  "iconFontFamily": "lucide",
+                  "fill": "#78716C"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "VtnHA",
+          "name": "TOC Strip",
+          "width": "fill_container",
+          "fill": "#EDE9E3",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "bottom": 1
+            },
+            "fill": "#D6D3D1"
+          },
+          "gap": 8,
+          "padding": [
+            12,
+            56
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "ziabX",
+              "name": "tocCLabel",
+              "fill": "#92400E",
+              "content": "§",
+              "fontFamily": "Cormorant Garamond",
+              "fontSize": 16,
+              "fontWeight": "600"
+            },
+            {
+              "type": "rectangle",
+              "id": "v2r8W",
+              "name": "tocCSep",
+              "fill": "#D6D3D1",
+              "width": 1,
+              "height": 16
+            },
+            {
+              "type": "text",
+              "id": "dWhRx",
+              "name": "tocC1",
+              "fill": "#292524",
+              "content": "Introduction",
+              "fontFamily": "Outfit",
+              "fontSize": 11,
+              "fontWeight": "600",
+              "letterSpacing": 0.3
+            },
+            {
+              "type": "text",
+              "id": "5BINm",
+              "name": "tocCDot1",
+              "fill": "#A8A29E",
+              "content": "→",
+              "fontFamily": "Outfit",
+              "fontSize": 10,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "fgHDk",
+              "name": "tocC2",
+              "fill": "#78716C",
+              "content": "The Structure of Attention",
+              "fontFamily": "Outfit",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 0.3
+            },
+            {
+              "type": "text",
+              "id": "RwNgc",
+              "name": "tocCDot2",
+              "fill": "#A8A29E",
+              "content": "→",
+              "fontFamily": "Outfit",
+              "fontSize": 10,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "U9af0",
+              "name": "tocC3",
+              "fill": "#78716C",
+              "content": "Mechanisms of Focus",
+              "fontFamily": "Outfit",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 0.3
+            },
+            {
+              "type": "text",
+              "id": "sL9pN",
+              "name": "tocCDot3",
+              "fill": "#A8A29E",
+              "content": "→",
+              "fontFamily": "Outfit",
+              "fontSize": 10,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "eq267",
+              "name": "tocC4",
+              "fill": "#78716C",
+              "content": "Implications",
+              "fontFamily": "Outfit",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 0.3
+            },
+            {
+              "type": "text",
+              "id": "3VHKs",
+              "name": "tocCDot4",
+              "fill": "#A8A29E",
+              "content": "→",
+              "fontFamily": "Outfit",
+              "fontSize": 10,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "VuZWV",
+              "name": "tocC5",
+              "fill": "#78716C",
+              "content": "References",
+              "fontFamily": "Outfit",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 0.3
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "GNqSQ",
+          "name": "Title Area",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": [
+            56,
+            56,
+            40,
+            56
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "VVZyv",
+              "name": "breadC",
+              "fill": "#A8A29E",
+              "content": "home / blog / attention",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 0.5
+            },
+            {
+              "type": "text",
+              "id": "Jvt9q",
+              "name": "titleC",
+              "fill": "#1C1917",
+              "textGrowth": "fixed-width",
+              "width": 800,
+              "content": "The Structure of Attention",
+              "lineHeight": 1.05,
+              "fontFamily": "Cormorant Garamond",
+              "fontSize": 52,
+              "fontWeight": "300",
+              "letterSpacing": -0.5,
+              "fontStyle": "italic"
+            },
+            {
+              "type": "frame",
+              "id": "GEyQA",
+              "name": "metaC",
+              "gap": 16,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "rJz88",
+                  "name": "metaCTag",
+                  "fill": "#292524",
+                  "cornerRadius": 2,
+                  "padding": [
+                    3,
+                    8
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Nkf4T",
+                      "name": "metaCTagText",
+                      "fill": "#F5F1EB",
+                      "content": "ESSAY",
+                      "fontFamily": "Outfit",
+                      "fontSize": 9,
+                      "fontWeight": "700",
+                      "letterSpacing": 2
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "BeRFn",
+                  "name": "metaCDate",
+                  "fill": "#78716C",
+                  "content": "January 17, 2026",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "e9gyI",
+                  "name": "metaCDot",
+                  "fill": "#A8A29E",
+                  "content": "·",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "LtJLN",
+                  "name": "metaCTime",
+                  "fill": "#78716C",
+                  "content": "12 min read",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "rectangle",
+              "id": "T4CYE",
+              "name": "sepC",
+              "fill": "#92400E",
+              "width": 64,
+              "height": 2
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "deEJX",
+          "name": "Body Columns",
+          "width": "fill_container",
+          "gap": 48,
+          "padding": [
+            0,
+            56
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "oJ2Rr",
+              "name": "Content",
+              "width": 760,
+              "layout": "vertical",
+              "gap": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "QXjTZ",
+                  "name": "introC",
+                  "fill": "#292524",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Attention is the most fundamental cognitive resource we possess. It determines not only what we perceive, but what we fail to perceive — and in this negative space, entire worlds are lost. William James called it 'the taking possession by the mind, in clear and vivid form, of one out of what seem several simultaneously possible objects or trains of thought.'¹",
+                  "lineHeight": 1.7,
+                  "fontFamily": "Literata",
+                  "fontSize": 17,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "eKcAr",
+                  "name": "p2C",
+                  "fill": "#292524",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Yet for all its centrality, attention remains poorly understood — both as a phenomenon of consciousness and as a design constraint. In this essay, I want to explore what we know about the structure of attention, and what this means for how we build systems that interact with human minds.",
+                  "lineHeight": 1.7,
+                  "fontFamily": "Literata",
+                  "fontSize": 17,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "HwN4g",
+                  "name": "h2C",
+                  "fill": "#1C1917",
+                  "content": "The Architecture of Focus",
+                  "lineHeight": 1.15,
+                  "fontFamily": "Cormorant Garamond",
+                  "fontSize": 32,
+                  "fontStyle": "italic"
+                },
+                {
+                  "type": "text",
+                  "id": "Apm6K",
+                  "name": "p3C",
+                  "fill": "#292524",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "The prevailing model in cognitive science treats attention as a resource allocation problem. Kahneman's capacity model suggests we have a limited pool of attentional resources, which can be flexibly distributed across tasks.² This has proven remarkably useful as a framework, even as its simplifications have become apparent.",
+                  "lineHeight": 1.7,
+                  "fontFamily": "Literata",
+                  "fontSize": 17,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "gxvE7",
+                  "name": "Blockquote",
+                  "width": "fill_container",
+                  "fill": "#EDE9E3",
+                  "cornerRadius": 2,
+                  "layout": "vertical",
+                  "gap": 8,
+                  "padding": [
+                    20,
+                    24
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "2w2Er",
+                      "name": "bqCText",
+                      "fill": "#44403C",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "The faculty of voluntarily bringing back a wandering attention, over and over again, is the very root of judgment, character, and will.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Cormorant Garamond",
+                      "fontSize": 20,
+                      "fontWeight": "normal",
+                      "fontStyle": "italic"
+                    },
+                    {
+                      "type": "text",
+                      "id": "luW5l",
+                      "name": "bqCAttr",
+                      "fill": "#78716C",
+                      "content": "— William James, 1890",
+                      "fontFamily": "IBM Plex Mono",
+                      "fontSize": 11,
+                      "fontWeight": "normal",
+                      "letterSpacing": 0.3
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "o3JYl",
+                  "name": "h3C",
+                  "fill": "#1C1917",
+                  "content": "Selective Processing",
+                  "lineHeight": 1.15,
+                  "fontFamily": "Cormorant Garamond",
+                  "fontSize": 26,
+                  "fontStyle": "italic"
+                },
+                {
+                  "type": "text",
+                  "id": "s439W",
+                  "name": "p4C",
+                  "fill": "#292524",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "The selective nature of attention has been studied extensively since Broadbent's filter model.³ What makes this particularly relevant to interface design is the observation that selection operates at multiple levels simultaneously — perceptual, cognitive, and motor.",
+                  "lineHeight": 1.7,
+                  "fontFamily": "Literata",
+                  "fontSize": 17,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "DBQ4k",
+                  "name": "Code Block",
+                  "width": "fill_container",
+                  "fill": "#292524",
+                  "cornerRadius": 3,
+                  "layout": "vertical",
+                  "gap": 4,
+                  "padding": [
+                    16,
+                    20
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "cRfI7",
+                      "name": "codeCLang",
+                      "fill": "#78716C",
+                      "content": "python",
+                      "fontFamily": "IBM Plex Mono",
+                      "fontSize": 10,
+                      "fontWeight": "normal",
+                      "letterSpacing": 0.5
+                    },
+                    {
+                      "type": "text",
+                      "id": "OxjZr",
+                      "name": "codeCL1",
+                      "fill": "#E7E5E4",
+                      "content": "def attend(stimulus, threshold=0.5):",
+                      "lineHeight": 1.7,
+                      "fontFamily": "IBM Plex Mono",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "xQzwC",
+                      "name": "codeCL2",
+                      "fill": "#A8A29E",
+                      "content": "    salience = compute_salience(stimulus)",
+                      "lineHeight": 1.7,
+                      "fontFamily": "IBM Plex Mono",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "1naMq",
+                      "name": "codeCL3",
+                      "fill": "#D6D3D1",
+                      "content": "    return allocate_resources(stimulus)",
+                      "lineHeight": 1.7,
+                      "fontFamily": "IBM Plex Mono",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "lmbXP",
+                  "name": "Link Styles",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 10,
+                  "padding": [
+                    8,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "HlT39",
+                      "name": "linkCLabel",
+                      "fill": "#A8A29E",
+                      "content": "link styles",
+                      "fontFamily": "IBM Plex Mono",
+                      "fontSize": 10,
+                      "fontWeight": "normal",
+                      "letterSpacing": 1
+                    },
+                    {
+                      "type": "frame",
+                      "id": "xfqas",
+                      "name": "linkCRow",
+                      "gap": 24,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "anFWL",
+                          "name": "linkC1",
+                          "fill": "#B45309",
+                          "content": "internal link",
+                          "fontFamily": "Literata",
+                          "fontSize": 17,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "1CobD",
+                          "name": "linkC2",
+                          "fill": "#B45309",
+                          "content": "external link ↗",
+                          "fontFamily": "Literata",
+                          "fontSize": 17,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "j8VBU",
+                          "name": "linkC3",
+                          "fill": "#78716C",
+                          "content": "visited",
+                          "fontFamily": "Literata",
+                          "fontSize": 17,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "tZ4XD",
+                          "name": "linkC4",
+                          "fill": "#D97706",
+                          "content": "hovered",
+                          "fontFamily": "Literata",
+                          "fontSize": 17,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "MIS1Y",
+              "name": "Annotations",
+              "width": "fill_container",
+              "height": "fit_content(1400)",
+              "layout": "none",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "HJ91F",
+                  "x": 0,
+                  "y": 40,
+                  "name": "Annotation 1",
+                  "width": 240,
+                  "fill": "#FEFCE8",
+                  "cornerRadius": 3,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": {
+                      "left": 3
+                    },
+                    "fill": "#92400E"
+                  },
+                  "layout": "vertical",
+                  "gap": 4,
+                  "padding": [
+                    10,
+                    14
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "muyky",
+                      "name": "anno1num",
+                      "fill": "#92400E",
+                      "content": "¹",
+                      "fontFamily": "IBM Plex Mono",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "LaopY",
+                      "name": "anno1text",
+                      "fill": "#57534E",
+                      "textGrowth": "fixed-width",
+                      "width": 210,
+                      "content": "James, W. (1890). The Principles of Psychology. Vol. 1, pp. 403–404.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Literata",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "T3MNB",
+                  "x": 0,
+                  "y": 300,
+                  "name": "Annotation 2",
+                  "width": 240,
+                  "fill": "#FEFCE8",
+                  "cornerRadius": 3,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": {
+                      "left": 3
+                    },
+                    "fill": "#92400E"
+                  },
+                  "layout": "vertical",
+                  "gap": 4,
+                  "padding": [
+                    10,
+                    14
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "cQHup",
+                      "name": "anno2num",
+                      "fill": "#92400E",
+                      "content": "²",
+                      "fontFamily": "IBM Plex Mono",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "ScmzO",
+                      "name": "anno2text",
+                      "fill": "#57534E",
+                      "textGrowth": "fixed-width",
+                      "width": 210,
+                      "content": "Kahneman, D. (1973). Attention and Effort. Refined later by Wickens' multiple resource theory.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Literata",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "SoP6m",
+                  "x": 0,
+                  "y": 520,
+                  "name": "Annotation 3",
+                  "width": 240,
+                  "fill": "#FEFCE8",
+                  "cornerRadius": 3,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": {
+                      "left": 3
+                    },
+                    "fill": "#92400E"
+                  },
+                  "layout": "vertical",
+                  "gap": 4,
+                  "padding": [
+                    10,
+                    14
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "KPjck",
+                      "name": "anno3num",
+                      "fill": "#92400E",
+                      "content": "³",
+                      "fontFamily": "IBM Plex Mono",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "ciWZE",
+                      "name": "anno3text",
+                      "fill": "#57534E",
+                      "textGrowth": "fixed-width",
+                      "width": 210,
+                      "content": "Broadbent's (1958) filter model proposed an early-selection bottleneck in attention.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Literata",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "QZ4jL",
+          "name": "Footer",
+          "width": "fill_container",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "top": 3
+            },
+            "fill": "#292524"
+          },
+          "layout": "vertical",
+          "gap": 16,
+          "padding": [
+            32,
+            56
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "eHvNE",
+              "name": "blCLabel",
+              "fill": "#A8A29E",
+              "content": "backlinks",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 10,
+              "fontWeight": "normal",
+              "letterSpacing": 1
+            },
+            {
+              "type": "frame",
+              "id": "5u0TA",
+              "name": "blCRow",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "EwZXm",
+                  "name": "blC1",
+                  "fill": "#B45309",
+                  "content": "← Rationality and Attention",
+                  "fontFamily": "Literata",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "8yEyz",
+                  "name": "blC2",
+                  "fill": "#B45309",
+                  "content": "← Interface Design",
+                  "fontFamily": "Literata",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "QokF1",
+              "name": "footerCBottom",
+              "width": "fill_container",
+              "padding": [
+                16,
+                0,
+                0,
+                0
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "72HMH",
+                  "name": "footerCL",
+                  "fill": "#A8A29E",
+                  "content": "© 2026 Theo Ryzhenkov",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "1i1hH",
+                  "name": "footerCR",
+                  "fill": "#A8A29E",
+                  "content": "theor.net  ·  rss  ·  source",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "PVSJw",
+          "name": "Version Label",
+          "width": "fill_container",
+          "fill": "#292524",
+          "layout": "vertical",
+          "gap": 4,
+          "padding": [
+            24,
+            56
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "Nx7Lu",
+              "name": "vCTitle",
+              "fill": "#F5F1EB",
+              "content": "VERSION C — THE WORKSHOP",
+              "fontFamily": "Outfit",
+              "fontSize": 11,
+              "fontWeight": "700",
+              "letterSpacing": 2
+            },
+            {
+              "type": "text",
+              "id": "21JFI",
+              "name": "vCDesc",
+              "fill": "#78716C",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Two-column with warm annotations: TOC strip at top · inline footnote callouts right · Cormorant Garamond + Literata + IBM Plex Mono.",
+              "fontFamily": "Outfit",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "XHX91",
+      "x": 0,
+      "y": 2219,
+      "name": "Version A2 — Hypertext Classic",
+      "width": 1440,
+      "fill": "#FFFFFF",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "uBJPg",
+          "name": "Header",
+          "width": "fill_container",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "bottom": 1
+            },
+            "fill": "#CCCCCC"
+          },
+          "padding": [
+            12,
+            48
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "EqIRz",
+              "name": "logo2",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "k325I",
+                  "name": "logo2mark",
+                  "width": 18,
+                  "height": 18,
+                  "fill": "#551A8B",
+                  "cornerRadius": 2
+                },
+                {
+                  "type": "text",
+                  "id": "iC1Zu",
+                  "name": "logo2text",
+                  "fill": "#111111",
+                  "content": "TheoR.net",
+                  "fontFamily": "Libre Baskerville",
+                  "fontSize": 16,
+                  "fontWeight": "bold"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "03ZOM",
+              "name": "nav2",
+              "fill": "#0000EE",
+              "content": "Home  |  About  |  Me  |  Projects  |  Blog  |  Contact",
+              "fontFamily": "Libre Baskerville",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "D3LqJ",
+          "name": "Body",
+          "width": "fill_container",
+          "padding": [
+            32,
+            48,
+            64,
+            48
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "zQ7qY",
+              "name": "TOC",
+              "width": 180,
+              "layout": "vertical",
+              "gap": 6,
+              "padding": [
+                0,
+                20,
+                0,
+                0
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Y8gmC",
+                  "name": "toc2label",
+                  "fill": "#666666",
+                  "content": "CONTENTS",
+                  "fontFamily": "Libre Baskerville",
+                  "fontSize": 10,
+                  "fontWeight": "normal",
+                  "letterSpacing": 1.5
+                },
+                {
+                  "type": "rectangle",
+                  "id": "VQbW3",
+                  "name": "toc2sep",
+                  "fill": "#CCCCCC",
+                  "width": 24,
+                  "height": 1
+                },
+                {
+                  "type": "text",
+                  "id": "Zjski",
+                  "name": "toc2i1",
+                  "fill": "#0000EE",
+                  "content": "Introduction",
+                  "fontFamily": "Libre Baskerville",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "8H1uY",
+                  "name": "toc2i2",
+                  "fill": "#0000EE",
+                  "content": "The Structure of Attention",
+                  "fontFamily": "Libre Baskerville",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "BPYlE",
+                  "name": "toc2i3",
+                  "fill": "#0000EE",
+                  "content": "Mechanisms of Focus",
+                  "fontFamily": "Libre Baskerville",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "6CGQ6",
+                  "name": "toc2sub1",
+                  "fill": "#0000EE",
+                  "content": "  · Selective Processing",
+                  "fontFamily": "Libre Baskerville",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "FX2SB",
+                  "name": "toc2sub2",
+                  "fill": "#0000EE",
+                  "content": "  · Sustained Engagement",
+                  "fontFamily": "Libre Baskerville",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "tdvmZ",
+                  "name": "toc2i4",
+                  "fill": "#0000EE",
+                  "content": "Implications for Design",
+                  "fontFamily": "Libre Baskerville",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "2gdcS",
+                  "name": "toc2i5",
+                  "fill": "#0000EE",
+                  "content": "References",
+                  "fontFamily": "Libre Baskerville",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "GCxZC",
+              "name": "Content",
+              "width": 700,
+              "layout": "vertical",
+              "padding": [
+                0,
+                32
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "OtQfw",
+                  "name": "titleArea2",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "padding": [
+                    0,
+                    0,
+                    16,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "AAvpp",
+                      "name": "title2",
+                      "fill": "#111111",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "The Structure of Attention",
+                      "lineHeight": 1.2,
+                      "fontFamily": "Libre Baskerville",
+                      "fontSize": 28,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "daFZe",
+                      "name": "subtitle2",
+                      "fill": "#666666",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "On focus, distraction, and the architecture of conscious experience",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Libre Baskerville",
+                      "fontSize": 15,
+                      "fontWeight": "normal",
+                      "fontStyle": "italic"
+                    },
+                    {
+                      "type": "text",
+                      "id": "kNtel",
+                      "name": "meta2",
+                      "fill": "#999999",
+                      "content": "Created Jan 17, 2026",
+                      "fontFamily": "Libre Baskerville",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "rectangle",
+                  "id": "QWLn1",
+                  "name": "hr2",
+                  "fill": "#CCCCCC",
+                  "width": "fill_container",
+                  "height": 1
+                },
+                {
+                  "type": "frame",
+                  "id": "FnWBR",
+                  "name": "Prose",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 18,
+                  "padding": [
+                    20,
+                    0,
+                    0,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "oC30b",
+                      "name": "p2a",
+                      "fill": "#111111",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Attention is the most fundamental cognitive resource we possess. It determines not only what we perceive, but what we fail to perceive — and in this negative space, entire worlds are lost. William James called it 'the taking possession by the mind, in clear and vivid form, of one out of what seem several simultaneously possible objects or trains of thought.'¹",
+                      "lineHeight": 1.7,
+                      "fontFamily": "Libre Baskerville",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "TjHHB",
+                      "name": "p2b",
+                      "fill": "#111111",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Yet for all its centrality, attention remains poorly understood — both as a phenomenon of consciousness and as a design constraint. In this essay, I want to explore what we know about the structure of attention, and what this means for how we build systems that interact with human minds.",
+                      "lineHeight": 1.7,
+                      "fontFamily": "Libre Baskerville",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "fcbAU",
+                      "name": "h2a2",
+                      "fill": "#111111",
+                      "content": "The Architecture of Focus",
+                      "lineHeight": 1.25,
+                      "fontFamily": "Libre Baskerville",
+                      "fontSize": 22,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "iQiVT",
+                      "name": "p2c",
+                      "fill": "#111111",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "The prevailing model in cognitive science treats attention as a resource allocation problem. Kahneman's capacity model suggests we have a limited pool of attentional resources, which can be flexibly distributed across tasks.² This has proven remarkably useful as a framework.",
+                      "lineHeight": 1.7,
+                      "fontFamily": "Libre Baskerville",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "tFuZb",
+                      "name": "Blockquote",
+                      "width": "fill_container",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": {
+                          "left": 2
+                        },
+                        "fill": "#CCCCCC"
+                      },
+                      "padding": [
+                        0,
+                        0,
+                        0,
+                        20
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "MnctJ",
+                          "name": "bq2text",
+                          "fill": "#444444",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "The faculty of voluntarily bringing back a wandering attention, over and over again, is the very root of judgment, character, and will.\n— William James, Principles of Psychology (1890)",
+                          "lineHeight": 1.6,
+                          "fontFamily": "Libre Baskerville",
+                          "fontSize": 14,
+                          "fontWeight": "normal",
+                          "fontStyle": "italic"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "eJKxP",
+                      "name": "h3a2",
+                      "fill": "#111111",
+                      "content": "Selective Processing",
+                      "lineHeight": 1.25,
+                      "fontFamily": "Libre Baskerville",
+                      "fontSize": 18,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "0qWS0",
+                      "name": "p2d",
+                      "fill": "#111111",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "The selective nature of attention has been studied extensively since Broadbent's filter model.³ What makes this particularly relevant to interface design is the observation that selection operates at multiple levels — perceptual, cognitive, and motor.",
+                      "lineHeight": 1.7,
+                      "fontFamily": "Libre Baskerville",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "zkW5Y",
+                      "name": "Code Block",
+                      "width": "fill_container",
+                      "fill": "#F8F8F8",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#E0E0E0"
+                      },
+                      "layout": "vertical",
+                      "gap": 2,
+                      "padding": [
+                        14,
+                        16
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "gAwmP",
+                          "name": "code2l1",
+                          "fill": "#333333",
+                          "content": "def attend(stimulus, threshold=0.5):",
+                          "lineHeight": 1.6,
+                          "fontFamily": "IBM Plex Mono",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "WUFVI",
+                          "name": "code2l2",
+                          "fill": "#555555",
+                          "content": "    salience = compute_salience(stimulus)",
+                          "lineHeight": 1.6,
+                          "fontFamily": "IBM Plex Mono",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "yXZma",
+                          "name": "code2l3",
+                          "fill": "#333333",
+                          "content": "    if salience > threshold:",
+                          "lineHeight": 1.6,
+                          "fontFamily": "IBM Plex Mono",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "5wFHo",
+                          "name": "code2l4",
+                          "fill": "#555555",
+                          "content": "        return allocate_resources(stimulus)",
+                          "lineHeight": 1.6,
+                          "fontFamily": "IBM Plex Mono",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "KkjBd",
+                      "name": "Links",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 8,
+                      "padding": [
+                        8,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "etNxt",
+                          "name": "linkLabel2",
+                          "fill": "#999999",
+                          "content": "Link styles:",
+                          "fontFamily": "Libre Baskerville",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "gfXPs",
+                          "name": "linkRow2",
+                          "gap": 20,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "uz4AT",
+                              "name": "lk2a",
+                              "fill": "#0000EE",
+                              "content": "internal link",
+                              "fontFamily": "Libre Baskerville",
+                              "fontSize": 15,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "text",
+                              "id": "605qP",
+                              "name": "lk2b",
+                              "fill": "#0000EE",
+                              "content": "external link ↗",
+                              "fontFamily": "Libre Baskerville",
+                              "fontSize": 15,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "text",
+                              "id": "xbLgv",
+                              "name": "lk2c",
+                              "fill": "#551A8B",
+                              "content": "visited link",
+                              "fontFamily": "Libre Baskerville",
+                              "fontSize": 15,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "text",
+                              "id": "0ukTF",
+                              "name": "lk2d",
+                              "fill": "#0000CC",
+                              "content": "hover state",
+                              "fontFamily": "Libre Baskerville",
+                              "fontSize": 15,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "iPnWK",
+              "name": "Sidenotes",
+              "width": "fill_container",
+              "height": "fit_content(1400)",
+              "layout": "none",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "AXm3b",
+                  "x": 0,
+                  "y": 180,
+                  "name": "sn2a",
+                  "width": 240,
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "FaLpf",
+                      "name": "sn2anum",
+                      "fill": "#999999",
+                      "content": "1.",
+                      "fontFamily": "Libre Baskerville",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "stm4q",
+                      "name": "sn2atext",
+                      "fill": "#666666",
+                      "textGrowth": "fixed-width",
+                      "width": 240,
+                      "content": "James, W. (1890). The Principles of Psychology. Henry Holt. Vol. 1, pp. 403–404.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Libre Baskerville",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "UutYc",
+                  "x": 0,
+                  "y": 420,
+                  "name": "sn2b",
+                  "width": 240,
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "kHHpO",
+                      "name": "sn2bnum",
+                      "fill": "#999999",
+                      "content": "2.",
+                      "fontFamily": "Libre Baskerville",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "AfBeA",
+                      "name": "sn2btext",
+                      "fill": "#666666",
+                      "textGrowth": "fixed-width",
+                      "width": 240,
+                      "content": "Kahneman, D. (1973). Attention and Effort. This model has been refined by Wickens' multiple resource theory.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Libre Baskerville",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "qvFNa",
+                  "x": 0,
+                  "y": 680,
+                  "name": "sn2c",
+                  "width": 240,
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "4Rz3c",
+                      "name": "sn2cnum",
+                      "fill": "#999999",
+                      "content": "3.",
+                      "fontFamily": "Libre Baskerville",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "l7gAa",
+                      "name": "sn2ctext",
+                      "fill": "#666666",
+                      "textGrowth": "fixed-width",
+                      "width": 240,
+                      "content": "Broadbent, D.E. (1958). Perception and Communication. Pergamon Press.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Libre Baskerville",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "WYQsx",
+          "name": "Footer",
+          "width": "fill_container",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "top": 1
+            },
+            "fill": "#CCCCCC"
+          },
+          "layout": "vertical",
+          "gap": 12,
+          "padding": [
+            20,
+            48
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "4Iz41",
+              "name": "blLabel2",
+              "fill": "#999999",
+              "content": "BACKLINKS",
+              "fontFamily": "Libre Baskerville",
+              "fontSize": 10,
+              "fontWeight": "normal",
+              "letterSpacing": 1.5
+            },
+            {
+              "type": "frame",
+              "id": "FUWAy",
+              "name": "blRow2",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "vYajq",
+                  "name": "bl2a",
+                  "fill": "#0000EE",
+                  "content": "Rationality and Attention",
+                  "fontFamily": "Libre Baskerville",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "XlJax",
+                  "name": "bl2b",
+                  "fill": "#999999",
+                  "content": "·",
+                  "fontFamily": "Libre Baskerville",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "jzl8J",
+                  "name": "bl2c",
+                  "fill": "#0000EE",
+                  "content": "Interface Design Principles",
+                  "fontFamily": "Libre Baskerville",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "r1AuZ",
+              "name": "footerBot2",
+              "width": "fill_container",
+              "padding": [
+                8,
+                0,
+                0,
+                0
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "cw3wD",
+                  "name": "fbl2",
+                  "fill": "#999999",
+                  "content": "© 2026 Theo Ryzhenkov",
+                  "fontFamily": "Libre Baskerville",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "jeucO",
+                  "name": "fbr2",
+                  "fill": "#999999",
+                  "content": "RSS  ·  Source  ·  Colophon",
+                  "fontFamily": "Libre Baskerville",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "7eJPM",
+          "name": "Version Label",
+          "width": "fill_container",
+          "fill": "#111111",
+          "layout": "vertical",
+          "gap": 4,
+          "padding": [
+            20,
+            48
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "Fk1VR",
+              "name": "vTitle2",
+              "fill": "#FFFFFF",
+              "content": "VERSION A2 — HYPERTEXT CLASSIC",
+              "fontFamily": "Libre Baskerville",
+              "fontSize": 11,
+              "fontWeight": "bold",
+              "letterSpacing": 1.5
+            },
+            {
+              "type": "text",
+              "id": "c0JhF",
+              "name": "vDesc2",
+              "fill": "#888888",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Pure hypertext: classic blue links #0000EE · visited purple #551A8B · Libre Baskerville (≈ Georgia) · pipe-separated nav · minimal decoration · sidenotes as plain text.",
+              "fontFamily": "Libre Baskerville",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "Ohs1r",
+      "x": 1600,
+      "y": 2219,
+      "name": "Version A3 — The Academic",
+      "width": 1440,
+      "fill": "#FFFFF8",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "msUaQ",
+          "name": "Header",
+          "width": "fill_container",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "bottom": 2
+            },
+            "fill": "#111111"
+          },
+          "padding": [
+            10,
+            48
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "GDlNT",
+              "name": "logo3",
+              "fill": "#111111",
+              "content": "THEO RYZHENKOV",
+              "fontFamily": "Crimson Text",
+              "fontSize": 14,
+              "fontWeight": "600",
+              "letterSpacing": 2
+            },
+            {
+              "type": "text",
+              "id": "CG2Ri",
+              "name": "nav3",
+              "fill": "#444444",
+              "content": "Home  ·  About  ·  Projects  ·  Blog  ·  Contact  ·  Search",
+              "fontFamily": "Crimson Text",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "krmTr",
+          "name": "Body",
+          "width": "fill_container",
+          "padding": [
+            28,
+            48,
+            56,
+            48
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "cPC8p",
+              "name": "TOC",
+              "width": 190,
+              "stroke": {
+                "align": "inside",
+                "thickness": {
+                  "right": 1
+                },
+                "fill": "#E0E0E0"
+              },
+              "layout": "vertical",
+              "gap": 4,
+              "padding": [
+                0,
+                16,
+                0,
+                0
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "SH5of",
+                  "name": "toc3label",
+                  "fill": "#888888",
+                  "content": "§ Contents",
+                  "fontFamily": "Crimson Text",
+                  "fontSize": 12,
+                  "fontWeight": "normal",
+                  "fontStyle": "italic"
+                },
+                {
+                  "type": "rectangle",
+                  "id": "sfLXV",
+                  "name": "toc3sep",
+                  "fill": "#CCCCCC",
+                  "width": 16,
+                  "height": 1
+                },
+                {
+                  "type": "text",
+                  "id": "M8hSh",
+                  "name": "toc3i1",
+                  "fill": "#111111",
+                  "content": "1. Introduction",
+                  "fontFamily": "Crimson Text",
+                  "fontSize": 13,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "vpDz6",
+                  "name": "toc3i2",
+                  "fill": "#444444",
+                  "content": "2. The Architecture of Focus",
+                  "fontFamily": "Crimson Text",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "uyGZw",
+                  "name": "toc3i3",
+                  "fill": "#444444",
+                  "content": "3. Mechanisms of Focus",
+                  "fontFamily": "Crimson Text",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "E3Pp2",
+                  "name": "toc3sub1",
+                  "fill": "#888888",
+                  "content": "   3.1 Selective Processing",
+                  "fontFamily": "Crimson Text",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "iBmUa",
+                  "name": "toc3sub2",
+                  "fill": "#888888",
+                  "content": "   3.2 Sustained Engagement",
+                  "fontFamily": "Crimson Text",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "P5cmq",
+                  "name": "toc3i4",
+                  "fill": "#444444",
+                  "content": "4. Implications for Design",
+                  "fontFamily": "Crimson Text",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "luV3S",
+                  "name": "toc3i5",
+                  "fill": "#444444",
+                  "content": "5. References",
+                  "fontFamily": "Crimson Text",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "n4YEK",
+              "name": "Content",
+              "width": 700,
+              "layout": "vertical",
+              "padding": [
+                0,
+                32,
+                0,
+                24
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "vRpF6",
+                  "name": "title3",
+                  "fill": "#111111",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "The Structure of Attention",
+                  "lineHeight": 1.15,
+                  "fontFamily": "Crimson Text",
+                  "fontSize": 32,
+                  "fontWeight": "bold"
+                },
+                {
+                  "type": "text",
+                  "id": "9GvG0",
+                  "name": "sub3",
+                  "fill": "#666666",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "On focus, distraction, and the architecture of conscious experience",
+                  "lineHeight": 1.4,
+                  "fontFamily": "Crimson Text",
+                  "fontSize": 16,
+                  "fontWeight": "normal",
+                  "fontStyle": "italic"
+                },
+                {
+                  "type": "text",
+                  "id": "31KCA",
+                  "name": "meta3",
+                  "fill": "#999999",
+                  "content": "Theo Ryzhenkov · January 2026 · ~12 min · Last modified Feb 2026",
+                  "fontFamily": "Crimson Text",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "rectangle",
+                  "id": "ES2aL",
+                  "name": "hr3",
+                  "fill": "#CCCCCC",
+                  "width": "fill_container",
+                  "height": 1
+                },
+                {
+                  "type": "frame",
+                  "id": "514Zj",
+                  "name": "Prose",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 14,
+                  "padding": [
+                    16,
+                    0,
+                    0,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "He5po",
+                      "name": "h13",
+                      "fill": "#888888",
+                      "content": "§1  Introduction",
+                      "fontFamily": "Crimson Text",
+                      "fontSize": 13,
+                      "fontWeight": "bold",
+                      "letterSpacing": 0.5
+                    },
+                    {
+                      "type": "text",
+                      "id": "8UQSq",
+                      "name": "p3a",
+                      "fill": "#222222",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Attention is the most fundamental cognitive resource we possess. It determines not only what we perceive, but what we fail to perceive — and in this negative space, entire worlds are lost. William James called it 'the taking possession by the mind, in clear and vivid form, of one out of what seem several simultaneously possible objects or trains of thought.'†",
+                      "lineHeight": 1.55,
+                      "fontFamily": "Crimson Text",
+                      "fontSize": 16,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "nhmru",
+                      "name": "p3b",
+                      "fill": "#222222",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Yet for all its centrality, attention remains poorly understood — both as a phenomenon of consciousness and as a design constraint. In this essay, I want to explore what we know about the structure of attention, and what this means for how we build systems that interact with human minds.",
+                      "lineHeight": 1.55,
+                      "fontFamily": "Crimson Text",
+                      "fontSize": 16,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "jT3hE",
+                      "name": "h23",
+                      "fill": "#111111",
+                      "content": "§2  The Architecture of Focus",
+                      "lineHeight": 1.2,
+                      "fontFamily": "Crimson Text",
+                      "fontSize": 22,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "w0Pcj",
+                      "name": "p3c",
+                      "fill": "#222222",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "The prevailing model in cognitive science treats attention as a resource allocation problem. Kahneman's capacity model suggests we have a limited pool of attentional resources, which can be flexibly distributed across tasks.‡ This has proven remarkably useful.",
+                      "lineHeight": 1.55,
+                      "fontFamily": "Crimson Text",
+                      "fontSize": 16,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "z8Wd4",
+                      "name": "Blockquote",
+                      "width": "fill_container",
+                      "fill": "#F5F5F0",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": {
+                          "left": 3
+                        },
+                        "fill": "#888888"
+                      },
+                      "layout": "vertical",
+                      "padding": [
+                        12,
+                        24
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "XkFD9",
+                          "name": "bq3text",
+                          "fill": "#555555",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "The faculty of voluntarily bringing back a wandering attention, over and over again, is the very root of judgment, character, and will. — James (1890)",
+                          "lineHeight": 1.55,
+                          "fontFamily": "Crimson Text",
+                          "fontSize": 15,
+                          "fontWeight": "normal",
+                          "fontStyle": "italic"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "VqfO3",
+                      "name": "h33",
+                      "fill": "#111111",
+                      "content": "§3.1  Selective Processing",
+                      "lineHeight": 1.2,
+                      "fontFamily": "Crimson Text",
+                      "fontSize": 18,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "TYSwa",
+                      "name": "p3d",
+                      "fill": "#222222",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "The selective nature of attention has been studied extensively since Broadbent's filter model.* What makes this particularly relevant to interface design is the observation that selection operates at multiple levels — perceptual, cognitive, and motor.",
+                      "lineHeight": 1.55,
+                      "fontFamily": "Crimson Text",
+                      "fontSize": 16,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "0SUxU",
+                      "name": "Code",
+                      "width": "fill_container",
+                      "fill": "#F5F5F0",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#E0E0E0"
+                      },
+                      "layout": "vertical",
+                      "gap": 2,
+                      "padding": [
+                        12,
+                        16
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "IR2ma",
+                          "name": "code3l1",
+                          "fill": "#333333",
+                          "content": "def attend(stimulus, threshold=0.5):",
+                          "lineHeight": 1.6,
+                          "fontFamily": "IBM Plex Mono",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "bJUvm",
+                          "name": "code3l2",
+                          "fill": "#666666",
+                          "content": "    salience = compute_salience(stimulus)",
+                          "lineHeight": 1.6,
+                          "fontFamily": "IBM Plex Mono",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "tSjSf",
+                          "name": "code3l3",
+                          "fill": "#444444",
+                          "content": "    return allocate_resources(stimulus)",
+                          "lineHeight": 1.6,
+                          "fontFamily": "IBM Plex Mono",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Zc9xd",
+                      "name": "Links",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 8,
+                      "padding": [
+                        8,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "AGpVu",
+                          "name": "lkLabel3",
+                          "fill": "#999999",
+                          "content": "Link styles:",
+                          "fontFamily": "Crimson Text",
+                          "fontSize": 12,
+                          "fontWeight": "normal",
+                          "fontStyle": "italic"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "G3VD5",
+                          "name": "lkRow3",
+                          "gap": 20,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "M3sel",
+                              "name": "lk3a",
+                              "fill": "#005500",
+                              "content": "internal link",
+                              "fontFamily": "Crimson Text",
+                              "fontSize": 16,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "text",
+                              "id": "hqAQA",
+                              "name": "lk3b",
+                              "fill": "#005500",
+                              "content": "external ↗",
+                              "fontFamily": "Crimson Text",
+                              "fontSize": 16,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "text",
+                              "id": "H67Xs",
+                              "name": "lk3c",
+                              "fill": "#553388",
+                              "content": "visited",
+                              "fontFamily": "Crimson Text",
+                              "fontSize": 16,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "text",
+                              "id": "LHuf4",
+                              "name": "lk3d",
+                              "fill": "#007700",
+                              "content": "hover",
+                              "fontFamily": "Crimson Text",
+                              "fontSize": 16,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "gxQTd",
+              "name": "Sidenotes",
+              "width": "fill_container",
+              "height": "fit_content(1400)",
+              "layout": "none",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "gHsEx",
+                  "x": 0,
+                  "y": 140,
+                  "name": "sn3a",
+                  "width": 240,
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "lzb7S",
+                      "name": "sn3anum",
+                      "fill": "#888888",
+                      "content": "† note",
+                      "fontFamily": "Crimson Text",
+                      "fontSize": 11,
+                      "fontWeight": "normal",
+                      "fontStyle": "italic"
+                    },
+                    {
+                      "type": "text",
+                      "id": "hAuTz",
+                      "name": "sn3atext",
+                      "fill": "#666666",
+                      "textGrowth": "fixed-width",
+                      "width": 240,
+                      "content": "James, W. (1890). The Principles of Psychology. Henry Holt and Company. Vol. 1, pp. 403–404.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Crimson Text",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "VsqpF",
+                  "x": 0,
+                  "y": 380,
+                  "name": "sn3b",
+                  "width": 240,
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "sqSOz",
+                      "name": "sn3bnum",
+                      "fill": "#888888",
+                      "content": "‡ note",
+                      "fontFamily": "Crimson Text",
+                      "fontSize": 11,
+                      "fontWeight": "normal",
+                      "fontStyle": "italic"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Zt5j6",
+                      "name": "sn3btext",
+                      "fill": "#666666",
+                      "textGrowth": "fixed-width",
+                      "width": 240,
+                      "content": "Kahneman, D. (1973). Attention and Effort. Refined later by Wickens' multiple resource theory.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Crimson Text",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "dUijO",
+                  "x": 0,
+                  "y": 620,
+                  "name": "sn3c",
+                  "width": 240,
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "AaTrB",
+                      "name": "sn3cnum",
+                      "fill": "#888888",
+                      "content": "* note",
+                      "fontFamily": "Crimson Text",
+                      "fontSize": 11,
+                      "fontWeight": "normal",
+                      "fontStyle": "italic"
+                    },
+                    {
+                      "type": "text",
+                      "id": "QrifB",
+                      "name": "sn3ctext",
+                      "fill": "#666666",
+                      "textGrowth": "fixed-width",
+                      "width": 240,
+                      "content": "Broadbent, D.E. (1958). Perception and Communication. Pergamon Press.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Crimson Text",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Ls6vO",
+          "name": "Footer",
+          "width": "fill_container",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "top": 2
+            },
+            "fill": "#111111"
+          },
+          "padding": [
+            12,
+            48
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "SMV5Z",
+              "name": "fl3",
+              "fill": "#999999",
+              "content": "© 2026 Theo Ryzhenkov",
+              "fontFamily": "Crimson Text",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "ZW4tV",
+              "name": "fr3",
+              "fill": "#999999",
+              "content": "RSS · Source · Colophon",
+              "fontFamily": "Crimson Text",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Ptg2a",
+          "name": "Version Label",
+          "width": "fill_container",
+          "fill": "#222222",
+          "layout": "vertical",
+          "gap": 4,
+          "padding": [
+            20,
+            48
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "rGJAI",
+              "name": "vTitle3",
+              "fill": "#FFFFF8",
+              "content": "VERSION A3 — THE ACADEMIC",
+              "fontFamily": "Crimson Text",
+              "fontSize": 11,
+              "fontWeight": "bold",
+              "letterSpacing": 1.5
+            },
+            {
+              "type": "text",
+              "id": "dHZB1",
+              "name": "vDesc3",
+              "fill": "#888888",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Dense & structured: numbered §sections · typographic footnote markers (†, ‡, *) · Crimson Text throughout · green links #005500 · tight 1.55 line-height · right-ruled TOC.",
+              "fontFamily": "Crimson Text",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "i00Mn",
+      "x": 3200,
+      "y": 2219,
+      "name": "Version A4 — The Index",
+      "width": 1440,
+      "fill": "#FDFDFC",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "wLmeW",
+          "name": "Header",
+          "width": "fill_container",
+          "fill": "#F0EFEC",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "bottom": 1
+            },
+            "fill": "#D4D2CE"
+          },
+          "padding": [
+            8,
+            48
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "S0MP4",
+              "name": "logo4",
+              "fill": "#222222",
+              "content": "theor.net",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 14,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "06vxX",
+              "name": "nav4",
+              "fill": "#005588",
+              "content": "[home]  [about]  [projects]  [blog]  [contact]  [?]",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "wCjr5",
+          "name": "Body",
+          "width": "fill_container",
+          "padding": [
+            24,
+            48,
+            56,
+            48
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "AaPN8",
+              "name": "TOC",
+              "width": 200,
+              "layout": "vertical",
+              "gap": 3,
+              "padding": [
+                0,
+                16,
+                0,
+                0
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "faMZr",
+                  "name": "toc4label",
+                  "fill": "#999999",
+                  "content": "// contents",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "EAxLH",
+                  "name": "toc4sep",
+                  "fill": "#D4D2CE",
+                  "content": "─────────────",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 10,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "aJjpH",
+                  "name": "toc4i1",
+                  "fill": "#222222",
+                  "content": "  Introduction",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 12,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "tJr2l",
+                  "name": "toc4i2",
+                  "fill": "#005588",
+                  "content": "  Architecture of Focus",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "sNaer",
+                  "name": "toc4i3",
+                  "fill": "#005588",
+                  "content": "  Mechanisms of Focus",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "GNpxq",
+                  "name": "toc4sub1",
+                  "fill": "#888888",
+                  "content": "    ├ Selective Processing",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "gBp22",
+                  "name": "toc4sub2",
+                  "fill": "#888888",
+                  "content": "    └ Sustained Engagement",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "BRUrh",
+                  "name": "toc4i4",
+                  "fill": "#005588",
+                  "content": "  Implications for Design",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "E1Biu",
+                  "name": "toc4i5",
+                  "fill": "#005588",
+                  "content": "  References",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "kIajr",
+                  "name": "toc4sep2",
+                  "fill": "#D4D2CE",
+                  "content": "─────────────",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 10,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "CtYhf",
+                  "name": "toc4meta",
+                  "fill": "#999999",
+                  "content": "created: 2026-01-17\nupdated: 2026-02-04\nwords:   ~3200\nstatus:  final",
+                  "lineHeight": 1.6,
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 10,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "YkiMP",
+              "name": "Content",
+              "width": 700,
+              "layout": "vertical",
+              "padding": [
+                0,
+                28
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "84YfS",
+                  "name": "title4",
+                  "fill": "#222222",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "The Structure of Attention",
+                  "lineHeight": 1.2,
+                  "fontFamily": "Lora",
+                  "fontSize": 28,
+                  "fontWeight": "bold"
+                },
+                {
+                  "type": "text",
+                  "id": "C0B4u",
+                  "name": "sub4",
+                  "fill": "#888888",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "On focus, distraction, and the architecture of conscious experience.",
+                  "lineHeight": 1.4,
+                  "fontFamily": "Lora",
+                  "fontSize": 15,
+                  "fontWeight": "normal",
+                  "fontStyle": "italic"
+                },
+                {
+                  "type": "text",
+                  "id": "XonKc",
+                  "name": "tags4",
+                  "fill": "#005588",
+                  "content": "tags: [attention] [cognition] [design] [essay]",
+                  "fontFamily": "IBM Plex Mono",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "rectangle",
+                  "id": "irnSv",
+                  "name": "hr4",
+                  "fill": "#D4D2CE",
+                  "width": "fill_container",
+                  "height": 1
+                },
+                {
+                  "type": "frame",
+                  "id": "L3AR3",
+                  "name": "Prose",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "padding": [
+                    16,
+                    0,
+                    0,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "1f5Mo",
+                      "name": "p4a",
+                      "fill": "#333333",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Attention is the most fundamental cognitive resource we possess. It determines not only what we perceive, but what we fail to perceive — and in this negative space, entire worlds are lost. William James called it 'the taking possession by the mind, in clear and vivid form, of one out of what seem several simultaneously possible objects or trains of thought.'[1]",
+                      "lineHeight": 1.65,
+                      "fontFamily": "Lora",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "NooEH",
+                      "name": "p4b",
+                      "fill": "#333333",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Yet for all its centrality, attention remains poorly understood — both as a phenomenon of consciousness and as a design constraint. In this essay, I want to explore what we know about the structure of attention, and what this means for how we build systems that interact with human minds.",
+                      "lineHeight": 1.65,
+                      "fontFamily": "Lora",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "ouLRH",
+                      "name": "h24",
+                      "fill": "#222222",
+                      "content": "## The Architecture of Focus",
+                      "lineHeight": 1.3,
+                      "fontFamily": "IBM Plex Mono",
+                      "fontSize": 17,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "ABu1j",
+                      "name": "p4c",
+                      "fill": "#333333",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "The prevailing model in cognitive science treats attention as a resource allocation problem. Kahneman's capacity model suggests we have a limited pool of attentional resources, which can be flexibly distributed across tasks.[2] This has proven remarkably useful as a framework.",
+                      "lineHeight": 1.65,
+                      "fontFamily": "Lora",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Kbjlj",
+                      "name": "Blockquote",
+                      "width": "fill_container",
+                      "fill": "#F0EFEC",
+                      "layout": "vertical",
+                      "padding": [
+                        10,
+                        0,
+                        10,
+                        16
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "9WiUA",
+                          "name": "bq4text",
+                          "fill": "#555555",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "> The faculty of voluntarily bringing back a wandering attention,\n> over and over again, is the very root of judgment, character,\n> and will. — James (1890)",
+                          "lineHeight": 1.6,
+                          "fontFamily": "Lora",
+                          "fontSize": 14,
+                          "fontWeight": "normal",
+                          "fontStyle": "italic"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "gyYHA",
+                      "name": "h34",
+                      "fill": "#222222",
+                      "content": "### Selective Processing",
+                      "lineHeight": 1.3,
+                      "fontFamily": "IBM Plex Mono",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "uPMnc",
+                      "name": "p4d",
+                      "fill": "#333333",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "The selective nature of attention has been studied extensively since Broadbent's filter model.[3] What makes this particularly relevant to interface design is the observation that selection operates at multiple levels — perceptual, cognitive, and motor.",
+                      "lineHeight": 1.65,
+                      "fontFamily": "Lora",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Ub9LG",
+                      "name": "Code",
+                      "width": "fill_container",
+                      "fill": "#F0EFEC",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#D4D2CE"
+                      },
+                      "layout": "vertical",
+                      "gap": 2,
+                      "padding": [
+                        10,
+                        14
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "wE6Ox",
+                          "name": "code4l1",
+                          "fill": "#333333",
+                          "content": "def attend(stimulus, threshold=0.5):",
+                          "lineHeight": 1.6,
+                          "fontFamily": "IBM Plex Mono",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "KjaTt",
+                          "name": "code4l2",
+                          "fill": "#666666",
+                          "content": "    salience = compute_salience(stimulus)",
+                          "lineHeight": 1.6,
+                          "fontFamily": "IBM Plex Mono",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "MmFLg",
+                          "name": "code4l3",
+                          "fill": "#444444",
+                          "content": "    return allocate_resources(stimulus)",
+                          "lineHeight": 1.6,
+                          "fontFamily": "IBM Plex Mono",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "ovAfU",
+                      "name": "Links",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 8,
+                      "padding": [
+                        8,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "9LtQ5",
+                          "name": "lkLabel4",
+                          "fill": "#999999",
+                          "content": "// link styles",
+                          "fontFamily": "IBM Plex Mono",
+                          "fontSize": 11,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "XyZh1",
+                          "name": "lkRow4",
+                          "gap": 20,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "EpXDn",
+                              "name": "lk4a",
+                              "fill": "#005588",
+                              "content": "[internal link]",
+                              "fontFamily": "Lora",
+                              "fontSize": 15,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "text",
+                              "id": "5wePh",
+                              "name": "lk4b",
+                              "fill": "#005588",
+                              "content": "[external ↗]",
+                              "fontFamily": "Lora",
+                              "fontSize": 15,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "text",
+                              "id": "UmwNH",
+                              "name": "lk4c",
+                              "fill": "#774499",
+                              "content": "[visited]",
+                              "fontFamily": "Lora",
+                              "fontSize": 15,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "text",
+                              "id": "8QWi5",
+                              "name": "lk4d",
+                              "fill": "#0077BB",
+                              "content": "[hover]",
+                              "fontFamily": "Lora",
+                              "fontSize": 15,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "hofOW",
+              "name": "Sidenotes",
+              "width": "fill_container",
+              "height": "fit_content(1400)",
+              "layout": "none",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "EXZbJ",
+                  "x": 0,
+                  "y": 140,
+                  "name": "sn4a",
+                  "width": 240,
+                  "fill": "#F0EFEC",
+                  "cornerRadius": 2,
+                  "layout": "vertical",
+                  "gap": 2,
+                  "padding": [
+                    8,
+                    10
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "94Kfp",
+                      "name": "sn4anum",
+                      "fill": "#888888",
+                      "content": "[1]",
+                      "fontFamily": "IBM Plex Mono",
+                      "fontSize": 10,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "aO4JL",
+                      "name": "sn4atext",
+                      "fill": "#666666",
+                      "textGrowth": "fixed-width",
+                      "width": 220,
+                      "content": "James, W. (1890). Principles of Psychology. Vol. 1, pp. 403–404.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "IBM Plex Mono",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "qOALA",
+                  "x": 0,
+                  "y": 380,
+                  "name": "sn4b",
+                  "width": 240,
+                  "fill": "#F0EFEC",
+                  "cornerRadius": 2,
+                  "layout": "vertical",
+                  "gap": 2,
+                  "padding": [
+                    8,
+                    10
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "5Lwi5",
+                      "name": "sn4bnum",
+                      "fill": "#888888",
+                      "content": "[2]",
+                      "fontFamily": "IBM Plex Mono",
+                      "fontSize": 10,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Mz786",
+                      "name": "sn4btext",
+                      "fill": "#666666",
+                      "textGrowth": "fixed-width",
+                      "width": 220,
+                      "content": "Kahneman, D. (1973). Attention and Effort. Refined by Wickens.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "IBM Plex Mono",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "A5z3n",
+                  "x": 0,
+                  "y": 600,
+                  "name": "sn4c",
+                  "width": 240,
+                  "fill": "#F0EFEC",
+                  "cornerRadius": 2,
+                  "layout": "vertical",
+                  "gap": 2,
+                  "padding": [
+                    8,
+                    10
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "gBIE8",
+                      "name": "sn4cnum",
+                      "fill": "#888888",
+                      "content": "[3]",
+                      "fontFamily": "IBM Plex Mono",
+                      "fontSize": 10,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "TJndt",
+                      "name": "sn4ctext",
+                      "fill": "#666666",
+                      "textGrowth": "fixed-width",
+                      "width": 220,
+                      "content": "Broadbent (1958). Perception and Communication. Pergamon.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "IBM Plex Mono",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "9AKGN",
+          "name": "Footer",
+          "width": "fill_container",
+          "fill": "#F0EFEC",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "top": 1
+            },
+            "fill": "#D4D2CE"
+          },
+          "padding": [
+            8,
+            48
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "LjyLQ",
+              "name": "fl4",
+              "fill": "#999999",
+              "content": "© 2026 theo ryzhenkov",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "oJrzI",
+              "name": "fr4",
+              "fill": "#005588",
+              "content": "[rss]  [source]  [colophon]",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "MRhco",
+          "name": "Version Label",
+          "width": "fill_container",
+          "fill": "#222222",
+          "layout": "vertical",
+          "gap": 4,
+          "padding": [
+            20,
+            48
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "hTvD8",
+              "name": "vTitle4",
+              "fill": "#FDFDFC",
+              "content": "VERSION A4 — THE INDEX",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 11,
+              "fontWeight": "bold",
+              "letterSpacing": 1.5
+            },
+            {
+              "type": "text",
+              "id": "OZX0T",
+              "name": "vDesc4",
+              "fill": "#888888",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Monospace-forward: IBM Plex Mono for structure + Lora for prose · [bracket] nav · tree-style TOC · teal links #005588 · metadata sidebar · code-native aesthetic.",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

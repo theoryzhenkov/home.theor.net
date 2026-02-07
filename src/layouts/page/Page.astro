@@ -33,10 +33,10 @@ const descriptionPlain = description?.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
     <Header />
     
     <div class="page-grid">
-      <aside class="sidebar sidebar-left">
+      <aside class="aside-margin">
         <TOC headings={headings} />
       </aside>
-      
+
       <main class="min-w-0 py-4">
         <article>
           <header class="mb-4">
@@ -45,11 +45,11 @@ const descriptionPlain = description?.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
             {descriptionHtml && <p class="text-text-muted italic mb-2" set:html={descriptionHtml} />}
             <Metadata created={created} modified={modified} />
           </header>
-          
+
           <div class="prose">
             <slot />
           </div>
-          
+
           <footer class="page-footer">
             <Footnotes />
             <Backlinks />
@@ -63,6 +63,7 @@ const descriptionPlain = description?.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
     
     <script>
       import '@/scripts/popups';
+      import '@/scripts/footnotes';
 
       function initHeadingLinks() {
         const headings = document.querySelectorAll('.prose h1[id], .prose h2[id], .prose h3[id], .prose h4[id], .prose h5[id], .prose h6[id]');
