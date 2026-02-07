@@ -1,0 +1,83 @@
+---
+import type { RelationsGraph, PageInfoMap } from '@/lib/relations';
+import { buildSubgraphData } from '@/lib/graph-data';
+import type { EdgeType } from '@/lib/graph-data';
+
+interface Props {
+  graph: RelationsGraph;
+  pages: PageInfoMap;
+  rootSlug: string;
+  /** Which relation types to show. Defaults to all. */
+  relationTypes?: EdgeType[];
+  /** How many hops from root to include. Defaults to 1. */
+  depth?: number;
+  /** Height of the graph container. Defaults to '300px'. */
+  height?: string;
+}
+
+const {
+  graph,
+  pages,
+  rootSlug,
+  relationTypes = ['ntpp', 'tpp', 'po', 'ec', 'eq', 'dc', 'next', 'r'],
+  depth = 1,
+  height = '300px',
+} = Astro.props;
+
+const subgraph = buildSubgraphData(graph, pages, rootSlug, {
+  relationTypes,
+  depth,
+});
+
+const uid = `rg-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<div
+  class="relations-graph"
+  id={uid}
+  style={`height: ${height};`}
+  data-graph={JSON.stringify(subgraph)}
+  data-root={rootSlug}
+  data-types={JSON.stringify(relationTypes)}
+>
+</div>
+
+<script>
+  import { createGraph } from '@/scripts/graph/renderer';
+  import type { EdgeType } from '@/lib/graph-data';
+
+  function initRelationsGraphs() {
+    document.querySelectorAll<HTMLElement>('.relations-graph').forEach(container => {
+      // Skip if already initialized
+      if (container.dataset.initialized) return;
+      container.dataset.initialized = 'true';
+
+      const data = JSON.parse(container.dataset.graph!);
+      const rootSlug = container.dataset.root!;
+      const types: EdgeType[] = JSON.parse(container.dataset.types!);
+
+      createGraph(container, data, {
+        visibleTypes: new Set(types),
+        highlightNode: rootSlug,
+        zoomable: false,
+        draggable: true,
+      });
+    });
+  }
+
+  document.addEventListener('astro:page-load', initRelationsGraphs);
+  document.readyState === 'complete'
+    ? initRelationsGraphs()
+    : document.addEventListener('DOMContentLoaded', initRelationsGraphs);
+</script>
+
+<style>
+  .relations-graph {
+    position: relative;
+    width: 100%;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-subtle);
+    margin: theme(spacing.3) 0;
+    overflow: hidden;
+  }
+</style>

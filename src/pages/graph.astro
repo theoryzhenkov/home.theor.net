@@ -1,0 +1,208 @@
+---
+import Head from '@components/Head.astro';
+import Header from '@components/Header.astro';
+import { buildRelationsGraph } from '@/lib/relations';
+import { buildGraphData } from '@/lib/graph-data';
+import { EDGE_STYLES } from '@/scripts/graph/styles';
+import type { EdgeType } from '@/lib/graph-data';
+
+const { graph, pages } = await buildRelationsGraph();
+const graphData = buildGraphData(graph, pages);
+
+const edgeTypes = Object.entries(EDGE_STYLES) as [EdgeType, typeof EDGE_STYLES[EdgeType]][];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <Head title="Graph" description="Interactive relations graph of all pages" />
+
+  <body>
+    <Header />
+
+    <div class="graph-container" id="graph-container">
+      <!-- Legend + filter panel -->
+      <div class="graph-panel" id="graph-panel">
+        <button class="panel-toggle" id="panel-toggle" aria-label="Toggle legend">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6" />
+          </svg>
+        </button>
+        <div class="panel-body" id="panel-body">
+          <h2 class="panel-title">Relations</h2>
+          <div class="legend-list">
+            {edgeTypes.map(([type, style]) => (
+              <label class="legend-item" data-type={type}>
+                <input type="checkbox" checked data-edge-type={type} />
+                <svg width="24" height="12" class="legend-line">
+                  <line
+                    x1="0" y1="6" x2="24" y2="6"
+                    stroke={style.color}
+                    stroke-width={Math.max(style.width, 1.5)}
+                    stroke-dasharray={style.dasharray || 'none'}
+                  />
+                  {style.directed && (
+                    <polygon points="20,2 24,6 20,10" fill={style.color} />
+                  )}
+                </svg>
+                <span class="legend-label">{style.label}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="application/json" id="graph-data" set:html={JSON.stringify(graphData)} />
+
+    <script>
+      import { createGraph } from '@/scripts/graph/renderer';
+      import { EDGE_STYLES } from '@/scripts/graph/styles';
+      import type { EdgeType } from '@/lib/graph-data';
+
+      function init() {
+        const container = document.getElementById('graph-container')!;
+        const dataEl = document.getElementById('graph-data')!;
+        const data = JSON.parse(dataEl.textContent!);
+
+        const allTypes = new Set(Object.keys(EDGE_STYLES) as EdgeType[]);
+
+        const instance = createGraph(container, data, {
+          visibleTypes: allTypes,
+          zoomable: true,
+          draggable: true,
+        });
+
+        // Filter toggles
+        const checkboxes = document.querySelectorAll<HTMLInputElement>('[data-edge-type]');
+        checkboxes.forEach(cb => {
+          cb.addEventListener('change', () => {
+            const active = new Set<EdgeType>();
+            checkboxes.forEach(c => {
+              if (c.checked) active.add(c.dataset.edgeType as EdgeType);
+            });
+            instance.setVisibleTypes(active);
+          });
+        });
+
+        // Panel toggle
+        const panel = document.getElementById('graph-panel')!;
+        const toggleBtn = document.getElementById('panel-toggle')!;
+        toggleBtn.addEventListener('click', () => {
+          panel.classList.toggle('collapsed');
+        });
+
+        // Resize handling
+        window.addEventListener('resize', () => instance.resize());
+      }
+
+      document.readyState === 'complete'
+        ? init()
+        : document.addEventListener('DOMContentLoaded', init);
+    </script>
+  </body>
+</html>
+
+<style>
+  body {
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .graph-container {
+    position: relative;
+    width: 100vw;
+    height: calc(100vh - var(--height-header));
+    overflow: hidden;
+  }
+
+  /* ── Legend panel ── */
+  .graph-panel {
+    position: absolute;
+    top: theme(spacing.3);
+    left: theme(spacing.3);
+    z-index: 10;
+    display: flex;
+    gap: 0;
+    transition: transform 150ms ease-out;
+  }
+
+  .graph-panel.collapsed .panel-body {
+    display: none;
+  }
+
+  .graph-panel.collapsed .panel-toggle svg {
+    transform: rotate(180deg);
+  }
+
+  .panel-toggle {
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 28px;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-left: none;
+    cursor: pointer;
+    color: var(--color-text-muted);
+  }
+
+  .panel-toggle:hover {
+    color: var(--color-text);
+  }
+
+  .panel-toggle svg {
+    transition: transform 150ms ease-out;
+  }
+
+  .panel-body {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    padding: theme(spacing.3);
+    max-height: calc(100vh - var(--height-header) - theme(spacing.8));
+    overflow-y: auto;
+    min-width: 200px;
+  }
+
+  .panel-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin: 0 0 theme(spacing.2);
+  }
+
+  .legend-list {
+    display: flex;
+    flex-direction: column;
+    gap: theme(spacing.1);
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: theme(spacing.2);
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .legend-item:hover {
+    color: var(--color-text);
+  }
+
+  .legend-item input[type="checkbox"] {
+    margin: 0;
+    accent-color: var(--color-accent);
+  }
+
+  .legend-line {
+    flex-shrink: 0;
+  }
+
+  .legend-label {
+    white-space: nowrap;
+  }
+</style>
