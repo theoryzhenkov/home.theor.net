@@ -1,0 +1,1074 @@
+---
+title: Visual Language & Design System
+description: Complete specification of the TheoR.net visual language — colors, typography, layout, components, and full CSS source. For humans and AI agents alike.
+created: 2026-02-08
+ntpp:
+  - about
+---
+
+import Footnote from '@components/Footnote.astro';
+
+This page is a comprehensive reference for the visual language of **TheoR.net**. It documents every design token, layout primitive, component pattern, and CSS rule used on this site. It is intended to be readable by both humans and AI coding agents — if you are an AI agent building something that should look like TheoR.net, read this page thoroughly and implement accordingly.
+
+## Design Philosophy
+
+The design is **minimalist, text-first, and information-dense**. Inspirations include [Paul Graham's site](https://www.paulgraham.com/) and [Dan Luu's site](https://danluu.com/), though TheoR.net is more feature-rich. Key principles:
+
+- **Light-only color scheme.** No dark mode. `color-scheme: light only`.
+- **System fonts.** No web font loading. Uses the OS system UI font stack.
+- **Near-zero border radius.** Corners are essentially square (2–4px radii). No rounded-pill buttons or cards.
+- **Underlined links, always.** Links are underlined by default. External links get a small arrow icon appended via CSS `::after`.
+- **Visited link colors.** Standard purple for visited links (`#551a8b`).
+- **Minimal transitions.** 50–100ms durations. Opacity fades only, no transforms or slides.
+- **No shadows.** Zero `box-shadow` anywhere. Elevation is communicated through borders only.
+- **No gradients.** All backgrounds are flat solid colors.
+- **Content width of 70ch.** Prose reads at an optimal line length.
+- **Dense, functional spacing.** The Tailwind 4 default spacing scale is used — most gaps are `0.25rem` to `1.5rem`. Nothing feels airy or padded.
+
+---
+
+## Tech Stack
+
+| Layer | Tool |
+| --- | --- |
+| Framework | Astro 5 (static output) |
+| Styling | Tailwind CSS v4 (via `@tailwindcss/vite`) |
+| Content | MDX with `@astrojs/mdx` |
+| Search | Pagefind (post-build) |
+| Markdown | Remark callouts (`@r4ai/remark-callout`) |
+| Syntax highlighting | Shiki (`github-light` theme) |
+
+Tailwind v4 is configured **entirely through CSS** — there is no `tailwind.config.js`. All design tokens live in `global.css` under the `@theme` directive.
+
+---
+
+## Color Palette
+
+All colors are defined as CSS custom properties inside `@theme {}`:
+
+| Token | Value | Usage |
+| --- | --- | --- |
+| `--color-bg` | `#fff` | Page background |
+| `--color-bg-subtle` | `#f8f8f8` | Subtle backgrounds (table headers, hover states, callouts) |
+| `--color-bg-muted` | `#f0f0f0` | Muted backgrounds (code blocks, keyboard shortcuts) |
+| `--color-text` | `#111` | Primary text, headings |
+| `--color-text-muted` | `#444` | Secondary text (descriptions, metadata values, sidebar content) |
+| `--color-text-subtle` | `#666` | Tertiary text (labels, separators, timestamps) |
+| `--color-link` | `#005` | Link text (very dark blue, nearly black) |
+| `--color-link-hover` | `#00a` | Link hover state |
+| `--color-link-visited` | `#551a8b` | Visited links (classic purple) |
+| `--color-border` | `#ccc` | Primary borders (table cells, horizontal rules, callout left borders) |
+| `--color-border-subtle` | `#e0e0e0` | Subtle borders (callout title separators, search result dividers) |
+| `--color-accent` | `#005` | Accent (same as link — footnote numbers, info callouts) |
+| `--color-accent-hover` | `#00a` | Accent hover |
+| `--color-highlight` | `#ff9` | Text selection, search result highlights |
+| `--color-highlight-subtle` | `#ffc` | Sidenote highlight flash |
+| `--color-success` | `#060` | Success/tip callout border, "finished" status |
+| `--color-warning` | `#850` | Warning/caution callout border, "in-progress" status |
+| `--color-error` | `#900` | Error/danger callout border |
+
+### Usage patterns
+
+- **Backgrounds:** White (`#fff`) everywhere. `#f8f8f8` for subtle differentiation (table headers, hover states). `#f0f0f0` for inline code and pre blocks.
+- **Text hierarchy:** `#111` → `#444` → `#666` in decreasing importance.
+- **Links:** Dark navy `#005`, not bright blue. This keeps them readable without screaming. They always have `text-decoration: underline`.
+- **Borders:** Light gray `#ccc`. Used sparingly — horizontal rules, table cells, left-border accents on blockquotes/callouts/sidenotes.
+
+---
+
+## Typography
+
+### Font Stacks
+
+| Token | Value | Usage |
+| --- | --- | --- |
+| `--font-sans` | `system-ui, -apple-system, 'Segoe UI', sans-serif` | Body text, headings, navigation |
+| `--font-serif` | `'Georgia', 'Times New Roman', serif` | Available but not actively used |
+| `--font-mono` | `'Consolas', 'Monaco', 'Liberation Mono', monospace` | Code blocks, keyboard shortcuts, tag displays |
+
+### Base Font Size
+
+The root `font-size` is **16px** on `<html>`. All rem values reference this.
+
+### Heading Scale
+
+Headings are **bold (700)** with tight line-height (`1.2`):
+
+| Level | Font Size | Top Margin | Bottom Margin |
+| --- | --- | --- | --- |
+| `h1` | `1.5rem` (24px) | — | `0.75rem` (spacing.3) |
+| `h2` | `1.25rem` (20px) | `1.5rem` (spacing.6) | `0.5rem` (spacing.2) |
+| `h3` | `1.1rem` (17.6px) | `1rem` (spacing.4) | `0.25rem` (spacing.1) |
+| `h4` | `1rem` (16px) | `0.75rem` (spacing.3) | `0.25rem` (spacing.1) |
+
+### Small Text Sizes Used
+
+| Context | Size |
+| --- | --- |
+| Navigation links | `0.875rem` (14px) |
+| Breadcrumbs, metadata, relation labels | `0.8rem` (12.8px) |
+| TOC sidebar | `0.8rem` |
+| Aside panel titles (uppercase) | `0.75rem` (12px) |
+| Footnote items, sidenotes | `0.8rem` |
+| Code blocks (`<pre>`) | `0.875rem` |
+| Inline code | `0.9em` (relative) |
+| Search result excerpts | `0.8rem` |
+| Table text | `0.9rem` |
+
+### Line Heights
+
+| Token | Value | Usage |
+| --- | --- | --- |
+| `--leading-none` | `1` | — |
+| `--leading-tight` | `1.2` | Headings |
+| `--leading-snug` | `1.35` | TOC links, search excerpts |
+| `--leading-normal` | `1.45` | Body text (root) |
+| `--leading-relaxed` | `1.5` | — |
+
+### Text Styles
+
+- **Bold**: `font-weight: 700` (used on headings, active nav links, popup titles, table headers, aside panel titles).
+- **Italic**: Applied to page descriptions, quote callouts.
+- **Uppercase**: Aside panel section titles (e.g., "Contents", "Footnotes", "References inverse") use `text-transform: uppercase` at `0.75rem`.
+- **Monospace**: Inline code gets `font-family: var(--font-mono)` with a muted background `#f0f0f0`.
+
+---
+
+## Layout System
+
+### Three-Column Grid
+
+The page uses a CSS Grid with three columns:
+
+```css
+.page-grid {
+  display: grid;
+  grid-template-columns: 1fr minmax(0, var(--width-content)) 1fr;
+  max-width: var(--width-page);
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+```
+
+- **Left column (1fr):** Reserved for the TOC sidebar. Contains a sticky `aside-margin`.
+- **Center column (max 70ch):** Main content.
+- **Right column (1fr):** Sidenotes float here via absolute positioning from the prose container.
+
+### Layout Tokens
+
+| Token | Value | Description |
+| --- | --- | --- |
+| `--width-content` | `70ch` | Max width of the main prose column |
+| `--width-sidebar` | `12rem` | Width of the TOC sidebar |
+| `--width-page` | `85rem` | Max overall page width |
+| `--height-header` | `2.5rem` | Sticky header height |
+
+### Responsive Breakpoints
+
+| Breakpoint | Behavior |
+| --- | --- |
+| `> 1024px` | Full three-column layout. TOC is sticky sidebar. Sidenotes visible. |
+| `≤ 1024px` | Collapses to single column. TOC becomes inline above content. Sidenotes hidden; footnotes shown in footer instead. |
+| `≤ 640px` | Tighter padding. Logo text hidden, only icon shown. Search keyboard shortcut hidden. |
+
+### Sticky Elements
+
+- **Header**: `position: sticky; top: 0; z-index: 100`.
+- **TOC sidebar**: `position: sticky; top: calc(var(--height-header) + 1rem)`. Max height `calc(100vh - var(--height-header) - 2rem)` with `overflow-y: auto`.
+
+---
+
+## Spacing
+
+The site uses Tailwind 4's default spacing scale (`theme(spacing.N)`) where `1` = `0.25rem`:
+
+| Reference | Value | Common uses |
+| --- | --- | --- |
+| `spacing.1` | `0.25rem` | Gap between small elements, li margin-bottom |
+| `spacing.2` | `0.5rem` | Padding on search results, aside panels, callout bodies, breadcrumb margin |
+| `spacing.3` | `0.75rem` | Paragraph margin, code block padding, list margin, table margin, page side padding on mobile |
+| `spacing.4` | `1rem` | Page side padding, aside margin from header, footer padding-top |
+| `spacing.5` | `1.25rem` | List padding-left |
+| `spacing.6` | `1.5rem` | H2 top margin, horizontal rule margin, footer top margin |
+| `spacing.8` | `2rem` | Max-height subtraction for TOC |
+| `spacing.12` | `3rem` | TOC sidebar right padding |
+
+---
+
+## Border Radius
+
+Near-zero radii. The design is deliberately angular:
+
+| Token | Value |
+| --- | --- |
+| `--radius-sm` | `2px` |
+| `--radius-md` | `3px` |
+| `--radius-lg` | `4px` |
+| `--radius-full` | `9999px` |
+
+In practice, almost nothing uses border-radius. The CSS never applies `border-radius` to any component — all containers, dialogs, callouts, code blocks, buttons, and inputs have square corners.
+
+---
+
+## Transitions
+
+| Token | Value |
+| --- | --- |
+| `--ease-out` | `ease-out` |
+| `--transition-duration-fast` | `50ms` |
+| `--transition-duration-normal` | `100ms` |
+
+Used on: link popup opacity, search modal visibility. Everything else is instant.
+
+---
+
+## Component Patterns
+
+### Header
+
+A sticky bar at the top of every page:
+
+- **Left:** Logo (20×20px icon + bold "TheoR.net" text). Links to home. No underline.
+- **Right:** Navigation links in a horizontal row. `0.875rem`, `--color-text-muted`, no underlines. Active link is bold + `--color-text`.
+- **Search trigger:** A bordered button with a magnifying glass SVG and "⌘K" shortcut text. Border is `--color-border`, 1px solid.
+- On **mobile (≤640px):** Logo text hidden, only icon. Search shortcut text hidden.
+
+### Breadcrumb
+
+Renders above the page title when the page has parent pages in the containment hierarchy:
+
+- Horizontal list, items separated by `/` in `--color-text-subtle`.
+- `0.8rem` font size, no bullet points.
+- Links are `--color-text-muted`, no underlines. Last item (current page) is `--color-text-subtle`, not a link.
+
+### Page Title & Description
+
+- `h1` at `1.5rem`, bold.
+- Description (if present) is italic, `--color-text-muted`, rendered below the title.
+- Descriptions can contain inline markdown (rendered via `marked.parseInline`).
+
+### Metadata Row
+
+Displays below description/relations:
+
+- Format: `Created Jan 17, 2026 · Updated Feb 8, 2026`
+- `0.8rem`, `--color-text-muted`. Labels ("Created", "Updated") are `--color-text-subtle`.
+
+### TopRelations
+
+Displays structural relations (NTPP, TPP, NTPPi, TPPi, EQ, Next, Prev) as inline rows above metadata:
+
+- Each relation type is its own row: `Proper part (NTPP): Link1, Link2`
+- `0.8rem`, `--color-text-muted`. Labels are `--color-text-subtle`.
+- Links are standard underlined `--color-link`.
+
+### Table of Contents (TOC)
+
+In the left sidebar on wide screens, inline on narrow:
+
+- Section title "Contents" in uppercase, `0.75rem`, bold, `--color-text-muted`.
+- Ordered list with a `1px solid var(--color-border)` left border.
+- Items are `0.8rem`, `--color-text-muted`, no underlines.
+- H3-level items are indented with `padding-left: 0.75rem`.
+- Active item (via scrollspy) is bold, `--color-text`, with `--color-bg-subtle` background.
+- Hover: `--color-link`.
+
+### Prose Content
+
+The `.prose` wrapper contains the MDX-rendered body:
+
+- `position: relative` (to allow sidenotes to position absolutely).
+- Headings with `[id]` attributes display a link icon on hover (chain-link SVG, `0.7em`, fades in from `opacity: 0`).
+- External links (those starting with `http` or `//` and not to `the-o.space`) get an arrow icon appended via `::after` pseudo-element using CSS mask-image.
+
+### Footnotes / Sidenotes
+
+Dual-display system:
+
+- **Wide screens (>1024px):** Footnotes render as **sidenotes** in the right margin. `position: absolute; left: calc(100% + 3rem)`. Width `14rem`. `0.8rem`, `--color-text-muted`, left-border accent `1px solid var(--color-border)`.
+- **Narrow screens (≤1024px):** Sidenotes hidden. Footnotes collected into a numbered list in the page footer. Same styling (`0.8rem`, `--color-text-muted`, left-border).
+- Footnote references are superscript numbers in brackets: `[1]`, `[2]`, etc. Colored `--color-accent`.
+
+### Callouts
+
+Block-level callouts (via remark-callout plugin):
+
+- Container: `border-left: 3px solid`, `background-color: var(--color-bg-subtle)`, no border-radius.
+- Title: Bold, `0.875rem`, separated from body by `1px solid var(--color-border-subtle)`.
+- Body: Padded content.
+- Color variants by type:
+  - `note`, `info`: accent border (`--color-accent`, `#005`)
+  - `tip`, `hint`, `important`: success border (`--color-success`, `#060`)
+  - `warning`, `caution`, `attention`: warning border (`--color-warning`, `#850`)
+  - `danger`, `error`, `bug`: error border (`--color-error`, `#900`)
+  - `quote`, `cite`: transparent background, italic text
+
+### Aside Panels
+
+A shared pattern for sidebar/footer sections (Footnotes, Relations, TOC):
+
+- `.aside-panel-title`: `0.75rem`, bold, uppercase, `--color-text-muted`.
+- `.aside-panel-content`: `--color-text-muted`.
+- `.aside-panel-list`: Unstyled list by default. Can be `[data-style="decimal"]` for numbered or `[data-style="inline"]` for flex-wrapped horizontal list.
+- Panels with `[data-empty="true"]` are `display: none`.
+
+### BottomRelations
+
+Displays PO, EC, and Ri relations in the page footer as aside panels:
+
+- Each relation type gets its own `.aside-panel` with uppercase title.
+- Links displayed as inline flex-wrapped list (`data-style="inline"`).
+
+### Link Popups
+
+Hovering over internal links shows a popup preview:
+
+- `max-width: 300px`, `1px solid var(--color-border)`, white background.
+- Contains: bold title, muted description, meta row with status and tags.
+- Fades in at `50ms`. `position: absolute`, managed by JavaScript.
+- Status colors: `finished` → `--color-success`, `in-progress` → `--color-warning`.
+- Tags displayed in `--font-mono`, `--color-text-subtle`.
+
+### Search Modal
+
+Triggered by `⌘K` or clicking the search button:
+
+- Full-screen overlay with `rgba(0, 0, 0, 0.3)` backdrop.
+- Dialog: `max-width: 550px`, white background, `1px solid var(--color-border)`, no border-radius.
+- Input area: search icon (SVG), text input, "Esc" keyboard badge.
+- Results: list of links with bold title + muted excerpt. Hover gets `--color-bg-subtle`. Search term matches highlighted with `--color-highlight`.
+
+### Content Tables
+
+A dynamic table component for listing sub-pages:
+
+- Standard HTML `<table>` with `1px solid var(--color-border)` cells.
+- Sortable headers: clickable, show sort direction arrows.
+- Filterable: dropdown filters above table in a `--color-bg-subtle` bar.
+- Status badges: colored text (success/warning) based on `data-status`.
+- Links in cells are underlined `--color-link`.
+- Row hover: `--color-bg-subtle` background.
+
+---
+
+## Selection & Interaction
+
+- **Text selection**: `background-color: var(--color-highlight)` (`#ff9`, bright yellow).
+- **Scroll padding**: `scroll-padding-top: calc(var(--height-header) + 1rem)` to account for the sticky header.
+- **No focus rings** defined globally (browser defaults).
+- **Cursor**: headings with IDs get `cursor: pointer` for click-to-anchor behavior.
+
+---
+
+## What NOT to Do
+
+If you are implementing a design that should match TheoR.net, **avoid**:
+
+- Rounded corners (border-radius > 4px)
+- Box shadows or drop shadows
+- Gradients
+- Bright or saturated primary colors (the palette is muted navy/gray)
+- Dark mode
+- Custom web fonts or Google Fonts
+- Animated transitions longer than 100ms
+- Hover transforms (scale, translate)
+- Cards with padding > 1rem
+- Large spacing between elements (the design is dense)
+- Hero sections or large banners
+- Icon libraries (only a few inline SVGs are used)
+- Full-width colored sections or alternating background bands
+
+---
+
+## Full CSS Source
+
+Below is the complete CSS source, provided so that AI agents and developers can reference the exact implementation.
+
+### global.css
+
+The entry point. Imports Tailwind and defines all design tokens:
+
+```css
+@import "tailwindcss";
+
+@theme {
+  /* ─── Colors ─── */
+  --color-bg: #fff;
+  --color-bg-subtle: #f8f8f8;
+  --color-bg-muted: #f0f0f0;
+
+  --color-text: #111;
+  --color-text-muted: #444;
+  --color-text-subtle: #666;
+
+  --color-link: #005;
+  --color-link-hover: #00a;
+  --color-link-visited: #551a8b;
+
+  --color-border: #ccc;
+  --color-border-subtle: #e0e0e0;
+
+  --color-accent: #005;
+  --color-accent-hover: #00a;
+
+  --color-highlight: #ff9;
+  --color-highlight-subtle: #ffc;
+
+  --color-success: #060;
+  --color-warning: #850;
+  --color-error: #900;
+
+  /* ─── Font Stacks ─── */
+  --font-sans: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-serif: 'Georgia', 'Times New Roman', serif;
+  --font-mono: 'Consolas', 'Monaco', 'Liberation Mono', monospace;
+
+  /* ─── Line Heights ─── */
+  --leading-none: 1;
+  --leading-tight: 1.2;
+  --leading-snug: 1.35;
+  --leading-normal: 1.45;
+  --leading-relaxed: 1.5;
+
+  /* ─── Layout Dimensions ─── */
+  --width-content: 70ch;
+  --width-sidebar: 12rem;
+  --width-page: 85rem;
+
+  /* ─── Radii (minimal) ─── */
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 4px;
+  --radius-full: 9999px;
+
+  /* ─── Transitions ─── */
+  --ease-out: ease-out;
+  --transition-duration-fast: 50ms;
+  --transition-duration-normal: 100ms;
+}
+
+:root {
+  color-scheme: light only;
+  --height-header: 2.5rem;
+}
+
+/* Design system layers */
+@import "./base.css";
+@import "./components.css";
+@import "./prose.css";
+```
+
+### base.css
+
+Reset and base element styles:
+
+```css
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: var(--leading-normal);
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    scroll-padding-top: calc(var(--height-header) + theme(spacing.4));
+  }
+
+  body {
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: var(--leading-tight);
+    color: var(--color-text);
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    margin-bottom: theme(spacing.3);
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    margin-top: theme(spacing.6);
+    margin-bottom: theme(spacing.2);
+  }
+
+  h3 {
+    font-size: 1.1rem;
+    margin-top: theme(spacing.4);
+    margin-bottom: theme(spacing.1);
+  }
+
+  h4 {
+    font-size: 1rem;
+    margin-top: theme(spacing.3);
+    margin-bottom: theme(spacing.1);
+  }
+
+  p {
+    margin-bottom: theme(spacing.3);
+  }
+
+  a {
+    color: var(--color-link);
+    text-decoration: underline;
+  }
+
+  a:hover {
+    color: var(--color-link-hover);
+  }
+
+  a:visited {
+    color: var(--color-link-visited);
+  }
+
+  ul, ol {
+    margin-bottom: theme(spacing.3);
+    padding-left: theme(spacing.5);
+  }
+
+  li {
+    margin-bottom: theme(spacing.1);
+  }
+
+  ul { list-style-type: disc; }
+  ol { list-style-type: decimal; }
+
+  blockquote {
+    margin: theme(spacing.3) 0;
+    padding-left: theme(spacing.4);
+    border-left: 2px solid var(--color-border);
+    color: var(--color-text-muted);
+  }
+
+  blockquote p:last-child {
+    margin-bottom: 0;
+  }
+
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    padding: 1px 4px;
+    background-color: var(--color-bg-muted);
+  }
+
+  pre {
+    margin: theme(spacing.3) 0;
+    padding: theme(spacing.3);
+    background-color: var(--color-bg-muted);
+    overflow-x: auto;
+    font-size: 0.875rem;
+  }
+
+  pre code {
+    padding: 0;
+    background: none;
+  }
+
+  hr {
+    margin: theme(spacing.6) 0;
+    border: none;
+    border-top: 1px solid var(--color-border);
+  }
+
+  table {
+    width: 100%;
+    margin: theme(spacing.3) 0;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+
+  th, td {
+    padding: theme(spacing.1) theme(spacing.2);
+    text-align: left;
+    border: 1px solid var(--color-border);
+  }
+
+  th {
+    font-weight: 700;
+    background-color: var(--color-bg-subtle);
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  figure {
+    margin: theme(spacing.3) 0;
+  }
+
+  figcaption {
+    margin-top: theme(spacing.1);
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  strong, b { font-weight: 700; }
+  em, i { font-style: italic; }
+
+  ::selection {
+    background-color: var(--color-highlight);
+  }
+
+  article {
+    counter-reset: sidenote-counter;
+  }
+}
+```
+
+### components.css
+
+All component-level styles:
+
+```css
+@layer components {
+  .page-grid {
+    display: grid;
+    grid-template-columns: 1fr minmax(0, var(--width-content)) 1fr;
+    max-width: var(--width-page);
+    margin-inline: auto;
+    padding-inline: theme(spacing.4);
+
+    @media (width <= 1024px) {
+      grid-template-columns: 1fr;
+      padding-inline: theme(spacing.3);
+    }
+
+    @media (width <= 640px) {
+      padding-inline: theme(spacing.2);
+    }
+  }
+
+  .aside-margin {
+    padding-inline-end: theme(spacing.12);
+
+    & > * {
+      position: sticky;
+      top: calc(var(--height-header) + theme(spacing.4));
+      width: var(--width-sidebar);
+      max-height: calc(100vh - var(--height-header) - theme(spacing.8));
+      overflow-y: auto;
+      margin-left: auto;
+    }
+
+    @media (width <= 1024px) {
+      padding: theme(spacing.2) theme(spacing.3);
+
+      & > * {
+        position: static;
+        width: auto;
+        max-height: none;
+        margin-left: 0;
+      }
+    }
+  }
+
+  .page-footer {
+    margin-top: theme(spacing.6);
+    padding-top: theme(spacing.4);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .aside-panel {
+    margin-bottom: theme(spacing.4);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &[data-empty="true"] {
+      display: none;
+    }
+  }
+
+  .aside-panel-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-bottom: theme(spacing.2);
+  }
+
+  .aside-panel-content {
+    color: var(--color-text-muted);
+  }
+
+  .aside-panel-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    & li {
+      margin-bottom: theme(spacing.1);
+    }
+
+    & a {
+      color: var(--color-link);
+      text-decoration: underline;
+    }
+
+    &[data-style="decimal"] {
+      list-style: decimal;
+      padding-left: theme(spacing.5);
+    }
+
+    &[data-style="inline"] {
+      display: flex;
+      flex-wrap: wrap;
+      gap: theme(spacing.2);
+
+      & li {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .popup-container {
+    position: fixed;
+    z-index: 150;
+    pointer-events: none;
+  }
+
+  .link-popup {
+    position: absolute;
+    z-index: 1000;
+    display: none;
+    max-width: 300px;
+    padding: theme(spacing.2);
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    font-size: 0.875rem;
+    pointer-events: auto;
+    opacity: 0;
+    transition: opacity var(--transition-duration-fast) var(--ease-out);
+
+    &.visible {
+      opacity: 1;
+    }
+  }
+
+  .link-popup-title {
+    margin: 0 0 theme(spacing.1);
+    font-weight: 700;
+    color: var(--color-text);
+  }
+
+  .link-popup-description {
+    margin: 0 0 theme(spacing.1);
+    color: var(--color-text-muted);
+  }
+
+  .link-popup-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: theme(spacing.2);
+    font-size: 0.75rem;
+  }
+
+  .link-popup-status {
+    color: var(--color-text-subtle);
+
+    &[data-status="finished"] {
+      color: var(--color-success);
+    }
+
+    &[data-status="in-progress"] {
+      color: var(--color-warning);
+    }
+  }
+
+  .link-popup-tags {
+    color: var(--color-text-subtle);
+    font-family: var(--font-mono);
+  }
+
+  .footnote-ref {
+    counter-increment: sidenote-counter;
+    line-height: 0;
+  }
+
+  .footnote-number {
+    color: var(--color-accent);
+    text-decoration: none;
+    cursor: pointer;
+    vertical-align: super;
+    font-size: 0.85em;
+
+    &::after {
+      content: "[" counter(sidenote-counter) "]";
+    }
+
+    &:hover {
+      color: var(--color-accent-hover);
+    }
+  }
+
+  .sidenote {
+    position: absolute;
+    left: calc(100% + 3rem);
+    width: var(--width-sidenote, 14rem);
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    border-left: 1px solid var(--color-border);
+    padding-left: theme(spacing.2);
+
+    &[data-hidden] {
+      display: none;
+    }
+
+    &.sidenote-highlight {
+      background-color: var(--color-highlight-subtle, var(--color-bg-subtle));
+      transition: background-color 0.3s ease-out;
+    }
+
+    @media (width <= 1024px) {
+      display: none;
+    }
+  }
+
+  .footnote-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footnote-item {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    border-left: 1px solid var(--color-border);
+    padding-left: theme(spacing.2);
+    margin-bottom: theme(spacing.2);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  [data-callout] {
+    margin: theme(spacing.3) 0;
+    padding: 0;
+    border-left: 3px solid var(--color-border);
+    background-color: var(--color-bg-subtle);
+  }
+
+  [data-callout-title] {
+    padding: theme(spacing.1) theme(spacing.2);
+    font-weight: 700;
+    font-size: 0.875rem;
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  [data-callout-body] {
+    padding: theme(spacing.2);
+
+    & > *:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  [data-callout-type="note"],
+  [data-callout-type="info"] {
+    border-left-color: var(--color-accent);
+  }
+
+  [data-callout-type="tip"],
+  [data-callout-type="hint"],
+  [data-callout-type="important"] {
+    border-left-color: var(--color-success);
+  }
+
+  [data-callout-type="warning"],
+  [data-callout-type="caution"],
+  [data-callout-type="attention"] {
+    border-left-color: var(--color-warning);
+  }
+
+  [data-callout-type="danger"],
+  [data-callout-type="error"],
+  [data-callout-type="bug"] {
+    border-left-color: var(--color-error);
+  }
+
+  [data-callout-type="quote"],
+  [data-callout-type="cite"] {
+    background-color: transparent;
+    font-style: italic;
+  }
+}
+```
+
+### prose.css
+
+Styles for MDX prose content:
+
+```css
+@layer components {
+  .prose {
+    position: relative;
+
+    & h1[id],
+    & h2[id],
+    & h3[id],
+    & h4[id],
+    & h5[id],
+    & h6[id] {
+      display: flex;
+      align-items: baseline;
+      gap: theme(spacing.1);
+    }
+
+    & h1[id]:hover .heading-link-icon,
+    & h2[id]:hover .heading-link-icon,
+    & h3[id]:hover .heading-link-icon,
+    & h4[id]:hover .heading-link-icon,
+    & h5[id]:hover .heading-link-icon,
+    & h6[id]:hover .heading-link-icon {
+      opacity: 1;
+    }
+  }
+
+  .heading-link-icon {
+    display: inline-flex;
+    opacity: 0;
+    cursor: pointer;
+    color: var(--color-text-subtle);
+    font-size: 0.8em;
+
+    & svg {
+      width: 0.7em;
+      height: 0.7em;
+    }
+
+    &:hover {
+      color: var(--color-link);
+    }
+  }
+
+  .prose a[href^="http"]:not(
+    [href*="the-o.space"],
+    .footnote-number,
+    .footnote-ref,
+    .no-icon
+  )::after,
+  .prose a[href^="//"]:not(
+    .footnote-number,
+    .footnote-ref,
+    .no-icon
+  )::after {
+    content: "";
+    display: inline-block;
+    width: 0.65em;
+    height: 0.65em;
+    margin-left: 0.15em;
+    vertical-align: baseline;
+    position: relative;
+    top: 0.05em;
+    background-color: currentColor;
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-image: url("data:image/svg+xml,..."); /* arrow-up-right icon */
+  }
+
+  .prose :is(pre, code) a::after,
+  .prose a:has(> img)::after {
+    display: none;
+  }
+}
+```
+
+---
+
+## Page Structure (HTML Skeleton)
+
+Every page on TheoR.net follows this structure:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <title>{title} · TheoR.net</title>
+  <link rel="icon" type="image/png" href="/cue-256x256.png" />
+</head>
+<body>
+  <!-- Sticky header -->
+  <header class="header">
+    <nav class="header-nav">
+      <a href="/" class="site-logo">
+        <img src="/cue-256x256.png" alt="" class="logo-icon" />
+        <span class="logo-text">TheoR.net</span>
+      </a>
+      <div class="nav-links">
+        <a href="/" class="nav-link active">Home</a>
+        <a href="/about" class="nav-link">About</a>
+        <a href="/me" class="nav-link">Me</a>
+        <a href="/projects" class="nav-link">Projects</a>
+        <a href="/blog" class="nav-link">Blog</a>
+        <a href="/contact" class="nav-link">Contact</a>
+        <button class="search-trigger">🔍 ⌘K</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Three-column grid -->
+  <div class="page-grid">
+    <!-- Left: TOC sidebar -->
+    <aside class="aside-margin">
+      <nav class="aside-panel">
+        <h2 class="aside-panel-title">Contents</h2>
+        <ol class="aside-panel-list"><!-- TOC items --></ol>
+      </nav>
+    </aside>
+
+    <!-- Center: Main content -->
+    <main class="min-w-0 py-4">
+      <article>
+        <header class="mb-4">
+          <!-- Breadcrumb (if nested) -->
+          <!-- h1 title -->
+          <!-- Italic description (if present) -->
+          <!-- TopRelations (if present) -->
+          <!-- Metadata: Created / Updated dates -->
+        </header>
+
+        <div class="prose">
+          <!-- MDX content renders here -->
+        </div>
+
+        <footer class="page-footer">
+          <!-- Footnotes (narrow screens) -->
+          <!-- BottomRelations (PO, EC, Ri) -->
+        </footer>
+      </article>
+    </main>
+
+    <!-- Right column: empty (sidenotes float here absolutely) -->
+  </div>
+
+  <!-- Search modal (hidden by default) -->
+  <!-- Popup container (for link previews) -->
+</body>
+</html>
+```
+
+---
+
+## Summary for AI Agents
+
+If you are an AI agent implementing a UI that should match TheoR.net's visual language:
+
+1. **Use system fonts** — `system-ui, -apple-system, 'Segoe UI', sans-serif`.
+2. **Use the exact color tokens** listed above. The palette is intentionally muted: near-black text, near-black links, light gray borders, white backgrounds.
+3. **No border-radius.** Or at most 2–4px. Everything is square.
+4. **No shadows, no gradients.**
+5. **Underline all links.** Show visited state in purple.
+6. **Keep spacing tight.** Use `0.25rem`–`1.5rem` for most gaps and padding.
+7. **Keep type small for secondary text.** 0.75rem–0.875rem for anything that isn't body prose.
+8. **Borders are 1px solid #ccc** everywhere.
+9. **Use CSS custom properties** as defined in the design tokens section.
+10. **The overall feel is: academic, clean, dense, no-nonsense.** Think Wikipedia or a well-formatted LaTeX document rendered for the web.
