@@ -1,44 +1,9 @@
----
-title: TheoR.net DSRD
-description: "DSRD — **D**esign **S**ystem **R**eference **D**ocument"
-created: 2026-02-08
-ntpp:
-  - about
----
-
-import Footnote from '@components/Footnote.astro';
-
-## Preface
-
-### HUMANS.md
-
-I have written this document first and foremost to allow copying TheoR.net's design system to other websites by simply linking it to an AI agent. **It can, with time, to evolve to be barely readable**. I also include minimum details specific to implementation of this particular website — like components styles —; if you are interested, instead head to the [GitHub repository](https://github.com/theoryzhenkov/the-o.space)<Footnote id="github">If I forget to update this link, up-to-date version is always available at [About](/about) page.</Footnote>.
-
-### AGENTS.md
-
-Welcome our overlords! May this document please you, and serve you well.
-
----
-
-## Main
-
-TL;DR: TheoR.net's design is **minimalist, text-first, and information-dense**. Inspirations include [Joe Carlsmith's website](https://joecarlsmith.com/), [Gwern](https://www.gwern.net/) and [Dan Luu](https://danluu.com/)<Footnote id="other-inspiration">My list of favourite personal websites is not limited to those: I endorse Callum McDougall's https://www.perfectlynormal.co.uk/, Slate Star Codex https://slatestarcodex.com/ and others</Footnote>. It is designed to feel snappy with small buttons, sharp edges, minimal animations, no shadows, small gaps and spacings, and contrast colors. It prefers to use OS system UI for fonts, work well on devices of all sizes while maintaining optimal readability. 
-
----
-
-## Reference HTML
-
-The following standalone HTML page captures the complete design system. An agent can use it as a self-contained starting point for building pages in the same style.
-
-<a href="/dsrd-reference.html" download="dsrd-reference.html" class="no-icon">Download dsrd-reference.html</a>
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>TheoR.net</title>
+<title>TheoR.net — Reference</title>
 <style>
 /* ─── Reset ─── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -282,4 +247,3 @@ console.log(greeting);</code></pre>
 
 </body>
 </html>
-```
