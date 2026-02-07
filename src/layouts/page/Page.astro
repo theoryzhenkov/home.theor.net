@@ -5,10 +5,11 @@ import Header from '@components/Header.astro';
 import Metadata from '@components/Metadata.astro';
 import TOC from '@components/TOC.astro';
 import Footnotes from '@components/Footnotes.astro';
-import Backlinks from '@components/Backlinks.astro';
+import TopRelations from '@components/TopRelations.astro';
+import BottomRelations from '@components/BottomRelations.astro';
 import Search from '@components/Search.astro';
 import Breadcrumb from '@components/Breadcrumb.astro';
-import type { PageInfo } from '@/lib/relations';
+import type { PageInfo, PageRelations, PageInfoMap } from '@/lib/relations';
 
 interface Props {
   title: string;
@@ -18,9 +19,11 @@ interface Props {
   headings: { depth: number; slug: string; text: string }[];
   breadcrumbs?: PageInfo[];
   currentSlug?: string;
+  relations?: PageRelations;
+  pageInfoMap?: PageInfoMap;
 }
 
-const { title, description, created, modified, headings, breadcrumbs = [], currentSlug = '' } = Astro.props;
+const { title, description, created, modified, headings, breadcrumbs = [], currentSlug = '', relations, pageInfoMap } = Astro.props;
 const descriptionHtml = description ? marked.parseInline(description) : undefined;
 const descriptionPlain = description?.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
 ---
@@ -43,6 +46,7 @@ const descriptionPlain = description?.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
             <Breadcrumb breadcrumbs={breadcrumbs} currentSlug={currentSlug} />
             <h1>{title}</h1>
             {descriptionHtml && <p class="text-text-muted italic mb-2" set:html={descriptionHtml} />}
+            {relations && pageInfoMap && <TopRelations relations={relations} pages={pageInfoMap} />}
             <Metadata created={created} modified={modified} />
           </header>
 
@@ -52,7 +56,7 @@ const descriptionPlain = description?.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
 
           <footer class="page-footer">
             <Footnotes />
-            <Backlinks />
+            {relations && pageInfoMap && <BottomRelations relations={relations} pages={pageInfoMap} />}
           </footer>
         </article>
       </main>

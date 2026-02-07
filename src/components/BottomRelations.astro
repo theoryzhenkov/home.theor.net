@@ -1,0 +1,66 @@
+---
+import type { PageRelations, PageInfoMap } from '@/lib/relations';
+
+interface Props {
+  relations: PageRelations;
+  pages: PageInfoMap;
+}
+
+const { relations, pages } = Astro.props;
+
+function getHref(slug: string): string {
+  return slug === 'index' ? '/' : `/${slug}/`;
+}
+
+function getTitle(slug: string): string {
+  return pages.get(slug)?.title ?? slug;
+}
+
+const hasRi = relations.ri.length > 0;
+const hasPo = relations.po.length > 0;
+const hasEc = relations.ec.length > 0;
+const hasAny = hasRi || hasPo || hasEc;
+---
+
+{hasAny && (
+  <>
+    {hasRi && (
+      <section class="aside-panel">
+        <h2 class="aside-panel-title">References inverse (Ri)</h2>
+        <div class="aside-panel-content">
+          <ul class="aside-panel-list" data-style="inline">
+            {relations.ri.map((slug) => (
+              <li><a href={getHref(slug)}>{getTitle(slug)}</a></li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )}
+
+    {hasPo && (
+      <section class="aside-panel">
+        <h2 class="aside-panel-title">Partially overlapped (PO)</h2>
+        <div class="aside-panel-content">
+          <ul class="aside-panel-list" data-style="inline">
+            {relations.po.map((slug) => (
+              <li><a href={getHref(slug)}>{getTitle(slug)}</a></li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )}
+
+    {hasEc && (
+      <section class="aside-panel">
+        <h2 class="aside-panel-title">Externally connected (EC)</h2>
+        <div class="aside-panel-content">
+          <ul class="aside-panel-list" data-style="inline">
+            {relations.ec.map((slug) => (
+              <li><a href={getHref(slug)}>{getTitle(slug)}</a></li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )}
+  </>
+)}

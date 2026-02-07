@@ -1,7 +1,7 @@
 ---
 import { getCollection, getEntry, render } from 'astro:content';
 import Page from '@layouts/page/Page.astro';
-import { buildRelationsGraph, getBreadcrumbs } from '@/lib/relations';
+import { buildRelationsGraph, getBreadcrumbs, getPageRelations } from '@/lib/relations';
 
 export async function getStaticPaths() {
   const pages = await getCollection('pages');
@@ -22,9 +22,10 @@ if (!entry) {
 const { Content, headings } = await render(entry);
 const { data } = entry;
 
-// Build relations graph and get breadcrumbs
+// Build relations graph
 const { graph, pages } = await buildRelationsGraph();
 const breadcrumbs = getBreadcrumbs(slug!, graph, pages);
+const relations = getPageRelations(slug!, graph);
 ---
 
 <Page
@@ -35,6 +36,8 @@ const breadcrumbs = getBreadcrumbs(slug!, graph, pages);
   headings={headings}
   breadcrumbs={breadcrumbs}
   currentSlug={slug!}
+  relations={relations}
+  pageInfoMap={pages}
 >
   <Content />
 </Page>

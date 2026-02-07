@@ -48,7 +48,7 @@
     border-top: 1px solid var(--color-border);
   }
 
-  /* ─── Aside Panel (shared by Footnotes, Backlinks, TOC) ─── */
+  /* ─── Aside Panel (shared by Footnotes, Relations, TOC) ─── */
   .aside-panel {
     margin-bottom: theme(spacing.4);
 

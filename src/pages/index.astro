@@ -1,7 +1,7 @@
 ---
 import { getEntry, render } from 'astro:content';
 import Page from '@layouts/page/Page.astro';
-import { buildRelationsGraph, getBreadcrumbs } from '@/lib/relations';
+import { buildRelationsGraph, getBreadcrumbs, getPageRelations } from '@/lib/relations';
 
 const entry = await getEntry('pages', 'index');
 if (!entry) {
@@ -11,9 +11,10 @@ if (!entry) {
 const { Content, headings } = await render(entry);
 const { data } = entry;
 
-// Build relations graph and get breadcrumbs (empty for index)
+// Build relations graph
 const { graph, pages } = await buildRelationsGraph();
 const breadcrumbs = getBreadcrumbs('index', graph, pages);
+const relations = getPageRelations('index', graph);
 ---
 
 <Page
@@ -24,6 +25,8 @@ const breadcrumbs = getBreadcrumbs('index', graph, pages);
   headings={headings}
   breadcrumbs={breadcrumbs}
   currentSlug="index"
+  relations={relations}
+  pageInfoMap={pages}
 >
   <Content />
 </Page>

@@ -1,0 +1,105 @@
+---
+import type { PageRelations, PageInfoMap } from '@/lib/relations';
+
+interface Props {
+  relations: PageRelations;
+  pages: PageInfoMap;
+}
+
+const { relations, pages } = Astro.props;
+
+function getHref(slug: string): string {
+  return slug === 'index' ? '/' : `/${slug}/`;
+}
+
+function getTitle(slug: string): string {
+  return pages.get(slug)?.title ?? slug;
+}
+
+interface RelationRow {
+  label: string;
+  abbr: string;
+  slugs: string[];
+}
+
+const rows: RelationRow[] = [];
+
+// PP relations: this page is part of...
+if (relations.ntpp.length > 0) {
+  rows.push({ label: 'Proper part', abbr: 'NTPP', slugs: relations.ntpp });
+}
+if (relations.tpp.length > 0) {
+  rows.push({ label: 'Proper part', abbr: 'TPP', slugs: relations.tpp });
+}
+
+// PPi relations: pages that are part of this one
+if (relations.nttpi.length > 0) {
+  rows.push({ label: 'Proper part inverse', abbr: 'NTPPi', slugs: relations.nttpi });
+}
+if (relations.tppi.length > 0) {
+  rows.push({ label: 'Proper part inverse', abbr: 'TPPi', slugs: relations.tppi });
+}
+
+// EQ
+if (relations.eq.length > 0) {
+  rows.push({ label: 'Equal', abbr: 'EQ', slugs: relations.eq });
+}
+
+// N / P
+if (relations.prev) {
+  rows.push({ label: 'Previous', abbr: 'P', slugs: [relations.prev] });
+}
+if (relations.next) {
+  rows.push({ label: 'Next', abbr: 'N', slugs: [relations.next] });
+}
+
+const hasRelations = rows.length > 0;
+---
+
+{hasRelations && (
+  <aside class="top-relations">
+    {rows.map((row) => (
+      <div class="top-relations-row">
+        <span class="top-relations-label">{row.label} ({row.abbr}):</span>
+        {row.slugs.map((slug, i) => (
+          <>
+            {i > 0 && <span class="top-relations-sep">,</span>}
+            <a href={getHref(slug)}>{getTitle(slug)}</a>
+          </>
+        ))}
+      </div>
+    ))}
+  </aside>
+)}
+
+<style>
+  .top-relations {
+    margin-bottom: theme(spacing.2);
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+  }
+
+  .top-relations-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: theme(spacing.1);
+  }
+
+  .top-relations-label {
+    color: var(--color-text-subtle);
+  }
+
+  .top-relations-sep {
+    color: var(--color-text-subtle);
+  }
+
+  .top-relations a {
+    color: var(--color-link);
+    text-decoration: underline;
+  }
+
+  .top-relations a:hover {
+    color: var(--color-link-hover);
+  }
+</style>

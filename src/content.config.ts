@@ -8,9 +8,14 @@ const pages = defineCollection({
     description: z.string().optional(),
     created: z.coerce.date(),
     modified: z.coerce.date().optional(),
-    // Page relations
-    up: z.string().optional(),
-    down: z.array(z.string()).optional(),
+    // Topological relations (RCC-8)
+    ntpp: z.array(z.string()).optional(),   // Non-tangential proper part
+    tpp: z.array(z.string()).optional(),    // Tangential proper part
+    po: z.array(z.string()).optional(),     // Partially overlapped
+    ec: z.array(z.string()).optional(),     // Externally connected
+    eq: z.array(z.string()).optional(),     // Equal
+    dc: z.array(z.string()).optional(),     // Disconnected (metadata-only)
+    // Semantic relations
     next: z.string().optional(),
     prev: z.string().optional(),
   }).passthrough(),
