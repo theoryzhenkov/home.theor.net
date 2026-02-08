@@ -5,7 +5,7 @@ created: 2026-01-17
 ---
 
 ## Design
-*For a fuller reference document, see the [DSRD](/design) page.*
+*For a fuller reference document, see the [DSRD](/theor-net-dsrd) page.*
 
 I decided to go with a minimalistic design, inspirations being Paul Graham's [www.paulgraham.com](https://www.paulgraham.com/) and Dan Luu's [danluu.com](https://danluu.com/), for example. Though for purposes of practicality, TheoR.net (further referred to as "website") is a bit more loaded with features and verbose. 
 
@@ -13,7 +13,7 @@ I decided to go with a minimalistic design, inspirations being Paul Graham's [ww
 
 Website is hosted on [Hetzner](https://www.hetzner.com/) servers, machine running on NixOS. I own domain name with [Porkbun](https://porkbun.com/), and manage DNS with [Terraform](https://www.terraform.io/). You can find the code managing the infrastructure of theor.net domain at [theor.net-infra](https://github.com/theoryzhenkov/theor.net-infra).
 
-The Docker images for applications at *.theor.net are deployed to GHCR via a CI pipeline. For more details about deploying a new application to theor.net, see the [deploy](/deploy) page.
+The Docker images for applications at *.theor.net are deployed to GHCR via a CI pipeline. For more details about deploying a new application to theor.net, see the [deploy](/deploying-to-theor-net-infrastructure) page.
 
 ## Relational structure
 
