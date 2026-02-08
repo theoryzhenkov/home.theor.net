@@ -9,6 +9,12 @@ created: 2026-01-17
 
 I decided to go with a minimalistic design, inspirations being Paul Graham's [www.paulgraham.com](https://www.paulgraham.com/) and Dan Luu's [danluu.com](https://danluu.com/), for example. Though for purposes of practicality, TheoR.net (further referred to as "website") is a bit more loaded with features and verbose. 
 
+## Hosting
+
+Website is hosted on [Hetzner](https://www.hetzner.com/) servers, machine running on NixOS. I own domain name with [Porkbun](https://porkbun.com/), and manage DNS with [Terraform](https://www.terraform.io/). You can find the code managing the infrastructure of theor.net domain at [theor.net-infra](https://github.com/theoryzhenkov/theor.net-infra).
+
+The Docker images for applications at *.theor.net are deployed to GHCR via a CI pipeline. 
+
 ## Relational structure
 
 Website uses two orthogonal layers: **topological**, based on the [RCC-8](https://en.wikipedia.org/wiki/Region_connection_calculus), and **semantical**. 
