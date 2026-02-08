@@ -1,0 +1,119 @@
+---
+title: "Deploying a New App"
+description: "Step-by-step guide to deploying a new website or service on theor.net."
+created: 2026-02-09
+ntpp:
+  - about
+---
+
+## Registry App (GHCR)
+
+### 1. Dockerfile
+
+Your repo needs a `Dockerfile` at the root. A typical static site:
+
+```dockerfile
+FROM oven/bun:1-alpine AS builder
+WORKDIR /app
+COPY package.json bun.lock ./
+RUN bun install --frozen-lockfile
+COPY . .
+RUN bun run build
+
+FROM nginx:alpine AS production
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder /app/dist /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
+```
+
+### 2. GitHub Actions workflow
+
+Create `.github/workflows/deploy.yml`:
+
+```yaml
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-push:
+    uses: theoryzhenkov/.github/.github/workflows/deploy-docker.yml@main
+    with:
+      app_name: my-app-name
+    permissions:
+      contents: read
+      packages: write
+```
+
+The shared workflow pushes to `ghcr.io/theoryzhenkov/<repo>/<app_name>:latest`.
+
+### 3. App config
+
+In the infra repo, create `nixos/apps/<app-name>.yaml`:
+
+```yaml
+image: ghcr.io/theoryzhenkov/<repo>/<app-name>:latest
+containerPort: 80
+hostPort: <unique-port>
+domain: <subdomain>.theor.net
+```
+
+- `hostPort` — unique port in `8100–8199`. Check existing configs or run `just app list` in `nixos/`.
+- For `leaves.theor.net` subdomains, use `<name>.leaves.theor.net`.
+
+### 4. DNS record
+
+In `terraform/main.tf`, add a Porkbun DNS A record:
+
+```hcl
+resource "porkbun_dns_record" "theor_net_<name>" {
+  domain   = "theor.net"
+  name     = "<subdomain>"
+  type     = "A"
+  content  = hcloud_primary_ip.web_ipv4.ip_address
+  ttl      = 600
+  priority = 0
+}
+```
+
+For wildcard subdomains (e.g. `*.leaves`), the record already exists. Apply with `cd terraform && just apply`.
+
+### 5. Generate and deploy
+
+```bash
+cd nixos
+just app generate   # regenerates apps/apps.lock.nix from YAML files
+just deploy          # nixos-rebuild on the server
+```
+
+Watchtower handles subsequent image updates automatically.
+
+---
+
+## Local App
+
+### 1. Create app config
+
+```bash
+cd nixos
+just app create my-app   # generates apps/my-app.yaml with defaults
+```
+
+Edit the generated YAML — the image defaults to `local/my-app:latest`.
+
+### 2. Build and deploy
+
+```bash
+docker build -t local/my-app:latest /path/to/app
+cd nixos
+just app generate          # update Nix config
+just app deploy my-app     # push image to server via SSH
+just deploy                # apply NixOS config (needed for first deploy)
+```
+
+For subsequent updates, rebuild the image and run `just app deploy my-app`.
