@@ -42,7 +42,7 @@
 
   /* ─── Link Type Icons ─── */
 
-  .prose a[href^="http"]:not([href*="the-o.space"], .footnote-number, .footnote-ref, .no-icon)::after,
+  .prose a[href^="http"]:not([href*="home.theor.net"], .footnote-number, .footnote-ref, .no-icon)::after,
   .prose a[href^="//"]:not(.footnote-number, .footnote-ref, .no-icon)::after {
     content: "";
     display: inline-block;

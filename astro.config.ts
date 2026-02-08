@@ -4,7 +4,7 @@ import mdx from '@astrojs/mdx';
 import remarkCallout from '@r4ai/remark-callout';
 
 export default defineConfig({
-  site: 'https://the-o.space',
+  site: 'https://home.theor.net',
   output: 'static',
 
   vite: {

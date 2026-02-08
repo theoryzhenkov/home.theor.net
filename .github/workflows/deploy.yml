@@ -10,7 +10,7 @@ jobs:
   build-and-push:
     uses: theoryzhenkov/.github/.github/workflows/deploy-docker.yml@main
     with:
-      app_name: the-o-space
+      app_name: home-theor-net
     permissions:
       contents: read
       packages: write
