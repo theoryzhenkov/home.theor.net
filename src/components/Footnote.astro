@@ -9,7 +9,7 @@ const { id } = Astro.props;
 <sup id={`fnref-${id}`} class="footnote-ref">
   <a href={`#fn-${id}`} class="footnote-number"></a>
 </sup>
-<aside class="sidenote" id={`fn-${id}`} data-footnote-id={id} role="note">
+<span class="sidenote" id={`fn-${id}`} data-footnote-id={id} role="note">
   <a href={`#fnref-${id}`} class="footnote-number"></a>
   <slot />
-</aside>
+</span>
