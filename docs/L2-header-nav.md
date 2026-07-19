@@ -125,7 +125,7 @@ The **nav trigger** is a small text-first control (the word `nav` in `--text-xs`
 
 ### Revealed panel
 
-Sits directly below the header bar as a flat sheet. Contains the four nav links stacked vertically with 44px touch targets. Slides open with a 120ms CSS transition. Closes on: outside tap, Escape key, or navigation.
+Sits directly below the header bar as a flat sheet. Contains the nav links stacked vertically with 44px touch targets. Slides open with a 120ms CSS transition. Closes on: outside tap, Escape key, or navigation.
 
 The panel is part of the header element, so when the header is hidden (scrolled away), the panel is hidden too. When the header is revealed on scroll-up, the nav trigger is accessible and can open the panel.
 
@@ -176,7 +176,7 @@ All hover/focus transitions: 120ms ease.
 | no-progress-bar | MUST | Header contains no reading progress indicator |
 | no-article-metadata | MUST | Header contains no article-specific information (maturity, dates, read time) |
 | uniform-layout | MUST | Header layout is the same on article pages and listing pages |
-| nav-reachable | MUST | All four nav destinations are reachable within two interactions (scroll-up + click) on every page |
+| nav-reachable | MUST | All nav destinations are reachable within two interactions (scroll-up + click) on every page |
 | mobile-dropdown | MUST | Nav links move to a revealed panel below 768px viewport width |
 | keyboard-accessible | MUST | All header interactive elements are reachable via Tab and operable via Enter |
 | distinct-background | SHOULD | Header background is visually distinct from the page surface color |
