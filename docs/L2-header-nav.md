@@ -1,8 +1,8 @@
 ---
 scope: L2
 summary: "Header component: non-sticky scroll-reveal bar with site identity, quicklinks, search, and theme toggle"
-modified: 2026-06-24
-reviewed: 2026-06-24
+modified: 2026-07-19
+reviewed: 2026-07-19
 depends:
   - path: docs/L1-design-vision
     section: "Header: scroll-reveal navigation frame"
@@ -100,14 +100,16 @@ CSS `scroll-padding-top` should account for the header height only when the head
 
 ## Navigation destinations
 
-Four links, always in this order:
+Six links, always in this order:
 
 | Label | Destination | Notes |
 | ----- | ----------- | ----- |
 | `index` | `/` | Main entry listing |
 | `projects` | `/projects/` | Project listing |
 | `blog` | `/blog/` | Blog listing |
-| `about` | `/about/` | About page |
+| `notes` | `/notes/` | Notes feed |
+| `knowledge` | `/knowledge/` | Knowledge pages listing |
+| `links` | `/links` | Link collection |
 
 Labels are lowercase monospace. If a destination doesn't exist yet, omit the link rather than pointing to a placeholder.
 
