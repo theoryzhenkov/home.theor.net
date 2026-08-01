@@ -2,7 +2,7 @@
 
 ## Project
 
-`home.theor.net` is Theo Ryzhenkov's personal website. It is an Astro 5 static site using MDX, Tailwind 4, D3 relation graphs, Pagefind search, Bun for package/runtime tooling, and Docker + nginx for production serving.
+`theor.net` is Theo Ryzhenkov's personal website. It is an Astro 5 static site using MDX, Tailwind 4, D3 relation graphs, Pagefind search, Bun for package/runtime tooling, and Docker + nginx for production serving.
 
 ## Conventions
 
