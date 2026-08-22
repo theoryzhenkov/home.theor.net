@@ -12,12 +12,12 @@
     "test:build": "astro build"
   },
   "dependencies": {
-    "@astrojs/markdown-remark": "^7.2.0",
-    "@astrojs/node": "^11.0.0",
+    "@astrojs/markdown-remark": "^7.2.4",
+    "@astrojs/node": "^11.1.4",
     "@r4ai/remark-callout": "^0.6.2",
     "@tailwindcss/vite": "^4.3.1",
     "@theoryzhenkov/wit-astro": "^0.1.1",
-    "astro": "^7.2.1",
+    "astro": "^7.2.4",
     "d3": "^7.9.0",
     "js-yaml": "^4.2.0",
     "marked": "^17.0.1",
