@@ -157,6 +157,15 @@ wit.client.subscribe(
   (e) => console.error('wit SSE feed error:', e),
 );
 
+// Fallback reconciliation: SSE is the fast path, the timer is the
+// correctness path — a dropped feed degrades to ≤60s staleness, never ∞.
+setInterval(() => {
+  const next = buildPages();
+  next.then(() => {
+    pagesCache = next;
+  }).catch(() => {});
+}, 60_000);
+
 export async function getLocalPages(): Promise<LocalPageEntry[]> {
   pagesCache ??= buildPages();
   return pagesCache;
