@@ -116,8 +116,9 @@ async function toSegments(body: string): Promise<{ segments: ContentSegment[]; h
   return { segments, html: htmlParts.join('\n'), headings };
 }
 
-export async function getLocalPages(): Promise<LocalPageEntry[]> {
-  return wit.swr('site-pages', async (client) => {
+async function buildPages(): Promise<LocalPageEntry[]> {
+  {
+    const client = wit.client;
     const docs = await client.allDocs({ include: ['body'] });
     const routeOf = (slug: string): string => {
       const doc = docs.find((d) => d.slug === slug);
@@ -138,7 +139,27 @@ export async function getLocalPages(): Promise<LocalPageEntry[]> {
         };
       }),
     );
-  });
+  }
+}
+
+// Eager liveness: the SSE change event starts the rebuild immediately and
+// the cache swaps atomically when ready — visitors never wait on a
+// rebuild, and a save reaches the site in SSE latency + one rebuild.
+let pagesCache: Promise<LocalPageEntry[]> | null = null;
+
+wit.client.subscribe(
+  () => {
+    const next = buildPages();
+    next.then(() => {
+      pagesCache = next;
+    }).catch((e) => console.error('wit rebuild failed, serving stale:', e));
+  },
+  (e) => console.error('wit SSE feed error:', e),
+);
+
+export async function getLocalPages(): Promise<LocalPageEntry[]> {
+  pagesCache ??= buildPages();
+  return pagesCache;
 }
 
 export async function getLocalPageSlugs(): Promise<Set<string>> {

@@ -14,4 +14,3 @@ export const wit = new WitSsr({
   key: WIT_READ_KEY,
 });
 
-wit.listen((e) => console.error('wit SSE feed error:', e));
