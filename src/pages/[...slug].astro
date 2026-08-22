@@ -1,33 +1,16 @@
 ---
 import Page from '@layouts/page/Page.astro';
 import MetadataPage from '@layouts/metadata/MetadataPage.astro';
-import ContentTable from '@components/content/ContentTable.astro';
-import LinkCards from '@components/content/LinkCards.astro';
-import NotesFeed from '@components/notes/NotesFeed.astro';
+import WitContent from '@components/WitContent.astro';
 import { getBreadcrumbs, getPageRelations } from '@/lib/relations';
 import { buildRelationsGraph } from '@/lib/relations-graph';
 import { getSiteRouteEntries, getSiteRouteEntry } from '@/lib/site-pages';
 import { estimateHtmlReadTimeMinutes } from '@/lib/html-content';
 
-export async function getStaticPaths() {
-  const entries = await getSiteRouteEntries();
-  const paths = [];
-  for (const entry of entries) {
-    // Index has its own route (src/pages/index.astro); everything else is here.
-    if (entry.id !== 'index') {
-      paths.push({ params: { slug: entry.id }, props: { metadataFor: null } });
-    }
-    // Every page has a dedicated metadata page at <slug>/metadata (/metadata
-    // for the index).
-    const metaSlug = entry.id === 'index' ? 'metadata' : `${entry.id}/metadata`;
-    paths.push({ params: { slug: metaSlug }, props: { metadataFor: entry.id } });
-  }
-  return paths;
-}
-
-const { slug } = Astro.params;
-const { metadataFor } = Astro.props as { metadataFor: string | null };
-const targetSlug = metadataFor ?? slug!;
+const rawSlug = Astro.params.slug ?? '';
+const isMeta = rawSlug === 'metadata' || rawSlug.endsWith('/metadata');
+const metadataFor = isMeta ? (rawSlug === 'metadata' ? 'index' : rawSlug.slice(0, -'/metadata'.length)) : null;
+const targetSlug = metadataFor ?? rawSlug;
 const entry = await getSiteRouteEntry(targetSlug);
 
 if (!entry) {
@@ -36,9 +19,7 @@ if (!entry) {
 
 const data = entry.data;
 const body = entry.body ?? '';
-const Content = entry.mdx.Content;
-const mdxComponents = { ContentTable, LinkCards, NotesFeed };
-const baseHeadings = entry.mdx.headings
+const baseHeadings = entry.headings
   .filter((heading) => heading.depth >= 2 && heading.depth <= 5)
   .map((heading) => ({
     depth: heading.depth,
@@ -90,12 +71,12 @@ const backlinks = (relations?.refi ?? []).map((refSlug) => {
     bannerCaption={data.bannerCaption}
     headings={enrichedHeadings}
     breadcrumbs={breadcrumbs}
-    currentSlug={slug!}
+    currentSlug={rawSlug}
     relations={relations}
     pageInfoMap={pages}
     readTimeMinutes={readTimeMinutes}
     backlinks={backlinks}
   >
-    <Content components={mdxComponents} />
+    <WitContent segments={entry.segments} />
   </Page>
 )}

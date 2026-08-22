@@ -1,31 +1,17 @@
-# Build stage
+# SSR server: Astro node adapter run under bun. Content comes from wit at
+# request time (stale-while-revalidate + SSE); this container renders it.
 FROM oven/bun:1-alpine AS builder
-
 WORKDIR /app
-
-# Copy package files
 COPY package.json bun.lock ./
-
-# Install dependencies
 RUN bun install --frozen-lockfile
-
-# Copy source files
 COPY . .
-
-# Build the static site from repository content and public Tangent notes.
 RUN bun run build
 
-# Production stage
-FROM nginx:alpine AS production
-
-# Copy nginx configuration
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-# Copy built static files
-COPY --from=builder /app/dist /usr/share/nginx/html
-
-# Expose port
-EXPOSE 80
-
-# Start nginx
-CMD ["nginx", "-g", "daemon off;"]
+FROM oven/bun:1-alpine AS production
+WORKDIR /app
+ENV HOST=0.0.0.0 PORT=8080 NODE_ENV=production
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/public ./public
+EXPOSE 8080
+CMD ["bun", "dist/server/entry.mjs"]

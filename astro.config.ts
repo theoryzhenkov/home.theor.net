@@ -1,7 +1,6 @@
 import { defineConfig } from 'astro/config';
+import node from '@astrojs/node';
 import tailwindcss from '@tailwindcss/vite';
-import mdx from '@astrojs/mdx';
-import sitemap from '@astrojs/sitemap';
 import { unified } from '@astrojs/markdown-remark';
 import remarkCallout from '@r4ai/remark-callout';
 import remarkTodo from './src/lib/remark-todo';
@@ -10,7 +9,8 @@ import rehypeCalloutIcons from './src/lib/rehype-callout-icons';
 
 export default defineConfig({
   site: 'https://theor.net',
-  output: 'static',
+  output: 'server',
+  adapter: node({ mode: 'standalone' }),
 
   vite: {
     plugins: [tailwindcss()],
@@ -23,8 +23,6 @@ export default defineConfig({
 
   integrations: [
     // MDX inherits the remark/rehype plugins from `markdown.processor` below.
-    mdx(),
-    sitemap(),
   ],
 
   markdown: {

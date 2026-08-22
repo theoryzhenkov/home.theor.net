@@ -1,8 +1,6 @@
 ---
 import Page from '@layouts/page/Page.astro';
-import ContentTable from '@components/content/ContentTable.astro';
-import LinkCards from '@components/content/LinkCards.astro';
-import NotesFeed from '@components/notes/NotesFeed.astro';
+import WitContent from '@components/WitContent.astro';
 import { getBreadcrumbs, getPageRelations } from '@/lib/relations';
 import { buildRelationsGraph } from '@/lib/relations-graph';
 import { getSiteRouteEntry } from '@/lib/site-pages';
@@ -14,9 +12,8 @@ if (!entry) {
 }
 
 const data = entry.data;
-const Content = entry.mdx.Content;
-const mdxComponents = { ContentTable, LinkCards, NotesFeed };
-const headings = entry.mdx.headings
+
+const headings = entry.headings
   .filter((heading) => heading.depth === 2 || heading.depth === 3)
   .map((heading) => ({
     depth: heading.depth,
@@ -58,5 +55,5 @@ const backlinks = (relations?.refi ?? []).map((refSlug) => {
   readTimeMinutes={readTimeMinutes}
   backlinks={backlinks}
 >
-  <Content components={mdxComponents} />
+  <WitContent segments={entry.segments} />
 </Page>

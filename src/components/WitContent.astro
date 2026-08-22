@@ -1,0 +1,28 @@
+---
+// Renders wit content segments: markdown HTML interleaved with the
+// site's real components, bound by directive name (the wit.config map).
+import ContentTable from '@components/content/ContentTable.astro';
+import LinkCards from '@components/content/LinkCards.astro';
+import NotesFeed from '@components/notes/NotesFeed.astro';
+import type { ContentSegment } from '@/lib/site-pages';
+
+interface Props {
+  segments: ContentSegment[];
+}
+
+const { segments } = Astro.props;
+const components: Record<string, any> = {
+  'content-table': ContentTable,
+  'link-cards': LinkCards,
+  'notes-feed': NotesFeed,
+};
+---
+
+{
+  segments.map((segment) => {
+    if (segment.type === 'html') return <Fragment set:html={segment.html} />;
+    const Component = components[segment.name!];
+    if (!Component) return null;
+    return <Component {...segment.props} />;
+  })
+}

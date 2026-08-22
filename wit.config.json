@@ -1,0 +1,10 @@
+{
+  "url": "https://wit.theor.net",
+  "vaultId": "1ed481bb-b571-4d2d-b48c-e8b0f5ff8ef8",
+  "keyEnv": "WIT_WRITE_KEY",
+  "components": {
+    "content-table": "./src/components/wit-props/content-table.ts",
+    "link-cards": "./src/components/wit-props/link-cards.ts",
+    "notes-feed": "./src/components/wit-props/notes-feed.ts"
+  }
+}

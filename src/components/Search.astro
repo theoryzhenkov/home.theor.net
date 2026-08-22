@@ -32,21 +32,7 @@
 
 <script is:inline>
   (function() {
-    let pagefind = null;
     let searchTimeout = null;
-
-    async function loadPagefind() {
-      if (pagefind) return pagefind;
-      
-      try {
-        pagefind = await import('/pagefind/pagefind.js');
-        await pagefind.init();
-        return pagefind;
-      } catch (e) {
-        console.warn('Pagefind not available (run build first):', e);
-        return null;
-      }
-    }
 
     function openSearch() {
       const modal = document.getElementById('search-modal');
@@ -83,31 +69,28 @@
         return;
       }
 
-      const pf = await loadPagefind();
-      
-      if (!pf) {
-        results.innerHTML = '<div class="search-empty">Search not available in dev mode. Run build first.</div>';
+      // wit full-text search — public docs only (read key is public-scope).
+      const res = await fetch(
+        'https://wit.theor.net/api/content/1ed481bb-b571-4d2d-b48c-e8b0f5ff8ef8/docs?fts=' +
+          encodeURIComponent(query) + '&limit=10',
+        { headers: { Authorization: 'Bearer wit_read_1DQ6CAJaz25IxjcdYslkQVsqM-W4lEe_' } }
+      );
+      if (!res.ok) {
+        results.innerHTML = '<div class="search-empty">Search unavailable.</div>';
         return;
       }
-
-      const search = await pf.search(query);
-      
-      if (search.results.length === 0) {
+      const data = await res.json();
+      if (data.items.length === 0) {
         results.innerHTML = '<div class="search-empty">No results found.</div>';
         return;
       }
-
-      const resultItems = await Promise.all(
-        search.results.slice(0, 10).map(async function(r) {
-          const data = await r.data();
-          return '<a href="' + data.url + '" class="search-result" data-search-close>' +
-            '<div class="search-result-title">' + (data.meta?.title || data.url) + '</div>' +
-            '<div class="search-result-excerpt">' + data.excerpt + '</div>' +
-          '</a>';
-        })
-      );
-
-      results.innerHTML = resultItems.join('');
+      results.innerHTML = data.items.map(function(d) {
+        const route = (d.frontmatter && d.frontmatter.route) || d.slug;
+        return '<a href="/' + route + '" class="search-result" data-search-close>' +
+          '<div class="search-result-title">' + d.title + '</div>' +
+          '<div class="search-result-excerpt">' + (d.frontmatter.description || '') + '</div>' +
+        '</a>';
+      }).join('');
     }
 
     function initSearch() {
